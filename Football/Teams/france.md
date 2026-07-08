@@ -185,6 +185,7 @@ Didier Deschamps. Structured, pragmatic. PPDA 12.6 (moderate press — improved 
 | YC/game | — | 0.8 | Most disciplined QF team |
 | Fouls committed/game | — | 9.8 | — |
 | Aerial duels won | — | **64.7%** | Dominant |
+| Corners won/game | — | **7.2** (36 in 5G) | Highest in QF bracket |
 
 ## Cross-links
 - [[Models/opponent-adjusted-sot-model]]

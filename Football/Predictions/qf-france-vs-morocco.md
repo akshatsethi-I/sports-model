@@ -70,11 +70,13 @@ last_updated: 2026-07-09
 - Best card line: **Over 4.5 YC ≈ 31%** — ⭐⭐ (value only at big odds)
 
 ### Corners
-- France corners/match (Footystats 5G): **9.8**
-- Morocco corners/match (Footystats 5G): **10.0**
-- Base estimate: (9.8 + 10.0) / 2 = **9.9 total**
+- France corners won/game: **7.2** (36 in 5G)
+- Morocco corners won/game: **4.8** (24 in 5G)
+- Raw match total estimate: 7.2 + 4.8 = **12.0**
+- Footystats match totals: France 9.8/match, Morocco 10.0/match → base (9.8+10.0)/2 = 9.9
 - Possession adjustment (France ~60%, Morocco PPDA 14.8): +15% uplift → **~11.4 expected**
-- **Over 10.5 corners ≈ 58%** → ⭐⭐⭐
+- France's 7.2 corners/game dominance vs Morocco's deep block strongly supports Over
+- **Over 10.5 corners ≈ 63%** → ⭐⭐⭐⭐
 
 ### Footystats Rates (5G)
 - France FTS: **0%** (scored in all 5 games)
@@ -131,8 +133,8 @@ France P(score)=78%, Morocco P(score)=68% → product ~54%. Morocco's counter th
 Caution flag required by model. Not a recommended pick.
 
 ### Corners
-**Over 10.5 Total Corners** — ~58% → ⭐⭐⭐
-France's possession dominance (~60%) vs Morocco's passive block (PPDA 14.8) triggers the corner possession uplift. Both teams average ~10 corners per match already; France's forcing play will push this higher.
+**Over 10.5 Total Corners** — ~63% → ⭐⭐⭐⭐
+France wins 7.2 corners/game (highest in QF bracket). Morocco's deep block forces corner situations. Raw match total estimate = 12.0; possession uplift applied. Strong lean Over.
 
 ### Cards — DO NOT BACK Either Side
 **Under 3.5 YC** — ~50% (removed from picks)

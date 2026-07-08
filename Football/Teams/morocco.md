@@ -184,6 +184,7 @@ Walid Regragui. Passive-block system. PPDA 14.8 — sit deep, absorb pressure, c
 | YC/game | — | 1.2 | More aggressive than France |
 | Fouls committed/game | — | 12.2 | — |
 | Aerial duels won | — | **46.7%** | Significant weakness vs France |
+| Corners won/game | — | **4.8** (24 in 5G) | Low — passive block concedes few corners to opponents |
 
 ## Cross-links
 - [[Models/opponent-adjusted-sot-model]]
