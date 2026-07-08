@@ -36,35 +36,42 @@ function buildContext(messages: { role: string; content: string }[]): string {
     if (content) sections.push(`\n\n=== ${relPath} ===\n${content}`);
   };
 
-  // Always include models and lessons — they're small and always relevant
-  const modelsDir = path.join(VAULT_PATH, "Models");
-  if (fs.existsSync(modelsDir)) {
-    for (const f of fs.readdirSync(modelsDir)) {
-      if (f.endsWith(".md")) add(`Models/${f}`);
-    }
-  }
-  const lessonsDir = path.join(VAULT_PATH, "Lessons");
-  if (fs.existsSync(lessonsDir)) {
-    for (const f of fs.readdirSync(lessonsDir)) {
-      if (f.endsWith(".md")) add(`Lessons/${f}`);
-    }
-  }
-
-  // Team pages for mentioned teams
-  for (const team of teams) {
-    add(`Teams/${TEAM_NAME_MAP[team]}.md`);
-  }
-
-  // If a specific match prediction is referenced, include it
+  // Check if a pre-computed prediction file exists for the mentioned teams
+  let predictionFound = false;
   if (teams.length === 2) {
     const [a, b] = teams;
     const predDir = path.join(VAULT_PATH, "Predictions");
     if (fs.existsSync(predDir)) {
       for (const f of fs.readdirSync(predDir)) {
         const fl = f.toLowerCase();
-        if (fl.includes(a) && fl.includes(b)) add(`Predictions/${f}`);
+        if (fl.includes(a) && fl.includes(b)) {
+          add(`Predictions/${f}`);
+          predictionFound = true;
+        }
       }
     }
+  }
+
+  // Only load models + lessons if no pre-computed prediction exists
+  // (prediction file already has the computed result — no need to re-run the math)
+  if (!predictionFound) {
+    const modelsDir = path.join(VAULT_PATH, "Models");
+    if (fs.existsSync(modelsDir)) {
+      for (const f of fs.readdirSync(modelsDir)) {
+        if (f.endsWith(".md")) add(`Models/${f}`);
+      }
+    }
+    const lessonsDir = path.join(VAULT_PATH, "Lessons");
+    if (fs.existsSync(lessonsDir)) {
+      for (const f of fs.readdirSync(lessonsDir)) {
+        if (f.endsWith(".md")) add(`Lessons/${f}`);
+      }
+    }
+  }
+
+  // Team pages for mentioned teams
+  for (const team of teams) {
+    add(`Teams/${TEAM_NAME_MAP[team]}.md`);
   }
 
   // If no specific teams mentioned, include the index for orientation
