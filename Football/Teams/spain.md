@@ -1,338 +1,198 @@
-﻿---
-title: Spain â€” WC2026
+---
+title: Spain — WC2026
 type: team
-competition: WC2026 Group H
-last_updated: 2026-06-27
+sport: football
+competition: WC2026 QF
+tags: [wc2026, spain, qf]
+sources: [fbref-spain-wc2026-5g, opta-spain-wc2026-5g]
+last_updated: 2026-07-10
 ---
 
 # Spain
 
 ## Overview
-WC2026 Group H. **Final standing: 2nd (7pts â€” 2W 1D 0L)**
-MD1 win | MD2 draw | MD3: 1-0 Uruguay
+WC2026. 5-game record: **W4 D1 L0**, 9 goals scored, 0 conceded. 5 consecutive clean sheets — the only team in the QF bracket with 0 goals conceded.
 
-The most dominant team in the dataset by possession metrics: 70.7% average possession, 24.5 shots/game (dataset record), 91.9% pass completion (dataset record), PPDA 7.5 (elite press), press start 51.8m (dataset record). But the finishing crisis is real â€” G/SoT 0.20 is the lowest conversion of any profiled team.
+**Key insight:** Spain are the most defensively dominant team in this tournament. They allow only 1.0 SoT/game (best in dataset), 8.2 opponent box touches/game (elite suppression), and have conceded 0 goals from 5 SoTA. Their xG (1.95/game) is slightly below actual goals (9 goals vs 9.74 xG = -0.74) — they are NOT overperforming offensively; their scoring is real.
 
 ## Manager
-Luis de la Fuente. Pragmatic rotation â€” Baena and Olmo as the most impactful players despite limited minutes. Torres (negative On-Off) is a selection mistake when he starts.
+Luis de la Fuente. Aggressive high press (PPDA 8.7 — best in QFs). Possession-dominant system with through balls as the primary attacking mechanism.
 
 ## Preferred Formation
-4-3-3 / 4-2-3-1 with extreme width (Yamal right, Cucurella left, DembÃ©lÃ©/Torres wide). Rodri as the pivot. CubarsÃ­-Laporte CB pairing.
+4-3-3. High press, possession-dominant. Line-breaking through balls (20 in 5G = 4/game).
 
 ## Style of Play
 
-**Build-up structure**: 70.7% possession â€” the highest in the dataset. 91.9% pass completion. 347 final-third passes/game (dataset record). 60.4% lateral pass direction (L+R combined) shows Spain recycle wide to overload rather than drive forward (24.3% FWD). 50 crosses in 2 games at 18% success â€” delivery volume outstrips quality. 10 through balls â€” Spain also look to play through lines.
+**Build-up:** 65.6% possession, 90.5% pass accuracy. 1122 final-third passes (224.4/game), 83.7% FT pass%. 4 through balls/game. Long 10+ pass sequences (114 in 5G).
 
-**Pressing intensity**: PPDA 7.5 â€” elite. Press start 51.8m â€” the furthest up the pitch of any team in the entire dataset. Spain press from inside the opponent's half. 25 high turnovers â€” the dataset record. This is organised, constant press â€” not burst-press.
+**Pressing:** PPDA 8.7 — most aggressive press in QF bracket. Press start 47.2m (high). 50 high turnovers (7 shot-ending, 1 goal-ending, 14.0% shot rate).
 
-**Defensive shape**: CubarsÃ­-Laporte + Rodri screen. Opponents average 4.5 shots/game and 1 SoT/game â€” matching France as the best defensive restriction in the dataset. xGA 0.17/game (dataset record). xG/shot conceded 0.04 â€” opponents are forced into harmless positions; only 22.22% of shots they allow come from inside the box.
+**Attacking patterns:** Possession build-up dominant (30 build-ups, 1 goal). Direct attacks minimal (4, 0 goals). Fast breaks: 4 attempts, 0 goals (0% conversion) — Spain wins through possession, not transitions. SP: 19 shots, 1.66 xG in 5G (0.33 xG/game).
 
-**Transition play**: Spain's transitions are primarily possession-based â€” they recycle rather than counter directly. Their direct speed (1.70) is the slowest in the dataset. 55 sustained sequences (10+ passes) â€” the most in the dataset. Build-up goals: 0/12 attempts â€” all goals came from set pieces, individual brilliance, or OG, not Spain's elaborate build-up.
-
-## Strengths
-- The most complete pressing and possession machine in the tournament
-- Pedri: 11 interceptions (dataset record for any individual), the best all-round midfielder
-- Rodri: the defensive screen that makes everything possible â€” 176/180 mins
-- Yamal at 18 years old: 7 shots, 1 goal, 13 crosses, 9.69 shots/90 â€” Spain's most dangerous creator
-- CubarsÃ­-Laporte partnership: xG/shot conceded 0.04 â€” opponents cannot get into the box
-
-## Weaknesses
-- G/SoT 0.20 â€” the worst conversion rate of any profiled team. 49 shots â†’ only 4 goals
-- 55 build-up sequences, 0 goals from them â€” Spain's elaborate possession doesn't directly produce goals
-- Torres (-4.19 On-Off) â€” Spain are measurably worse when he starts; selection concern
-- Pedri's 1 yellow card entering the knockout round â€” another = suspension
-- Cross success 18% â€” high volume delivery that doesn't convert
-
-## Game-State Tendencies
-
-**When leading**: Spain become essentially unbeatable. They hold the ball and press high â€” opponents can't sustain meaningful spells. Their 4.5 shots/game allowed means no one gets through even when Spain are playing for a result.
-
-**When drawing**: Patient. Spain have drawn (MD2 with Cape Verde) and maintained composure. They'll keep circulating and wait. Rodri protects from the back, Pedri disrupts in midfield.
-
-**When trailing**: Essentially untested in this tournament (haven't trailed). If they did, expect the tempo to increase dramatically â€” Baena/Olmo would enter, more directness, Yamal given license to cut inside more.
-
-## Set-Piece Tendencies
-61 crosses in 2 games. Corners likely involve Laporte/CubarsÃ­ attacking centrally. Free kicks: Pedri or Rodri delivery. Spain's 3 open-play goals + 1 OG suggest set pieces haven't been the primary scoring route yet.
-
-## Home vs Away
-Playing in USA â€” arguably their closest thing to a home crowd in this tournament (large Spanish-speaking diaspora). Cultural advantage at Atlanta, New York venues.
+**Defensive shape:** 1.0 SoT/game allowed (best in dataset). 0 SP goals conceded (7 SP shots, 0.34 xGA). Opponent box touches only 8.2/game. Opponent fast breaks: 3 attempts, 0 goals. Aerial duels: 66.0% won.
 
 ## Key Players
-- **Pedri** â€” MF, 11 interceptions (dataset record), +2.26 On-Off; the midfield engine
-- **Yamal** â€” FW, 9.69 shots/90, +3.37 On-Off; Spain's most creative threat
-- **Oyarzabal** â€” FW, 2G/10sh, primary striker; clinical when he converts
-- **Rodri** â€” MF, defensive pivot, 176/180 mins; the system's foundation
 
-## Historical Lessons
-- Spain's build-up dominance (55 sequences, 0 goals from them) shows that possession stats don't directly translate to goals â€” a crucial lesson for prediction models
-- xG/shot 0.09 confirms Spain's finishing crisis is structural (low-quality positions from crosses) not just bad luck
+- **Mikel Oyarzabal** — FW, 4G/19sh/9SoT, SoT/90 2.08, G/SoT 0.44. Top scorer. On-Off: -1.33.
+- **Lamine Yamal** — MF/FW, 1G/17sh/8SoT, SoT/90 2.29. On-Off: +0.68.
+- **Álex Baena** — MF/FW, 1G/8sh/4SoT, SoT/90 1.33. On-Off: +1.33.
+- **Rodri** — MF, 0G/5sh/0SoT, 5 90s. Defensive anchor. On-Off: +1.82. 15 TklW.
+- **Pedri** — MF, 0G/4sh/1SoT, 4.3 90s. Creative engine. On-Off: +0.32.
+- **Dani Olmo** — MF, 0G/8sh/0SoT. On-Off: +0.73.
+- **Unai Simón** — GK. Save%: **100%** (5 saves / 5 SoTA, 0 GA). 5 CS. Bayesian-regressed: **88.75%**.
+- **Pau Cubarsi** — DF, 19yo. 5 starts. On-Off: consistent +9 team result.
 
-## Current Tactical Notes (post-MD3)
-Spain qualified 2nd in Group H (1-0 Uruguay, MD3). Heading into R32. Pedri on 1 yellow â€” one more = suspension. Torres should be dropped if Spain progress; Baena/Olmo are the better options by On-Off data.
+## Strengths
+- Elite SoT suppression: 1.0/game allowed (best in dataset)
+- Possession dominance: 65.6%, PPDA 8.7
+- Simón: 100% save% → Bayesian 88.75%
+- Box presence: 37.0 touches/game (att), only 8.2 allowed
+- Discipline: 3 YC / 5G (0.6/game), 0 RC
+- SP threat: 0.33 xG/game from set pieces
+- Aerial duels: 66.0% won
 
-## Movement & Offers (WC2026, 3 games)
-| Metric | Value |
-|--------|-------|
-| Offers to receive (total) | 1587 |
-| Offers in behind | 469 |
-| Offers in between | 498 |
-| Offers in front | 620 |
-| Offers inside team shape | 938 |
-| Offers outside team shape | 649 |
-| Receptions in behind | 55 |
-| Receptions between mid & def lines | 460 |
+## Weaknesses
+- Goals vs xG: -0.74 (slight underperformance)
+- Fast break conversion: 0% (4 attempts, 0 goals) — vulnerable on counter if pushed high
+- Oyarzabal On-Off: -1.33 (heavy reliance on him for goals)
+- xGA: 0.30/game — some luck in keeping 0 GA given 1.49 total xGA
 
-## GK Stats (WC2026, 3 games)
-| Metric | Value |
-|--------|-------|
-| Clean sheets | 3 |
-| Goals conceded | 0 |
-| GK saves | 6 |
-| GK implied save% | 100% |
-| GK actions inside box | 43 |
-| GK actions outside box | 31 |
+---
 
-## Fouls & Discipline (WC2026, 3 games)
-| Metric | Value | Per game |
-|--------|-------|---------|
-| Fouls drawn | 34 | 11.3 |
-| Fouls committed | 15 | 5 |
-| Yellow cards | 2 | — |
-| Red cards | 0 | — |
-| Indirect reds | 0 | — |
-| Offsides | 6 | — |
+## FBRef Data (WC2026, 5 games)
 
-## Defensive Stats (WC2026, 3 games)
-| Metric | Value |
-|--------|-------|
-| Own goals | 0 |
-| Goals conceded | 0 |
-| Forced turnovers | 146 |
-| Ball recovery time | 32.04s |
-| Defensive pressures applied | 629 |
-| Def pressures directly applied | 102 |
-
-## xG & Possession Stats (WC2026, 3 games)
-| Metric | Value | Rank (48 teams) |
-|--------|-------|-----------------|
-| Inside box shots | 34 | — |
-| Outside box shots | 21 | — |
-| Headed shots | 11 | — |
-| xG | 6.58 | 17/48 |
-| xG efficiency | 0.76x | — |
-| Corners won | 23 | — |
-| Possession | 62% | — |
-
-## Shooting Stats (WC2026, 3 games)
-| Metric | Value | Rank (48 teams) |
-|--------|-------|-----------------|
-| Goals | 5 | 17/48 |
-| Assists | 4 | — |
-| Total shots | 55 | — |
-| Shots on target | 16 | — |
-| Off-target shots | 26 | — |
-| Conversion rate | 9% | — |
-| Inside box shots | 34 | — |
-
-## Passing & Build-up Stats (WC2026, 3 games)
-| Metric | Value | Rank (48 teams) |
-|--------|-------|-----------------|
-| Passes | 2191 | 1/48 |
-| Pass accuracy | 92% | 1/48 |
-| Crosses | 82 | — |
-| Crossing accuracy | 22% | — |
-| Def linebreaks attempted | 78 | — |
-| Def linebreaks accuracy | 72% | — |
-| Switches of play | 21 | — |
-
-## Physical Stats (WC2026, 3 games)
-| Metric | Value | Dataset rank (48 teams) |
-|--------|-------|------------------------|
-| Average speed | 6.09 km/h | — |
-| High speed running | 3716 | — |
-| Sprints | 1256 | — |
-| Total distance | 342,164m | — |
-
-## FBRef Data (WC2026, 3 games)
-
-### GK — Unai Simón
-| Metric | Value | Note |
-|--------|-------|------|
-| GA | 0 | 0.00 GA90 |
-| SoTA | **4** | **1.33/game — lowest in dataset** |
-| Saves | 3 | Save% 100% |
-| CS | 3 | 100% CS rate |
-
-> ⚠️ Model note: 100% on only 4 SoTA → regress 40% toward 65%: **86%** projected save%.
-> Opponent GK: faced 17 Spain SoT (≈ squad SoT + 1 PK), saved 12 (save% 70.6%).
+### Goalkeeping
+| Player | MP | Min | GA | SoTA | Saves | Save% | CS | PKsv |
+|--------|-----|-----|----|----|-------|-------|----|------|
+| Unai Simón | 5 | 450 | 0 | 6* | 5 | **100%** | 5 | 0 |
+| **Opponent GK** | 5 | 450 | 9 | 32 | 23 | 71.9% | 1 | 0 |
+*FBRef SoTA=6 vs Opta SoT faced=5 — Opta used for model (1.0/game)
 
 ### Shooting
-| | G | Sh | SoT | SoT% | SoT/90 | G/Sh | G/SoT |
-|--|---|----|----|------|--------|------|-------|
-| **Spain Squad** | 4 | 55 | **16** | 29.1% | **5.33** | 0.07 | **0.25** |
-| Opponents | 0 | 14 | 3 | 21.4% | **1.00** | 0.00 | 0.00 |
+| | G | Sh | SoT | SoT% | Sh/90 | SoT/90 | G/SoT |
+|--|---|----|----|------|-------|--------|-------|
+| Squad | 8 | 93 | 32 | 34.4% | 18.60 | **6.40** | 0.25 |
+| Opponents | 0 | 29 | 5 | 17.2% | 5.80 | **1.00** | 0.00 |
 
-### Key Shooters
-| Player | Pos | 90s | G | Sh | SoT | SoT% | On-Off | Note |
-|--------|-----|-----|---|----|----|------|--------|------|
-| Mikel Oyarzabal | FW | 2.3 | 2 | 11 | 4 | 36.4% | **+0.21** | Primary striker; 2G |
-| Lamine Yamal | FW | 1.6 | 1 | 8 | 2 | 25.0% | **+1.88** | Creator; SoT% low |
-| Ferrán Torres | FW | 1.6 | 0 | 7 | 2 | 28.6% | **−2.13** | Confirmed drag; high shot volume, 0G |
-| Fabián Ruiz | MF | 1.4 | 0 | 5 | 1 | 20.0% | **−3.04** | Confirmed drag |
-| Álex Baena | FW | 1.4 | 1 | 3 | 1 | 33.3% | **+3.57** | Best On-Off in 126 min; super-sub |
-| Dani Olmo | MF | 1.1 | 0 | 3 | 0 | 0.0% | **+3.03** | Positive impact sub |
-| Pedri | MF | 2.4 | 0 | 3 | 1 | 33.3% | **+2.06** | Midfield engine |
+### Miscellaneous (5 games)
+| Metric | Total | Per game |
+|--------|-------|---------|
+| Yellow cards | 3 | 0.6 |
+| Red cards | 0 | — |
+| Fouls committed | 55 | 11.0 |
+| Fouls drawn | 38 | 7.6 |
+| Crosses | 111 | 22.2 |
+| Interceptions | 42 | 8.4 |
+| Clearances | 75 | 15.0 |
+| Aerial duels won | — | **66.0%** |
 
-### On-Off Table (WC2026, meaningful samples)
-| Player | Pos | Min | On-Off | Signal |
-|--------|-----|-----|--------|--------|
-| Álex Baena | FW | 126 | **+3.57** | Best On-Off in meaningful mins — key sub |
-| Dani Olmo | MF | 101 | **+3.03** | Second best — should start or sub early |
-| Pedro Porro | DF | 90 | +3.50 | 1 game, small sample |
-| Pedri | MF | 218 | **+2.06** | Reliable — 218 min at midfield |
-| Lamine Yamal | FW | 140 | +1.88 | Positive — best attacking threat |
-| Rodri | MF | 266 | **+1.69** | Reliable — near-complete minutes |
-| Cubarsi/Cucurella/Laporte/Simón | DEF/GK | 270 | +1.67 | Full-time starters — baseline |
-| Mikel Merino | MF | 109 | −1.41 | Mild drag |
-| Nico Williams | MF | 48 | −2.03 | Small sample |
-| Ferrán Torres | FW | 140 | **−2.13** | Confirmed drag; starts despite poor On-Off |
-| Marcos Llorente | DF | 180 | **−3.50** | Biggest drag in 180 min — structural weakness |
-| Fabián Ruiz | MF | 122 | **−3.04** | Significant drag in meaningful minutes |
-| Gavi | FW | 70 | −2.25 | Drag in limited mins |
-| Oyarzabal | FW | 210 | +0.21 | Barely positive despite 2G — system drag? |
+---
 
-### Miscellaneous Stats
-| Metric | Squad | Per game | Opponents |
-|--------|-------|---------|-----------|
-| Yellow cards | 2 | 0.67 | 6 |
-| Red cards | 0 | — | 1 |
-| **Fouls committed** | **34** | **11.33** | 17 |
-| Fouls drawn | 15 | 5.0 | 33 |
-| Offsides | 6 | 2.0 | 11 |
-| Crosses | 73 | **24.33** | 25 |
-| Interceptions | 31 | 10.33 | 42 |
-| Tackles won | 30 | 10.0 | 37 |
+## Opta Data (WC2026, 5 games)
 
-> Note: Spain commit 11.33 fouls/game despite being possession-dominant — their high press generates fouls. They draw only 5.0/game. YC rate (0.67/game) is the lowest in the dataset.
-
-## Opta Data — Full 3 Games (WC2026)
-
-### Attacking
+### Attacking Overall
 | Metric | Value | Per game |
 |--------|-------|---------|
-| Goals | 5 | 1.67 |
-| xG | **5.26** | **1.75** |
-| Goals vs xG | **−0.26** | Minimal underperformance |
-| Shots | 55 | 18.33 |
-| SoT | 16 | 5.33 |
-| Conv% | 9.09% | — |
-| xG/shot | **0.10** | Low — crossing-heavy, low-quality positions |
+| Goals | 9 | 1.80 |
+| xG | 9.74 | **1.95** |
+| Goals vs xG | -0.74 | — |
+| Shots | 93 | 18.6 |
+| SoT | 32 | **6.40** |
+| Conv% | 9.68% | — |
+| xG/shot | 0.10 | — |
 
-### Passing
+### Attacking Set Pieces
 | Metric | Value | Per game |
 |--------|-------|---------|
-| Avg Possession | **69.4%** | Highest in dataset |
-| Total passes | 2148 | 716 |
-| Pass completion | 91.0% | Dataset record |
-| Final third passes | 803 (84.6%) | 267.7 |
-| Through balls | **11** | 3.67 |
-| Crosses | 56 (17.9% accuracy) | 18.67 |
-| Pass direction | Fwd 25.4% / Bwd 15.5% / L 29.8% / R 29.4% | Lateral recycling dominant |
+| SP goals | 1 | — |
+| SP shots | 19 | 3.8 |
+| SP xG | 1.66 | **0.33** |
+
+### Attacking Misc
+| Metric | Value | Per game |
+|--------|-------|---------|
+| Box touches | 185 | **37.0** |
+| Fast breaks | 4 (0 goals, **0%**) | — |
+| Header goals | 1 | — |
+| Penalties | 0 | — |
+| Offsides | 9 | 1.8 |
+| Hit post | 4 | — |
+
+### Passing & Build-up
+| Metric | Value | Per game |
+|--------|-------|---------|
+| Possession | **65.6%** | — |
+| Total passes | 3307 | 661.4 |
+| Pass accuracy | 90.5% | — |
+| Final third passes | 1122 | 224.4 |
+| FT pass% | 83.7% | — |
+| Crosses | 78 (15 successful, 19.2%) | 15.6 |
+| Through balls | 20 | **4.0** |
 
 ### Pressing
 | Metric | Value |
 |--------|-------|
-| **PPDA** | **7.8** |
-| **Press start** | **47.8m** — still highest in dataset |
-| Pressed sequences | 53 |
-| High turnovers | **33** |
-| Shot-ending turnovers | 4 (12.12%) |
-| Goal-ending turnovers | 1 |
+| PPDA | **8.7** (most aggressive in QFs) |
+| Press start | 47.2m |
+| High turnovers | 50 (7 shot-ending, 1 goal-ending, 14.0%) |
 
-### Sequences
-| Metric | Value |
-|--------|-------|
-| 10+ pass sequences | **77** — dataset record |
-| Direct speed | 1.67 (slowest build-up in dataset) |
-| Passes per sequence | 5.58 |
-| Sequence time | 15.92s |
-| **Build-up goals** | **0 (from 16 build-ups)** — the defining paradox |
-| Direct attack goals | 0 (from 1) |
-
-### Defending
+### Defending Overall
 | Metric | Value | Per game |
 |--------|-------|---------|
-| Goals conceded | 0 | — |
-| **xGA** | **0.54** | **0.18 — lowest in dataset** |
-| Goals vs xGA | −0.54 | Opponents underperformed vs xG |
-| Shots faced | 14 | 4.67 |
-| **SoT faced** | **3** | **1.00/game** |
-| Conv% allowed | 0.00% | — |
-| **xG/shot allowed** | **0.04** | Lowest in dataset — shots forced from bad positions |
-| Shots in box% | **28.57%** | Opponents mostly shooting from outside box |
+| Goals conceded | 0 | 0.00 |
+| xGA | 1.49 | **0.30** |
+| Goals vs xGA | -1.49 (lucky/elite) | — |
+| Shots faced | 29 | 5.8 |
+| SoT faced | 5 | **1.00** |
+| xG/shot allowed | 0.05 | — |
 
-### Attacking Set-Pieces
+### Defending Set Pieces (against)
 | Metric | Value |
 |--------|-------|
-| SP goals | 1 (from 10 shots, xG 0.98) |
-| SP Goal% | 20.00% |
-| Headers | 11 attempts, **0 goals** |
-| Hit posts | **3** — unlucky in attack |
+| SP goals conceded | **0** |
+| SP shots faced | 7 |
+| SP xGA | 0.34 |
 
-### Attacking Misc
-| Metric | Value |
-|--------|-------|
-| Box touches | 107 (35.7/game) — very high |
-| Offsides | 6 (2.0/game) |
-| Penalties | 0 |
-| Fast breaks | 0 |
-
-### Defending Set-Pieces
-| Metric | Value |
-|--------|-------|
-| SP goals conceded | **0** (from 4 shots, xG 0.24) |
-| SP Goal% | 0.00% |
-
-### Defensive Actions
+### Defending Actions
 | Metric | Value | Per game |
 |--------|-------|---------|
-| Tackles | 40 | 13.33 |
-| Interceptions | 28 | 9.33 |
-| Recoveries | 161 | **53.67** — dominant ball recovery |
-| Blocks | 6 | 2.0 |
-| Clearances | 47 | 15.67 |
-| Ground duels won | 41.5% | — |
-| **Aerial duels won** | **71.9%** | **Top tier — neutralises SP threats** |
+| Tackles | 77 | 15.4 |
+| Interceptions | 40 | 8.0 |
+| Recoveries | 254 | 50.8 |
+| Clearances | 75 | 15.0 |
+| Blocks | 10 | 2.0 |
+| Ground duels won | 46.4% | — |
+| **Aerial duels won** | **66.0%** | — |
 
-### Defending Misc
+### Defending Misc (against)
 | Metric | Value | Per game |
 |--------|-------|---------|
-| **Box touches allowed** | **20** | **6.67 — extreme suppression** |
-| Offsides caught | 11 | **3.67 — high line constantly trapping** |
-| Hit post (opponents) | 0 | — |
-| Penalties conceded | 0 | — |
-| Header goals conceded | 0 (from 1 attempt) | — |
-| Fast breaks conceded | 3 (0 goals) | — |
+| Opponent box touches | 41 | **8.2** |
+| Opponent fast break goals | 0 (from 3) | — |
+| Opponent SP goals | 0 | — |
+| Opponent header goals | 0 | — |
 
-> **Opponents generate only 6.67 box touches per game against Spain** — the lowest in the dataset. Austria will be pinned outside Spain's box.
+---
 
-## Model Input Summary (vs Austria, R32)
-| Input | Value | Note |
-|-------|-------|------|
-| SoT/game | **5.33** | 16 in 3 games — confirmed |
-| SoTA-allowed/game | **1.33 raw → regress 40% → 3.00** | Only 4 SoTA in 3 games — smallest sample |
-| GK save% | **100% on 4 SoTA → regress 40% → 86%** | Unai Simón; 3 CS corroborates but tiny sample |
-| xG/game | **6.58/3 = 2.19** | Opta; Spain running below xG (0.76x efficiency) |
-| G/SoT | **0.25** | Below average; finishing crisis real |
-| PPDA | **7.5** | Elite press |
-| Press start | **51.8m** | Dataset record |
-| Fouls committed | **11.33/game** | High-press style generates fouls |
-| YC/game | **0.67** | Lowest in dataset; very disciplined |
-| Crosses | **24.33/game** | Volume without quality (22% accuracy) |
-| Key starters | Pedri (+2.06), Rodri (+1.69), Yamal (+1.88) | Core reliable XI |
-| Key drags | Torres (−2.13), Fabián Ruiz (−3.04), Llorente (−3.50) | Avoid starting; sub Baena/Olmo instead |
-| Best sub | Baena (+3.57 in 126 min) | Should be in first XI or early sub |
+## ✅ Model Inputs (5G, QF)
 
-## Links
-- [[Players/players-spain]]
-- [[Competitions/wc2026-group-h]]
+| Input | Raw | Regressed / Bayesian | Note |
+|-------|-----|---------------------|------|
+| SoT/game (att) | 6.4 | — | — |
+| SoTA/game (def) | 1.0 | **1.75** (benchmark 3.0, n=5) | Best suppression in dataset |
+| Simón save% | 100% | **88.75%** (prior 70%, n=5) | QF+ Bayesian |
+| xG/game | — | **1.95** | Slight underperformance (-0.74) |
+| xGA/game | — | **0.30** | Elite defense, some luck |
+| SP xG/game | — | **0.33** | — |
+| PPDA | — | 8.7 | Most aggressive press in QFs |
+| Possession | — | 65.6% | — |
+| YC/game | — | 0.6 | Most disciplined QF team |
+| Fouls committed/game | — | 11.0 | — |
+| Aerial duels won | — | **66.0%** | — |
+| Box touches/game (att) | — | **37.0** | — |
+| Box touches/game (opp) | — | **8.2** | Elite suppression |
+
+## Cross-links
+- [[Models/opponent-adjusted-sot-model]]
+- [[Teams/belgium]]
+- [[Predictions/qf-spain-vs-belgium]]
