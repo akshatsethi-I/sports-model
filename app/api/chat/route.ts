@@ -69,9 +69,12 @@ function buildContext(messages: { role: string; content: string }[]): string {
     }
   }
 
-  // Team pages for mentioned teams
-  for (const team of teams) {
-    add(`Teams/${TEAM_NAME_MAP[team]}.md`);
+  // Only load team pages if no prediction file was found
+  // (prediction file already contains all relevant team data)
+  if (!predictionFound) {
+    for (const team of teams) {
+      add(`Teams/${TEAM_NAME_MAP[team]}.md`);
+    }
   }
 
   // If no specific teams mentioned, include the index for orientation
@@ -136,7 +139,7 @@ export async function POST(req: NextRequest) {
 
   const stream = await client.messages.stream({
     model: "claude-haiku-4-5-20251001",
-    max_tokens: 4096,
+    max_tokens: 2048,
     system: SYSTEM_PROMPT + context,
     messages: messages.map((m: { role: string; content: string }) => ({
       role: m.role,
