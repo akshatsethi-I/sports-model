@@ -25,15 +25,29 @@ function readFile(filePath: string): string {
   }
 }
 
+// Strip Model Calculations from prediction files — math workings the LLM doesn't need.
+function stripCalculations(content: string): string {
+  return content.replace(/## Model Calculations[\s\S]*?(?=## Tactical Overview|## Match Flow|## Picks|## Confirmed)/m, "");
+}
+
+// Strip raw FBRef/Opta data tables from team pages — keep prose sections only.
+// Tables are 100+ lines of numbers; the Model Inputs summary at the bottom has everything needed.
+function stripRawTables(content: string): string {
+  return content.replace(/## FBRef Data[\s\S]*?(?=## ✅ Model Inputs|## Cross-links|$)/m, "")
+                .replace(/## Opta Data[\s\S]*?(?=## ✅ Model Inputs|## Cross-links|$)/m, "");
+}
+
 function buildContext(messages: { role: string; content: string }[]): string {
   const allText = messages.map((m) => m.content).join(" ");
   const teams = extractTeams(allText);
   const sections: string[] = [];
 
-  const add = (relPath: string) => {
+  const add = (relPath: string, strip = false) => {
     const full = path.join(VAULT_PATH, relPath);
-    const content = readFile(full);
-    if (content) sections.push(`\n\n=== ${relPath} ===\n${content}`);
+    let content = readFile(full);
+    if (!content) return;
+    if (strip) content = stripCalculations(content);
+    sections.push(`\n\n=== ${relPath} ===\n${content}`);
   };
 
   // Check if a pre-computed prediction file exists for the mentioned teams
@@ -45,15 +59,24 @@ function buildContext(messages: { role: string; content: string }[]): string {
       for (const f of fs.readdirSync(predDir)) {
         const fl = f.toLowerCase();
         if (fl.includes(a) && fl.includes(b)) {
-          add(`Predictions/${f}`);
+          add(`Predictions/${f}`, true); // strip calculations — picks are all we need
           predictionFound = true;
         }
       }
     }
   }
 
+  // Always load team pages (stripped of raw tables) — needed for tactical/player questions
+  for (const team of teams) {
+    const full = path.join(VAULT_PATH, `Teams/${TEAM_NAME_MAP[team]}.md`);
+    let content = readFile(full);
+    if (content) {
+      content = stripRawTables(content);
+      sections.push(`\n\n=== Teams/${TEAM_NAME_MAP[team]}.md ===\n${content}`);
+    }
+  }
+
   // Only load models + lessons if no pre-computed prediction exists
-  // (prediction file already has the computed result — no need to re-run the math)
   if (!predictionFound) {
     const modelsDir = path.join(VAULT_PATH, "Models");
     if (fs.existsSync(modelsDir)) {
@@ -66,14 +89,6 @@ function buildContext(messages: { role: string; content: string }[]): string {
       for (const f of fs.readdirSync(lessonsDir)) {
         if (f.endsWith(".md")) add(`Lessons/${f}`);
       }
-    }
-  }
-
-  // Only load team pages if no prediction file was found
-  // (prediction file already contains all relevant team data)
-  if (!predictionFound) {
-    for (const team of teams) {
-      add(`Teams/${TEAM_NAME_MAP[team]}.md`);
     }
   }
 
@@ -140,7 +155,13 @@ export async function POST(req: NextRequest) {
   const stream = await client.messages.stream({
     model: "claude-haiku-4-5-20251001",
     max_tokens: 2048,
-    system: SYSTEM_PROMPT + context,
+    system: [
+      {
+        type: "text",
+        text: SYSTEM_PROMPT + context,
+        cache_control: { type: "ephemeral" },
+      },
+    ],
     messages: messages.map((m: { role: string; content: string }) => ({
       role: m.role,
       content: m.content,
