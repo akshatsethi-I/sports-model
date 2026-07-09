@@ -146,11 +146,11 @@ Referee Tello Figueroa averages **5.38 YC/game**. λ_total = 3.69. Under 3.5 is 
 
 ## Confirmed Lineups
 
-**France (4-2-3-1):** Maignan — Koundé, Upamecano, Saliba, Digne — Koné, Rabiot — Olise, Dembélé, Barcola — Mbappé
-*Note: Malo Gusto benched (Digne starts at LB). Tchouaméni out. Gusto had France's best on-off at QF stage — slight RB downgrade.*
+**France (4-2-3-1):** Maignan — Koundé, Upamecano, Saliba, Digne — Koné, Rabiot — Olise, Doué, Dembélé — Mbappé (c)
+*Note: Digne starts at LB (Gusto benched). Doué starts ahead of Barcola. Rabiot partners Koné in double pivot (Tchouaméni out).*
 
-**Morocco (4-2-3-1):** Bono — Hakimi, Diop, Riad, Mazraoui — El Aynaoui, Bouaddi — Ounahi, Díaz, Rahimi — El Khannouss
-*Note: Soufiane Rahimi **starts** (was a super-sub; 2.69 SoT/90). Saibari (3G top scorer) not starting — Morocco more fluid but less direct in final third.*
+**Morocco (4-2-3-1):** Bono — Hakimi (c), Diop, Mazraoui, Salah-Eddine — El Aynaoui, Bouaddi — Ounahi, Díaz, El Khannouss — Talbi
+*Note: Talbi starts as striker (Rahimi benched — loses super-sub threat). Mazraoui shifts to CB, Salah-Eddine starts at LB. Riad dropped.*
 
 ## Key Risks
 - Morocco's fast-break threat (30% conversion) could steal a result if France push high and leave gaps
