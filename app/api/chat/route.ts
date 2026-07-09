@@ -9,7 +9,13 @@ const TEAM_NAME_MAP: Record<string, string> = {
   france: "france", morocco: "morocco", spain: "spain", belgium: "belgium",
   england: "england", norway: "norway", argentina: "argentina", switzerland: "switzerland",
   colombia: "colombia", brazil: "brazil", usa: "usa", mexico: "mexico",
-  portugal: "portugal", egypt: "egypt",
+  portugal: "portugal", egypt: "egypt", netherlands: "netherlands", germany: "germany",
+  japan: "japan", uruguay: "uruguay", croatia: "croatia", senegal: "senegal",
+  sweden: "sweden", austria: "austria", turkey: "turkey", ghana: "ghana",
+  ecuador: "ecuador", qatar: "qatar", canada: "canada", "saudi arabia": "saudi-arabia",
+  "saudi-arabia": "saudi-arabia", "ivory coast": "ivory-coast", "ivory-coast": "ivory-coast",
+  "korea": "korea-republic", "south korea": "korea-republic", "cape verde": "cape-verde",
+  "congo": "congo-dr", "new zealand": "new-zealand",
 };
 
 function extractTeams(text: string): string[] {
