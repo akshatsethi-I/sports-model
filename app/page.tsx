@@ -58,7 +58,25 @@ const QF_MATCHES: Match[] = [
       ],
     },
   },
-  { id: 2, home: "Spain", away: "Belgium", date: "QF2", code1: "es", code2: "be" },
+  {
+    id: 2, home: "Spain", away: "Belgium", date: "QF2", code1: "es", code2: "be",
+    result: {
+      homeScore: 2,
+      awayScore: 1,
+      scorers: [
+        { team: "home", name: "Fabián Ruiz", minute: 30 },
+        { team: "away", name: "De Ketelaere", minute: 41 },
+        { team: "home", name: "Mikel Merino", minute: 88 },
+      ],
+      stats: [
+        { label: "Shots", home: 17, away: 5 },
+        { label: "Shots on Target", home: 8, away: 2 },
+        { label: "Corners", home: 5, away: 1 },
+        { label: "Fouls", home: 13, away: 18 },
+        { label: "Yellow Cards", home: 2, away: 2 },
+      ],
+    },
+  },
   {
     id: 3, home: "England", away: "Norway", date: "QF3", code1: "gb-eng", code2: "no",
     prediction: {
