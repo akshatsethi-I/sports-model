@@ -3,8 +3,42 @@
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 
-const QF_MATCHES = [
-  { id: 1, home: "France", away: "Morocco", date: "QF1", code1: "fr", code2: "ma" },
+type MatchResult = {
+  homeScore: number;
+  awayScore: number;
+  stats: { label: string; home: string | number; away: string | number }[];
+  scorers: { team: "home" | "away"; name: string; minute: number }[];
+};
+
+type Match = {
+  id: number;
+  home: string;
+  away: string;
+  date: string;
+  code1: string;
+  code2: string;
+  result?: MatchResult;
+};
+
+const QF_MATCHES: Match[] = [
+  {
+    id: 1, home: "France", away: "Morocco", date: "QF1", code1: "fr", code2: "ma",
+    result: {
+      homeScore: 2,
+      awayScore: 0,
+      scorers: [
+        { team: "home", name: "Mbappé", minute: 60 },
+        { team: "home", name: "Dembélé", minute: 66 },
+      ],
+      stats: [
+        { label: "Shots", home: 22, away: 5 },
+        { label: "Shots on Target", home: 8, away: 1 },
+        { label: "Corners", home: 5, away: 5 },
+        { label: "Fouls", home: 10, away: 13 },
+        { label: "Yellow Cards", home: 0, away: 1 },
+      ],
+    },
+  },
   { id: 2, home: "Spain", away: "Belgium", date: "QF2", code1: "es", code2: "be" },
   { id: 3, home: "England", away: "Norway", date: "QF3", code1: "gb-eng", code2: "no" },
   { id: 4, home: "Argentina", away: "Switzerland", date: "QF4", code1: "ar", code2: "ch" },
@@ -34,6 +68,7 @@ export default function Home() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedMatch, setSelectedMatch] = useState<number | null>(null);
+  const [resultModal, setResultModal] = useState<Match | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
 
@@ -119,30 +154,67 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {QF_MATCHES.map((m) => {
               const active = selectedMatch === m.id;
+              const finished = !!m.result;
               return (
                 <button
                   key={m.id}
-                  onClick={() => { setSelectedMatch(m.id); sendMessage(`Give me the full prediction for ${m.home} vs ${m.away}`); }}
+                  onClick={() => {
+                    if (finished) {
+                      setResultModal(m);
+                    } else {
+                      setSelectedMatch(m.id);
+                      sendMessage(`Give me the full prediction for ${m.home} vs ${m.away}`);
+                    }
+                  }}
                   className="rounded-2xl p-4 text-left transition-all duration-150 hover:scale-[1.02]"
                   style={{
                     background: active ? "#0c1c38" : "#0d0d18",
-                    border: `1px solid ${active ? "#2a5298" : "#1a1a2e"}`,
+                    border: `1px solid ${finished ? "#1a3020" : active ? "#2a5298" : "#1a1a2e"}`,
                     cursor: "pointer",
                     boxShadow: active ? "0 0 0 1px #2a5298" : "none",
                   }}
                 >
-                  <div className="text-xs font-bold mb-3 tracking-widest" style={{ color: active ? "#4f9cf9" : "#2d3f5a" }}>
-                    {m.date}
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-bold tracking-widest" style={{ color: active ? "#4f9cf9" : "#2d3f5a" }}>
+                      {m.date}
+                    </span>
+                    {finished && (
+                      <span className="text-xs px-1.5 py-0.5 rounded font-semibold tracking-wide"
+                        style={{ background: "#0a1f12", color: "#4ade80", border: "1px solid #14532d", fontSize: "10px" }}>
+                        FT
+                      </span>
+                    )}
                   </div>
-                  <div className="flex items-center gap-2.5 mb-2">
-                    <Flag code={m.code1} size={22} />
-                    <span className="font-semibold text-sm" style={{ color: "#f1f5f9" }}>{m.home}</span>
-                  </div>
-                  <div className="text-xs mb-2 pl-0.5" style={{ color: "#2d3f5a" }}>vs</div>
-                  <div className="flex items-center gap-2.5">
-                    <Flag code={m.code2} size={22} />
-                    <span className="font-semibold text-sm" style={{ color: "#f1f5f9" }}>{m.away}</span>
-                  </div>
+                  {finished && m.result ? (
+                    <>
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-2">
+                          <Flag code={m.code1} size={18} />
+                          <span className="text-sm font-semibold" style={{ color: "#f1f5f9" }}>{m.home}</span>
+                        </div>
+                        <span className="text-lg font-bold" style={{ color: "#f1f5f9" }}>{m.result.homeScore}</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <Flag code={m.code2} size={18} />
+                          <span className="text-sm font-semibold" style={{ color: "#f1f5f9" }}>{m.away}</span>
+                        </div>
+                        <span className="text-lg font-bold" style={{ color: "#94a3b8" }}>{m.result.awayScore}</span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex items-center gap-2.5 mb-2">
+                        <Flag code={m.code1} size={22} />
+                        <span className="font-semibold text-sm" style={{ color: "#f1f5f9" }}>{m.home}</span>
+                      </div>
+                      <div className="text-xs mb-2 pl-0.5" style={{ color: "#2d3f5a" }}>vs</div>
+                      <div className="flex items-center gap-2.5">
+                        <Flag code={m.code2} size={22} />
+                        <span className="font-semibold text-sm" style={{ color: "#f1f5f9" }}>{m.away}</span>
+                      </div>
+                    </>
+                  )}
                 </button>
               );
             })}
@@ -273,6 +345,79 @@ export default function Home() {
           )}
         </div>
       </div>
+
+      {/* Result modal */}
+      {resultModal && resultModal.result && (
+        <div
+          className="fixed inset-0 flex items-center justify-center z-50 px-4"
+          style={{ background: "rgba(0,0,0,0.75)" }}
+          onClick={() => setResultModal(null)}
+        >
+          <div
+            className="rounded-2xl p-6 w-full max-w-sm"
+            style={{ background: "#0d0d18", border: "1px solid #1a3020" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between mb-5">
+              <span className="text-xs font-bold tracking-widest" style={{ color: "#2d3f5a" }}>{resultModal.date} · FULL TIME</span>
+              <button onClick={() => setResultModal(null)} style={{ color: "#2d3f5a", fontSize: 18, lineHeight: 1 }}>✕</button>
+            </div>
+
+            {/* Score */}
+            <div className="flex items-center justify-between mb-5">
+              <div className="flex flex-col items-center gap-2">
+                <Flag code={resultModal.code1} size={32} />
+                <span className="text-sm font-semibold" style={{ color: "#f1f5f9" }}>{resultModal.home}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-4xl font-bold" style={{ color: "#f1f5f9" }}>{resultModal.result.homeScore}</span>
+                <span className="text-xl" style={{ color: "#2d3f5a" }}>–</span>
+                <span className="text-4xl font-bold" style={{ color: "#94a3b8" }}>{resultModal.result.awayScore}</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Flag code={resultModal.code2} size={32} />
+                <span className="text-sm font-semibold" style={{ color: "#f1f5f9" }}>{resultModal.away}</span>
+              </div>
+            </div>
+
+            {/* Scorers */}
+            {resultModal.result.scorers.length > 0 && (
+              <div className="mb-5 space-y-1">
+                {resultModal.result.scorers.map((s, i) => (
+                  <div key={i} className="flex items-center gap-2 text-xs" style={{ color: "#94a3b8" }}>
+                    <span style={{ color: "#4ade80" }}>⚽</span>
+                    <span className="font-semibold" style={{ color: "#f1f5f9" }}>{s.name}</span>
+                    <span style={{ color: "#2d3f5a" }}>{s.minute}&apos;</span>
+                    <span className="ml-auto" style={{ color: "#2d3f5a" }}>{s.team === "home" ? resultModal.home : resultModal.away}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Stats */}
+            <div className="space-y-2.5">
+              <p className="text-xs font-bold tracking-widest mb-3" style={{ color: "#2d3f5a" }}>MATCH STATS</p>
+              {resultModal.result.stats.map((s) => {
+                const h = Number(s.home), a = Number(s.away), total = h + a;
+                const homePct = total > 0 ? (h / total) * 100 : 50;
+                return (
+                  <div key={s.label}>
+                    <div className="flex justify-between text-xs mb-1">
+                      <span style={{ color: "#f1f5f9" }}>{s.home}</span>
+                      <span style={{ color: "#64748b" }}>{s.label}</span>
+                      <span style={{ color: "#94a3b8" }}>{s.away}</span>
+                    </div>
+                    <div className="h-1 rounded-full overflow-hidden" style={{ background: "#1a1a2e" }}>
+                      <div className="h-full rounded-full" style={{ width: `${homePct}%`, background: "#2a5298" }} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
