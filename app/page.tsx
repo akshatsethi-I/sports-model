@@ -88,7 +88,35 @@ const QF_MATCHES: Match[] = [
       ],
     },
   },
-  { id: 4, home: "Argentina", away: "Switzerland", date: "QF4", code1: "ar", code2: "ch" },
+  {
+    id: 4, home: "Argentina", away: "Switzerland", date: "QF4", code1: "ar", code2: "ch",
+    prediction: {
+      homeλ: 1.486,
+      awayλ: 1.641,
+      homeWin: "35%",
+      draw: "24%",
+      awayWin: "41%",
+      referee: "Joao Pedro Pinheiro (POR) · 4.71 YC/game",
+      lineup: {
+        home: "4-3-1-2: E. Martínez — Montiel, Romero, L. Martínez, Tagliafico — De Paul, Paredes, Mac Allister — Messi — Lautaro",
+        away: "4-2-3-1: Kobel — Zakaria, Akanji, Elvedi, R. Rodríguez — Xhaka, Freuler — Ndoye, Rieder, Vargas — Embolo",
+      },
+      picks: [
+        { market: "Goals", pick: "Over 1.5", prob: "82%", stars: 5 },
+        { market: "Goals", pick: "Over 2.5", prob: "60%", stars: 4 },
+        { market: "Goals", pick: "Under 3.5", prob: "62%", stars: 4 },
+        { market: "Goals", pick: "BTTS Yes", prob: "62%", stars: 4 },
+        { market: "Corners", pick: "Over 7.5 Total", prob: "74%", stars: 4 },
+        { market: "Corners", pick: "Switzerland Over 3.5", prob: "77%", stars: 4 },
+        { market: "Corners", pick: "Argentina Over 2.5", prob: "77%", stars: 4 },
+        { market: "Cards", pick: "Under 5.5 YC", prob: "88%", stars: 5 },
+        { market: "Cards", pick: "Under 4.5 YC", prob: "77%", stars: 5 },
+        { market: "Cards", pick: "Switzerland Over 0.5 YC", prob: "89%", stars: 5 },
+        { market: "Cards", pick: "Switzerland Under 3.5 YC", prob: "83%", stars: 5 },
+        { market: "Result", pick: "Switzerland to Advance", prob: "53%", stars: 4 },
+      ],
+    },
+  },
 ];
 
 function Flag({ code, size = 28 }: { code: string; size?: number }) {
