@@ -10,6 +10,24 @@ type MatchResult = {
   scorers: { team: "home" | "away"; name: string; minute: number }[];
 };
 
+type MatchPick = {
+  market: string;
+  pick: string;
+  prob: string;
+  stars: number;
+};
+
+type MatchPrediction = {
+  homeλ: number;
+  awayλ: number;
+  homeWin: string;
+  draw: string;
+  awayWin: string;
+  picks: MatchPick[];
+  lineup: { home: string; away: string };
+  referee: string;
+};
+
 type Match = {
   id: number;
   home: string;
@@ -18,6 +36,7 @@ type Match = {
   code1: string;
   code2: string;
   result?: MatchResult;
+  prediction?: MatchPrediction;
 };
 
 const QF_MATCHES: Match[] = [
@@ -40,7 +59,35 @@ const QF_MATCHES: Match[] = [
     },
   },
   { id: 2, home: "Spain", away: "Belgium", date: "QF2", code1: "es", code2: "be" },
-  { id: 3, home: "England", away: "Norway", date: "QF3", code1: "gb-eng", code2: "no" },
+  {
+    id: 3, home: "England", away: "Norway", date: "QF3", code1: "gb-eng", code2: "no",
+    prediction: {
+      homeλ: 1.671,
+      awayλ: 1.462,
+      homeWin: "43%",
+      draw: "24%",
+      awayWin: "34%",
+      referee: "Clément Turpin (FRA) · 3.38 YC/game",
+      lineup: {
+        home: "4-2-3-1: Pickford — Spence, Konsa, Stones, O'Reilly — Rice, Anderson — Saka, Bellingham, Gordon — Kane",
+        away: "4-3-3: Nyland — Ryerson, Ajer, Wolfe, Heggem — Ødegaard, Berge, Berg — Nusa, Haaland, Sørloth",
+      },
+      picks: [
+        { market: "Goals", pick: "Over 1.5", prob: "82%", stars: 5 },
+        { market: "Goals", pick: "Over 2.5", prob: "61%", stars: 4 },
+        { market: "Goals", pick: "Under 3.5", prob: "62%", stars: 4 },
+        { market: "Goals", pick: "BTTS Yes", prob: "62%", stars: 4 },
+        { market: "Corners", pick: "Over 8.5 Total", prob: "77%", stars: 5 },
+        { market: "Corners", pick: "England Over 4.5", prob: "75%", stars: 5 },
+        { market: "Corners", pick: "Norway Over 2.5", prob: "82%", stars: 5 },
+        { market: "Cards", pick: "Over 1.5 YC", prob: "73%", stars: 5 },
+        { market: "Cards", pick: "Under 4.5 YC", prob: "87%", stars: 5 },
+        { market: "Cards", pick: "England Over 0.5 YC", prob: "87%", stars: 5 },
+        { market: "Cards", pick: "Norway Under 2.5 YC", prob: "95%", stars: 5 },
+        { market: "Result", pick: "England to Advance", prob: "55%", stars: 4 },
+      ],
+    },
+  },
   { id: 4, home: "Argentina", away: "Switzerland", date: "QF4", code1: "ar", code2: "ch" },
 ];
 
@@ -69,6 +116,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [selectedMatch, setSelectedMatch] = useState<number | null>(null);
   const [resultModal, setResultModal] = useState<Match | null>(null);
+  const [predModal, setPredModal] = useState<Match | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
 
@@ -161,6 +209,8 @@ export default function Home() {
                   onClick={() => {
                     if (finished) {
                       setResultModal(m);
+                    } else if (m.prediction) {
+                      setPredModal(m);
                     } else {
                       setSelectedMatch(m.id);
                       sendMessage(`Give me the full prediction for ${m.home} vs ${m.away}`);
@@ -345,6 +395,94 @@ export default function Home() {
           )}
         </div>
       </div>
+
+      {/* Prediction modal */}
+      {predModal && predModal.prediction && (
+        <div
+          className="fixed inset-0 flex items-center justify-center z-50 px-4"
+          style={{ background: "rgba(0,0,0,0.8)" }}
+          onClick={() => setPredModal(null)}
+        >
+          <div
+            className="rounded-2xl p-6 w-full max-w-md overflow-y-auto"
+            style={{ background: "#0d0d18", border: "1px solid #1a3560", maxHeight: "90vh" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-xs font-bold tracking-widest" style={{ color: "#2d3f5a" }}>{predModal.date} · MODEL PREDICTION</span>
+              <button onClick={() => setPredModal(null)} style={{ color: "#2d3f5a", fontSize: 18, lineHeight: 1 }}>✕</button>
+            </div>
+
+            {/* Teams + λ */}
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex flex-col items-center gap-1.5">
+                <Flag code={predModal.code1} size={32} />
+                <span className="text-sm font-semibold" style={{ color: "#f1f5f9" }}>{predModal.home}</span>
+                <span className="text-xs font-mono" style={{ color: "#4f9cf9" }}>λ {predModal.prediction.homeλ}</span>
+              </div>
+              <div className="text-center">
+                <div className="flex gap-3 text-xs mb-1">
+                  <div className="text-center">
+                    <div className="font-bold" style={{ color: "#4f9cf9" }}>{predModal.prediction.homeWin}</div>
+                    <div style={{ color: "#2d3f5a" }}>Home</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-bold" style={{ color: "#94a3b8" }}>{predModal.prediction.draw}</div>
+                    <div style={{ color: "#2d3f5a" }}>Draw</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-bold" style={{ color: "#94a3b8" }}>{predModal.prediction.awayWin}</div>
+                    <div style={{ color: "#2d3f5a" }}>Away</div>
+                  </div>
+                </div>
+                <div className="text-xs" style={{ color: "#2d3f5a" }}>90 min</div>
+              </div>
+              <div className="flex flex-col items-center gap-1.5">
+                <Flag code={predModal.code2} size={32} />
+                <span className="text-sm font-semibold" style={{ color: "#f1f5f9" }}>{predModal.away}</span>
+                <span className="text-xs font-mono" style={{ color: "#94a3b8" }}>λ {predModal.prediction.awayλ}</span>
+              </div>
+            </div>
+
+            {/* Picks */}
+            <div className="mb-4">
+              <p className="text-xs font-bold tracking-widest mb-2" style={{ color: "#2d3f5a" }}>PICKS</p>
+              <div className="space-y-1.5">
+                {predModal.prediction.picks.map((p, i) => (
+                  <div key={i} className="flex items-center justify-between rounded-xl px-3 py-2"
+                    style={{ background: "#111120", border: "1px solid #1a1a2e" }}>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#0c1c38", color: "#3d6ab0", fontSize: "10px" }}>
+                        {p.market}
+                      </span>
+                      <span className="text-xs font-semibold" style={{ color: "#f1f5f9" }}>{p.pick}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs" style={{ color: "#64748b" }}>{p.prob}</span>
+                      <span style={{ fontSize: "10px", letterSpacing: "-1px" }}>{"⭐".repeat(p.stars)}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Lineups */}
+            <div className="mb-3">
+              <p className="text-xs font-bold tracking-widest mb-2" style={{ color: "#2d3f5a" }}>LINEUPS</p>
+              <div className="space-y-1.5 text-xs" style={{ color: "#64748b" }}>
+                <div><span style={{ color: "#f1f5f9" }}>{predModal.home}:</span> {predModal.prediction.lineup.home}</div>
+                <div><span style={{ color: "#f1f5f9" }}>{predModal.away}:</span> {predModal.prediction.lineup.away}</div>
+              </div>
+            </div>
+
+            {/* Referee */}
+            <div className="text-xs" style={{ color: "#2d3f5a" }}>
+              🧑‍⚖️ {predModal.prediction.referee}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Result modal */}
       {resultModal && resultModal.result && (
