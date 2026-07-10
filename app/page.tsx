@@ -209,8 +209,6 @@ export default function Home() {
                   onClick={() => {
                     if (finished) {
                       setResultModal(m);
-                    } else if (m.prediction) {
-                      setPredModal(m);
                     } else {
                       setSelectedMatch(m.id);
                       sendMessage(`Give me the full prediction for ${m.home} vs ${m.away}`);
