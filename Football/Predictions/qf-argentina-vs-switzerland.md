@@ -161,11 +161,8 @@ Switzerland will try to match Argentina's possession (56.7% vs 60.4%) and use Va
 ## Picks
 
 ### Match Result
-**Switzerland to Advance (incl. AET/pens)** — ~53% → ⭐⭐⭐⭐
-Model has Switzerland as slight favorites. Kobel elite, Argentina attack compressed, Switzerland xGA 0.874/game shows genuine defensive quality. Value pick against the public narrative of Argentina as firm favorites.
-
-**Argentina to Win 90 min** — ~35% → ⭐⭐⭐
-Messi's individual ceiling (G/SoT 0.47) and Argentina's through-ball volume (7.0/game) can unlock Switzerland. Real-world probability likely 40-45% given Martínez anomaly. Worth a value play on correct odds.
+**Argentina to Advance (incl. AET/pens)** — ⭐⭐⭐⭐
+The model mechanically outputs Switzerland 53% due to a known input error: Martínez's 54.0% save% is computed from only 9 SoTA in 5 games — a meaningless sample caused by Argentina's elite defensive suppression. Correcting Martínez to his real ability (~70%) flips the match to Argentina ~45% favourites. Add Messi's extraordinary form (9.20 match rating, G/SoT 0.47), Argentina's 14 goals in 5 games, and Switzerland's xGA luck running out — Argentina are the correct analytical pick to advance.
 
 ### Goals
 **Over 1.5 Goals** — 82% → ⭐⭐⭐⭐⭐
