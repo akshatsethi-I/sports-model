@@ -184,7 +184,10 @@ const SF_MATCHES: Match[] = [
 
 const FINAL_MATCHES: Match[] = [
   {
-    id: 7, home: "TBD", away: "TBD", date: "Final", code1: "un", code2: "un",
+    id: 7, home: "TBD", away: "TBD", date: "3rd Place", code1: "un", code2: "un",
+  },
+  {
+    id: 8, home: "TBD", away: "TBD", date: "Final", code1: "un", code2: "un",
   },
 ];
 
