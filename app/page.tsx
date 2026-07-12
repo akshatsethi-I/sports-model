@@ -341,9 +341,6 @@ export default function Home() {
                 }}
               >
                 {ROUND_LABELS[round]}
-                {allDone && (
-                  <span className="ml-1.5 text-xs" style={{ color: "#4ade80" }}>✓</span>
-                )}
               </button>
             );
           })}
