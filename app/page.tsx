@@ -123,7 +123,25 @@ const QF_MATCHES: Match[] = [
     },
   },
   {
-    id: 4, home: "Argentina", away: "Switzerland", date: "QF4", code1: "ar", code2: "ch",
+    id: 4, home: "Argentina", away: "Switzerland", date: "QF4 · AET", code1: "ar", code2: "ch",
+    result: {
+      homeScore: 3,
+      awayScore: 1,
+      scorers: [
+        { team: "home", name: "Mac Allister", minute: 10 },
+        { team: "away", name: "Ndoye", minute: 67 },
+        { team: "home", name: "J. Álvarez", minute: 112 },
+        { team: "home", name: "Lautaro Martínez", minute: 120 },
+      ],
+      stats: [
+        { label: "Shots", home: 9, away: 9 },
+        { label: "Shots on Target", home: 2, away: 5 },
+        { label: "Corners", home: 5, away: 2 },
+        { label: "Fouls", home: 10, away: 15 },
+        { label: "Yellow Cards", home: 1, away: 2 },
+        { label: "Red Cards", home: 0, away: 1 },
+      ],
+    },
     prediction: {
       homeλ: 1.486,
       awayλ: 1.641,
