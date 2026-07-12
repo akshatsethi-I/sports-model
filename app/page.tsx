@@ -39,6 +39,8 @@ type Match = {
   prediction?: MatchPrediction;
 };
 
+type Round = "QF" | "SF" | "Final";
+
 const QF_MATCHES: Match[] = [
   {
     id: 1, home: "France", away: "Morocco", date: "QF1", code1: "fr", code2: "ma",
@@ -171,7 +173,49 @@ const QF_MATCHES: Match[] = [
   },
 ];
 
+const SF_MATCHES: Match[] = [
+  {
+    id: 5, home: "France", away: "Spain", date: "SF1", code1: "fr", code2: "es",
+  },
+  {
+    id: 6, home: "England", away: "Argentina", date: "SF2", code1: "gb-eng", code2: "ar",
+  },
+];
+
+const FINAL_MATCHES: Match[] = [
+  {
+    id: 7, home: "TBD", away: "TBD", date: "Final", code1: "un", code2: "un",
+  },
+];
+
+const ROUND_MATCHES: Record<Round, Match[]> = {
+  QF: QF_MATCHES,
+  SF: SF_MATCHES,
+  Final: FINAL_MATCHES,
+};
+
+const ROUND_LABELS: Record<Round, string> = {
+  QF: "Quarter-finals",
+  SF: "Semi-finals",
+  Final: "Final",
+};
+
+const ROUND_BADGE: Record<Round, string> = {
+  QF: "QUARTERFINALS",
+  SF: "SEMIFINALS",
+  Final: "FINAL",
+};
+
 function Flag({ code, size = 28 }: { code: string; size?: number }) {
+  if (code === "un") {
+    return (
+      <div style={{
+        width: size, height: size * 0.67, borderRadius: 3,
+        background: "#1a1a2e", display: "flex", alignItems: "center", justifyContent: "center",
+        fontSize: size * 0.4, color: "#2d3f5a",
+      }}>?</div>
+    );
+  }
   return (
     <img
       src={`https://flagcdn.com/w40/${code}.png`}
@@ -186,10 +230,11 @@ function Flag({ code, size = 28 }: { code: string; size?: number }) {
 type Message = { role: "user" | "assistant"; content: string };
 
 export default function Home() {
+  const [activeRound, setActiveRound] = useState<Round>("SF");
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! I'm your WC2026 prediction assistant. Click a match to get a prediction, or ask me anything about the quarterfinals.",
+      content: "Hi! I'm your WC2026 prediction assistant. The semi-finals are set — France vs Spain and England vs Argentina. Click a match or ask me anything.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -250,7 +295,10 @@ export default function Home() {
     setLoading(false);
   };
 
-  const sel = selectedMatch ? QF_MATCHES[selectedMatch - 1] : null;
+  const currentMatches = ROUND_MATCHES[activeRound];
+  const sel = selectedMatch
+    ? [...QF_MATCHES, ...SF_MATCHES, ...FINAL_MATCHES].find((m) => m.id === selectedMatch) ?? null
+    : null;
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#07070e", color: "#e2e8f0" }}>
@@ -267,26 +315,55 @@ export default function Home() {
           </div>
           <span className="text-xs px-3 py-1.5 rounded-full font-semibold tracking-wide"
             style={{ background: "#0c1c38", color: "#4f9cf9", border: "1px solid #1a3560" }}>
-            QUARTERFINALS
+            {ROUND_BADGE[activeRound]}
           </span>
         </div>
       </header>
 
       <div className="flex-1 max-w-5xl mx-auto w-full px-4 py-5 flex flex-col gap-4">
 
+        {/* Round tabs */}
+        <div className="flex gap-1 p-1 rounded-2xl" style={{ background: "#0d0d18", border: "1px solid #1a1a2e", width: "fit-content" }}>
+          {(["QF", "SF", "Final"] as Round[]).map((round) => {
+            const active = activeRound === round;
+            const allDone = ROUND_MATCHES[round].every((m) => !!m.result);
+            return (
+              <button
+                key={round}
+                onClick={() => setActiveRound(round)}
+                className="px-4 py-1.5 rounded-xl text-xs font-semibold transition-all"
+                style={{
+                  background: active ? "#1a3a7a" : "transparent",
+                  color: active ? "#f1f5f9" : "#2d3f5a",
+                  border: active ? "1px solid #2a5298" : "1px solid transparent",
+                  cursor: "pointer",
+                  position: "relative",
+                }}
+              >
+                {ROUND_LABELS[round]}
+                {allDone && (
+                  <span className="ml-1.5 text-xs" style={{ color: "#4ade80" }}>✓</span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Match cards */}
         <div>
           <p className="text-xs font-semibold mb-3 tracking-widest uppercase" style={{ color: "#2d3f5a" }}>
-            Select a match
+            {activeRound === "QF" ? "Results" : "Select a match"}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {QF_MATCHES.map((m) => {
+            {currentMatches.map((m) => {
               const active = selectedMatch === m.id;
               const finished = !!m.result;
+              const isTbd = m.home === "TBD";
               return (
                 <button
                   key={m.id}
                   onClick={() => {
+                    if (isTbd) return;
                     if (finished) {
                       setResultModal(m);
                     } else {
@@ -298,8 +375,9 @@ export default function Home() {
                   style={{
                     background: active ? "#0c1c38" : "#0d0d18",
                     border: `1px solid ${finished ? "#1a3020" : active ? "#2a5298" : "#1a1a2e"}`,
-                    cursor: "pointer",
+                    cursor: isTbd ? "default" : "pointer",
                     boxShadow: active ? "0 0 0 1px #2a5298" : "none",
+                    opacity: isTbd ? 0.4 : 1,
                   }}
                 >
                   <div className="flex items-center justify-between mb-3">
@@ -350,7 +428,7 @@ export default function Home() {
         </div>
 
         {/* Quick questions */}
-        {sel && (
+        {sel && !sel.result && (
           <div className="flex flex-wrap gap-2">
             {[
               `Who will win ${sel.home} vs ${sel.away}?`,
@@ -486,13 +564,10 @@ export default function Home() {
             style={{ background: "#0d0d18", border: "1px solid #1a3560", maxHeight: "90vh" }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header */}
             <div className="flex items-center justify-between mb-4">
               <span className="text-xs font-bold tracking-widest" style={{ color: "#2d3f5a" }}>{predModal.date} · MODEL PREDICTION</span>
               <button onClick={() => setPredModal(null)} style={{ color: "#2d3f5a", fontSize: 18, lineHeight: 1 }}>✕</button>
             </div>
-
-            {/* Teams + λ */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex flex-col items-center gap-1.5">
                 <Flag code={predModal.code1} size={32} />
@@ -522,8 +597,6 @@ export default function Home() {
                 <span className="text-xs font-mono" style={{ color: "#94a3b8" }}>λ {predModal.prediction.awayλ}</span>
               </div>
             </div>
-
-            {/* Picks */}
             <div className="mb-4">
               <p className="text-xs font-bold tracking-widest mb-2" style={{ color: "#2d3f5a" }}>PICKS</p>
               <div className="space-y-1.5">
@@ -544,8 +617,6 @@ export default function Home() {
                 ))}
               </div>
             </div>
-
-            {/* Lineups */}
             <div className="mb-3">
               <p className="text-xs font-bold tracking-widest mb-2" style={{ color: "#2d3f5a" }}>LINEUPS</p>
               <div className="space-y-1.5 text-xs" style={{ color: "#64748b" }}>
@@ -553,8 +624,6 @@ export default function Home() {
                 <div><span style={{ color: "#f1f5f9" }}>{predModal.away}:</span> {predModal.prediction.lineup.away}</div>
               </div>
             </div>
-
-            {/* Referee */}
             <div className="text-xs" style={{ color: "#2d3f5a" }}>
               🧑‍⚖️ {predModal.prediction.referee}
             </div>
@@ -574,13 +643,10 @@ export default function Home() {
             style={{ background: "#0d0d18", border: "1px solid #1a3020" }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header */}
             <div className="flex items-center justify-between mb-5">
               <span className="text-xs font-bold tracking-widest" style={{ color: "#2d3f5a" }}>{resultModal.date} · FULL TIME</span>
               <button onClick={() => setResultModal(null)} style={{ color: "#2d3f5a", fontSize: 18, lineHeight: 1 }}>✕</button>
             </div>
-
-            {/* Score */}
             <div className="flex items-center justify-between mb-5">
               <div className="flex flex-col items-center gap-2">
                 <Flag code={resultModal.code1} size={32} />
@@ -596,8 +662,6 @@ export default function Home() {
                 <span className="text-sm font-semibold" style={{ color: "#f1f5f9" }}>{resultModal.away}</span>
               </div>
             </div>
-
-            {/* Scorers */}
             {resultModal.result.scorers.length > 0 && (
               <div className="mb-5 space-y-1">
                 {resultModal.result.scorers.map((s, i) => (
@@ -610,8 +674,6 @@ export default function Home() {
                 ))}
               </div>
             )}
-
-            {/* Stats */}
             <div className="space-y-2.5">
               <p className="text-xs font-bold tracking-widest mb-3" style={{ color: "#2d3f5a" }}>MATCH STATS</p>
               {resultModal.result.stats.map((s) => {
