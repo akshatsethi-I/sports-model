@@ -78,7 +78,19 @@ const QF_MATCHES: Match[] = [
     },
   },
   {
-    id: 3, home: "England", away: "Norway", date: "QF3", code1: "gb-eng", code2: "no",
+    id: 3, home: "England", away: "Norway", date: "QF3 · AET", code1: "gb-eng", code2: "no",
+    result: {
+      homeScore: 2,
+      awayScore: 1,
+      scorers: [],
+      stats: [
+        { label: "Shots", home: 7, away: 9 },
+        { label: "Shots on Target", home: 2, away: 4 },
+        { label: "Corners", home: 3, away: 5 },
+        { label: "Fouls", home: 5, away: 8 },
+        { label: "Yellow Cards", home: 0, away: 0 },
+      ],
+    },
     prediction: {
       homeλ: 1.671,
       awayλ: 1.462,
