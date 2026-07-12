@@ -82,7 +82,11 @@ const QF_MATCHES: Match[] = [
     result: {
       homeScore: 2,
       awayScore: 1,
-      scorers: [],
+      scorers: [
+        { team: "away", name: "Schjelderup", minute: 36 },
+        { team: "home", name: "Bellingham", minute: 45 },
+        { team: "home", name: "Bellingham", minute: 93 },
+      ],
       stats: [
         { label: "Shots", home: 7, away: 9 },
         { label: "Shots on Target", home: 2, away: 4 },
