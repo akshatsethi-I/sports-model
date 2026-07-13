@@ -400,7 +400,7 @@ export default function Home() {
                       setResultModal(m);
                     } else {
                       setSelectedMatch(m.id);
-                      sendMessage(`Give me the best picks for ${m.home} vs ${m.away}`);
+                      sendMessage(`Give me the full prediction for ${m.home} vs ${m.away}`);
                     }
                   }}
                   className="rounded-2xl p-4 text-left transition-all duration-150 hover:scale-[1.02]"
