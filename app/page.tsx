@@ -176,6 +176,38 @@ const QF_MATCHES: Match[] = [
 const SF_MATCHES: Match[] = [
   {
     id: 5, home: "France", away: "Spain", date: "SF1", code1: "fr", code2: "es",
+    prediction: {
+      homeλ: 1.037,
+      awayλ: 1.071,
+      homeWin: "34%",
+      draw: "30%",
+      awayWin: "35%",
+      referee: "Iván Barton (SLV) · 4.76 YC/game",
+      lineup: {
+        home: "4-2-3-1: Maignan — Koundé, Upamecano, Saliba, Digne — Koné, Rabiot — Olise, Mbappé, Dembélé — Doué",
+        away: "4-2-3-1: Simón — Porro, Laporte, Cubarsí, Cucurella — Rodri, Pedri — Yamal, Dani Olmo, Baena — Oyarzabal",
+      },
+      picks: [
+        { market: "Goals", pick: "Under 3.5", prob: "84%", stars: 5 },
+        { market: "Goals", pick: "Under 2.5", prob: "65%", stars: 4 },
+        { market: "Goals", pick: "Over 1.5", prob: "62%", stars: 4 },
+        { market: "Goals", pick: "BTTS No ⚠️", prob: "58%", stars: 4 },
+        { market: "Goals", pick: "France U1.5", prob: "72%", stars: 5 },
+        { market: "Goals", pick: "Spain U1.5", prob: "71%", stars: 5 },
+        { market: "Corners", pick: "Over 7.5 Total", prob: "70%", stars: 4 },
+        { market: "Corners", pick: "Spain Over 3.5", prob: "76%", stars: 4 },
+        { market: "Corners", pick: "France Over 2.5", prob: "76%", stars: 4 },
+        { market: "Cards", pick: "Under 2.5 YC", prob: "87%", stars: 5 },
+        { market: "Cards", pick: "Spain Under 2.5 YC", prob: "96%", stars: 5 },
+        { market: "Cards", pick: "France Under 1.5 YC", prob: "87%", stars: 5 },
+        { market: "SoT", pick: "Total Under 8.5", prob: "82%", stars: 5 },
+        { market: "SoT", pick: "France Under 4.5", prob: "77%", stars: 5 },
+        { market: "SoT", pick: "Spain Under 4.5", prob: "82%", stars: 5 },
+        { market: "Fouls", pick: "Under 24.5", prob: "78%", stars: 5 },
+        { market: "Fouls", pick: "Over 19.5", prob: "62%", stars: 4 },
+        { market: "Result", pick: "Spain to Advance", prob: "50%", stars: 3 },
+      ],
+    },
   },
   {
     id: 6, home: "England", away: "Argentina", date: "SF2", code1: "gb-eng", code2: "ar",
@@ -366,6 +398,9 @@ export default function Home() {
                     if (isTbd) return;
                     if (finished) {
                       setResultModal(m);
+                    } else if (m.prediction) {
+                      setPredModal(m);
+                      setSelectedMatch(m.id);
                     } else {
                       setSelectedMatch(m.id);
                       sendMessage(`Give me the full prediction for ${m.home} vs ${m.away}`);
