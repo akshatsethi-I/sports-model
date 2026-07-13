@@ -211,6 +211,38 @@ const SF_MATCHES: Match[] = [
   },
   {
     id: 6, home: "England", away: "Argentina", date: "SF2", code1: "gb-eng", code2: "ar",
+    prediction: {
+      homeλ: 1.557,
+      awayλ: 1.669,
+      homeWin: "34%",
+      draw: "24%",
+      awayWin: "42%",
+      referee: "TBC — KO discount applied, no ref multiplier",
+      lineup: {
+        home: "4-2-3-1: Pickford — R. James, Konsa, Guéhi, O'Reilly — Rice, Anderson — Saka, Bellingham, Gordon — Kane",
+        away: "4-1-3-2: E. Martínez — Molina, C. Romero, L. Martínez, Tagliafico — Paredes — De Paul, Mac Allister, E. Fernández — Messi, J. Álvarez",
+      },
+      picks: [
+        { market: "Goals", pick: "Over 1.5", prob: "83%", stars: 5 },
+        { market: "Goals", pick: "Over 2.5", prob: "63%", stars: 4 },
+        { market: "Goals", pick: "BTTS Yes", prob: "64%", stars: 4 },
+        { market: "Goals", pick: "Under 4.5", prob: "78%", stars: 5 },
+        { market: "Goals", pick: "England score", prob: "79%", stars: 5 },
+        { market: "Goals", pick: "Argentina score", prob: "81%", stars: 5 },
+        { market: "Corners", pick: "Over 7.5 Total", prob: "60%", stars: 4 },
+        { market: "Corners", pick: "Argentina Over 2.5", prob: "83%", stars: 4 },
+        { market: "Corners", pick: "England Over 2.5", prob: "75%", stars: 4 },
+        { market: "Cards", pick: "Under 2.5 YC ⚠️", prob: "79%", stars: 5 },
+        { market: "Cards", pick: "Argentina Under 1.5 YC", prob: "84%", stars: 5 },
+        { market: "Cards", pick: "England Under 1.5 YC", prob: "78%", stars: 5 },
+        { market: "Fouls", pick: "Over 19.5", prob: "74%", stars: 5 },
+        { market: "Offsides", pick: "Over 2.5", prob: "86%", stars: 5 },
+        { market: "Offsides", pick: "Over 3.5", prob: "71%", stars: 5 },
+        { market: "SoT", pick: "Total Under 8.5", prob: "73%", stars: 5 },
+        { market: "SoT", pick: "Argentina Over 2.5", prob: "70%", stars: 5 },
+        { market: "Result", pick: "Argentina to Advance", prob: "54%", stars: 4 },
+      ],
+    },
   },
 ];
 
