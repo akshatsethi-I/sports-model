@@ -151,32 +151,46 @@ export async function POST(req: NextRequest) {
   const context = buildContext(messages);
   const client = new Anthropic({ apiKey });
 
-  const stream = await client.messages.stream({
-    model: "claude-haiku-4-5-20251001",
-    max_tokens: 2048,
-    system: [
-      {
-        type: "text",
-        text: SYSTEM_PROMPT + context,
-        cache_control: { type: "ephemeral" },
-      },
-    ],
-    messages: messages.map((m: { role: string; content: string }) => ({
-      role: m.role,
-      content: m.content,
-    })),
-  });
+  let stream;
+  try {
+    stream = await client.messages.stream({
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 2048,
+      system: [
+        {
+          type: "text",
+          text: SYSTEM_PROMPT + context,
+          cache_control: { type: "ephemeral" },
+        },
+      ],
+      messages: messages.map((m: { role: string; content: string }) => ({
+        role: m.role,
+        content: m.content,
+      })),
+    });
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    return new Response(JSON.stringify({ error: msg }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 
   const encoder = new TextEncoder();
   const readable = new ReadableStream({
     async start(controller) {
-      for await (const chunk of stream) {
-        if (
-          chunk.type === "content_block_delta" &&
-          chunk.delta.type === "text_delta"
-        ) {
-          controller.enqueue(encoder.encode(chunk.delta.text));
+      try {
+        for await (const chunk of stream) {
+          if (
+            chunk.type === "content_block_delta" &&
+            chunk.delta.type === "text_delta"
+          ) {
+            controller.enqueue(encoder.encode(chunk.delta.text));
+          }
         }
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : "Stream error";
+        controller.enqueue(encoder.encode(`\n\n⚠️ ${msg}`));
       }
       controller.close();
     },
