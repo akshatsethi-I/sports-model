@@ -742,33 +742,35 @@ export default function Home() {
               <span className="text-xs font-bold tracking-widest" style={{ color: "#2d3f5a" }}>{resultModal.date} · FULL TIME</span>
               <button onClick={() => setResultModal(null)} style={{ color: "#2d3f5a", fontSize: 18, lineHeight: 1 }}>✕</button>
             </div>
-            <div className="flex items-center justify-between mb-5">
-              <div className="flex flex-col items-center gap-2">
+            <div className="flex items-start justify-between mb-5 gap-2">
+              <div className="flex flex-col items-center gap-1 flex-1">
                 <Flag code={resultModal.code1} size={32} />
-                <span className="text-sm font-semibold" style={{ color: "#f1f5f9" }}>{resultModal.home}</span>
+                <span className="text-sm font-semibold mb-1" style={{ color: "#f1f5f9" }}>{resultModal.home}</span>
+                {resultModal.result.scorers.filter(s => s.team === "home").map((s, i) => (
+                  <div key={i} className="flex items-center gap-1 text-xs">
+                    <span style={{ color: "#4ade80", fontSize: 10 }}>⚽</span>
+                    <span style={{ color: "#f1f5f9" }}>{s.name}</span>
+                    <span style={{ color: "#2d3f5a" }}>{s.minute}&apos;</span>
+                  </div>
+                ))}
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 pt-1">
                 <span className="text-4xl font-bold" style={{ color: "#f1f5f9" }}>{resultModal.result.homeScore}</span>
                 <span className="text-xl" style={{ color: "#2d3f5a" }}>–</span>
                 <span className="text-4xl font-bold" style={{ color: "#94a3b8" }}>{resultModal.result.awayScore}</span>
               </div>
-              <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col items-center gap-1 flex-1">
                 <Flag code={resultModal.code2} size={32} />
-                <span className="text-sm font-semibold" style={{ color: "#f1f5f9" }}>{resultModal.away}</span>
-              </div>
-            </div>
-            {resultModal.result.scorers.length > 0 && (
-              <div className="mb-5 space-y-1">
-                {resultModal.result.scorers.map((s, i) => (
-                  <div key={i} className="flex items-center gap-2 text-xs" style={{ color: "#94a3b8" }}>
-                    <span style={{ color: "#4ade80" }}>⚽</span>
-                    <span className="font-semibold" style={{ color: "#f1f5f9" }}>{s.name}</span>
+                <span className="text-sm font-semibold mb-1" style={{ color: "#f1f5f9" }}>{resultModal.away}</span>
+                {resultModal.result.scorers.filter(s => s.team === "away").map((s, i) => (
+                  <div key={i} className="flex items-center gap-1 text-xs">
+                    <span style={{ color: "#4ade80", fontSize: 10 }}>⚽</span>
+                    <span style={{ color: "#f1f5f9" }}>{s.name}</span>
                     <span style={{ color: "#2d3f5a" }}>{s.minute}&apos;</span>
-                    <span className="ml-auto" style={{ color: "#2d3f5a" }}>{s.team === "home" ? resultModal.home : resultModal.away}</span>
                   </div>
                 ))}
               </div>
-            )}
+            </div>
             <div className="space-y-2.5">
               <p className="text-xs font-bold tracking-widest mb-3" style={{ color: "#2d3f5a" }}>MATCH STATS</p>
               {resultModal.result.stats.map((s) => {
