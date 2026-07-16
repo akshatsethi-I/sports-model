@@ -493,14 +493,14 @@ export default function Home() {
                           <Flag code={m.code1} size={18} />
                           <span className="text-sm font-semibold" style={{ color: "#f1f5f9" }}>{m.home}</span>
                         </div>
-                        <span className="text-lg font-bold" style={{ color: "#f1f5f9" }}>{m.result.homeScore}</span>
+                        <span className="text-lg font-bold" style={{ color: m.result.homeScore >= m.result.awayScore ? "#f1f5f9" : "#94a3b8" }}>{m.result.homeScore}</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <Flag code={m.code2} size={18} />
                           <span className="text-sm font-semibold" style={{ color: "#f1f5f9" }}>{m.away}</span>
                         </div>
-                        <span className="text-lg font-bold" style={{ color: "#94a3b8" }}>{m.result.awayScore}</span>
+                        <span className="text-lg font-bold" style={{ color: m.result.awayScore >= m.result.homeScore ? "#f1f5f9" : "#94a3b8" }}>{m.result.awayScore}</span>
                       </div>
                     </>
                   ) : (
