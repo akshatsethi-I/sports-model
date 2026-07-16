@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import Anthropic from "@anthropic-ai/sdk";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from "fs";
 import path from "path";
 
@@ -132,11 +132,11 @@ VAULT CONTEXT:
 `;
 
 export async function POST(req: NextRequest) {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
 
-  if (!apiKey || apiKey === "your_api_key_here") {
+  if (!apiKey) {
     return new Response(
-      JSON.stringify({ error: "API key not configured. Add your key to .env.local." }),
+      JSON.stringify({ error: "GEMINI_API_KEY not configured in environment variables." }),
       { headers: { "Content-Type": "application/json" } }
     );
   }
@@ -149,25 +149,23 @@ export async function POST(req: NextRequest) {
   }
 
   const context = buildContext(messages);
-  const client = new Anthropic({ apiKey });
+  const genAI = new GoogleGenerativeAI(apiKey);
+  const model = genAI.getGenerativeModel({
+    model: "gemini-2.0-flash",
+    systemInstruction: SYSTEM_PROMPT + context,
+  });
 
-  let stream;
+  // Gemini uses "model" instead of "assistant" for role
+  const history = messages.slice(0, -1).map((m: { role: string; content: string }) => ({
+    role: m.role === "assistant" ? "model" : "user",
+    parts: [{ text: m.content }],
+  }));
+  const lastMessage = messages[messages.length - 1].content;
+
+  let result;
   try {
-    stream = await client.messages.stream({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 2048,
-      system: [
-        {
-          type: "text",
-          text: SYSTEM_PROMPT + context,
-          cache_control: { type: "ephemeral" },
-        },
-      ],
-      messages: messages.map((m: { role: string; content: string }) => ({
-        role: m.role,
-        content: m.content,
-      })),
-    });
+    const chat = model.startChat({ history });
+    result = await chat.sendMessageStream(lastMessage);
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     return new Response(JSON.stringify({ error: msg }), {
@@ -180,13 +178,9 @@ export async function POST(req: NextRequest) {
   const readable = new ReadableStream({
     async start(controller) {
       try {
-        for await (const chunk of stream) {
-          if (
-            chunk.type === "content_block_delta" &&
-            chunk.delta.type === "text_delta"
-          ) {
-            controller.enqueue(encoder.encode(chunk.delta.text));
-          }
+        for await (const chunk of result.stream) {
+          const text = chunk.text();
+          if (text) controller.enqueue(encoder.encode(text));
         }
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : "Stream error";
