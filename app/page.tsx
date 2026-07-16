@@ -176,6 +176,21 @@ const QF_MATCHES: Match[] = [
 const SF_MATCHES: Match[] = [
   {
     id: 5, home: "France", away: "Spain", date: "SF1", code1: "fr", code2: "es",
+    result: {
+      homeScore: 0,
+      awayScore: 2,
+      scorers: [
+        { team: "away", name: "Oyarzabal", minute: 22 },
+        { team: "away", name: "Porro", minute: 58 },
+      ],
+      stats: [
+        { label: "Shots", home: 10, away: 10 },
+        { label: "Shots on Target", home: 3, away: 2 },
+        { label: "Corners", home: 7, away: 1 },
+        { label: "Fouls", home: 11, away: 12 },
+        { label: "Yellow Cards", home: 2, away: 1 },
+      ],
+    },
     prediction: {
       homeλ: 1.037,
       awayλ: 1.071,
@@ -211,6 +226,22 @@ const SF_MATCHES: Match[] = [
   },
   {
     id: 6, home: "England", away: "Argentina", date: "SF2", code1: "gb-eng", code2: "ar",
+    result: {
+      homeScore: 1,
+      awayScore: 2,
+      scorers: [
+        { team: "home", name: "Gordon", minute: 56 },
+        { team: "away", name: "E. Fernández", minute: 85 },
+        { team: "away", name: "L. Martínez", minute: 92 },
+      ],
+      stats: [
+        { label: "Shots", home: 5, away: 15 },
+        { label: "Shots on Target", home: 2, away: 5 },
+        { label: "Corners", home: 1, away: 6 },
+        { label: "Fouls", home: 11, away: 15 },
+        { label: "Yellow Cards", home: 1, away: 3 },
+      ],
+    },
     prediction: {
       homeλ: 1.557,
       awayλ: 1.669,
@@ -248,10 +279,10 @@ const SF_MATCHES: Match[] = [
 
 const FINAL_MATCHES: Match[] = [
   {
-    id: 7, home: "TBD", away: "TBD", date: "3rd Place", code1: "un", code2: "un",
+    id: 7, home: "France", away: "England", date: "3rd Place", code1: "fr", code2: "gb-eng",
   },
   {
-    id: 8, home: "TBD", away: "TBD", date: "Final", code1: "un", code2: "un",
+    id: 8, home: "Spain", away: "Argentina", date: "Final", code1: "es", code2: "ar",
   },
 ];
 
