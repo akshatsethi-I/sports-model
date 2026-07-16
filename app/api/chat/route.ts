@@ -155,11 +155,13 @@ export async function POST(req: NextRequest) {
     systemInstruction: SYSTEM_PROMPT + context,
   });
 
-  // Gemini uses "model" instead of "assistant" for role
-  const history = messages.slice(0, -1).map((m: { role: string; content: string }) => ({
+  // Gemini uses "model" instead of "assistant"; history must start with "user"
+  const allButLast = messages.slice(0, -1).map((m: { role: string; content: string }) => ({
     role: m.role === "assistant" ? "model" : "user",
     parts: [{ text: m.content }],
   }));
+  const firstUserIdx = allButLast.findIndex((m: { role: string }) => m.role === "user");
+  const history = firstUserIdx >= 0 ? allButLast.slice(firstUserIdx) : [];
   const lastMessage = messages[messages.length - 1].content;
 
   let result;
