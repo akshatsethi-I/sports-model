@@ -329,6 +329,42 @@ const ROUND_BADGE: Record<Round, string> = {
   Final: "FINAL",
 };
 
+const MARKET_ICON: Record<string, string> = {
+  Goals: "⚽",
+  Corners: "🚩",
+  Cards: "🟨",
+  Fouls: "💢",
+  Offsides: "🚦",
+  SoT: "🎯",
+  Result: "🏆",
+  Halves: "⏱️",
+};
+
+function confidenceColor(prob: string): string {
+  const n = parseInt(prob);
+  if (n >= 80) return "#4ade80";
+  if (n >= 65) return "#facc15";
+  return "#94a3b8";
+}
+
+function confidenceLabel(prob: string): string {
+  const n = parseInt(prob);
+  if (n >= 80) return "Very High";
+  if (n >= 65) return "High";
+  if (n >= 50) return "Moderate";
+  return "Low";
+}
+
+const ALL_MATCHES = [...QF_MATCHES, ...SF_MATCHES, ...FINAL_MATCHES];
+
+const TOP_PICKS = ALL_MATCHES
+  .filter((m) => m.prediction)
+  .flatMap((m) =>
+    (m.prediction!.picks || []).map((p) => ({ ...p, matchLabel: `${m.home} vs ${m.away}` }))
+  )
+  .sort((a, b) => parseInt(b.prob) - parseInt(a.prob))
+  .slice(0, 3);
+
 function Flag({ code, size = 28 }: { code: string; size?: number }) {
   if (code === "un") {
     return (
@@ -444,6 +480,56 @@ export default function Home() {
       </header>
 
       <div className="flex-1 max-w-5xl mx-auto w-full px-4 py-5 flex flex-col gap-4">
+
+        {/* Hero stats bar */}
+        <div className="rounded-2xl px-5 py-4 flex flex-wrap gap-6 items-center"
+          style={{ background: "#0d0d18", border: "1px solid #1a1a2e" }}>
+          <div>
+            <div className="text-xl font-bold" style={{ color: "#f1f5f9" }}>8</div>
+            <div className="text-xs mt-0.5" style={{ color: "#2d3f5a" }}>Matches Tracked</div>
+          </div>
+          <div style={{ width: 1, height: 32, background: "#1a1a2e" }} />
+          <div>
+            <div className="text-xl font-bold" style={{ color: "#f1f5f9" }}>4</div>
+            <div className="text-xs mt-0.5" style={{ color: "#2d3f5a" }}>Full Model Predictions</div>
+          </div>
+          <div style={{ width: 1, height: 32, background: "#1a1a2e" }} />
+          <div>
+            <div className="text-xl font-bold" style={{ color: "#4ade80" }}>WC2026</div>
+            <div className="text-xs mt-0.5" style={{ color: "#2d3f5a" }}>Spain — World Champions</div>
+          </div>
+          <div className="ml-auto">
+            <span className="text-xs px-3 py-1.5 rounded-full font-semibold"
+              style={{ background: "#0a1f12", color: "#4ade80", border: "1px solid #14532d" }}>
+              Tournament Complete
+            </span>
+          </div>
+        </div>
+
+        {/* Top picks widget */}
+        <div className="rounded-2xl p-4" style={{ background: "#0d0d18", border: "1px solid #1a1a2e" }}>
+          <p className="text-xs font-bold tracking-widest mb-3" style={{ color: "#2d3f5a" }}>
+            🏆 HIGHEST CONFIDENCE PICKS
+          </p>
+          <div className="flex flex-col gap-2">
+            {TOP_PICKS.map((p, i) => (
+              <div key={i} className="flex items-center justify-between rounded-xl px-3 py-2.5"
+                style={{ background: "#111120", border: "1px solid #1a1a2e" }}>
+                <div className="flex items-center gap-2.5">
+                  <span className="text-base">{MARKET_ICON[p.market] || "📊"}</span>
+                  <div>
+                    <div className="text-xs font-semibold" style={{ color: "#f1f5f9" }}>{p.pick}</div>
+                    <div className="text-xs" style={{ color: "#2d3f5a" }}>{p.matchLabel}</div>
+                  </div>
+                </div>
+                <div className="flex flex-col items-end gap-0.5">
+                  <span className="text-lg font-bold" style={{ color: confidenceColor(p.prob) }}>{p.prob}</span>
+                  <span className="text-xs" style={{ color: confidenceColor(p.prob), opacity: 0.7 }}>{confidenceLabel(p.prob)}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Round tabs */}
         <div className="flex gap-1 p-1 rounded-2xl" style={{ background: "#0d0d18", border: "1px solid #1a1a2e", width: "fit-content" }}>
@@ -721,17 +807,18 @@ export default function Home() {
               <p className="text-xs font-bold tracking-widest mb-2" style={{ color: "#2d3f5a" }}>PICKS</p>
               <div className="space-y-1.5">
                 {predModal.prediction.picks.map((p, i) => (
-                  <div key={i} className="flex items-center justify-between rounded-xl px-3 py-2"
+                  <div key={i} className="flex items-center justify-between rounded-xl px-3 py-2.5"
                     style={{ background: "#111120", border: "1px solid #1a1a2e" }}>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "#0c1c38", color: "#3d6ab0", fontSize: "10px" }}>
-                        {p.market}
-                      </span>
-                      <span className="text-xs font-semibold" style={{ color: "#f1f5f9" }}>{p.pick}</span>
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-base">{MARKET_ICON[p.market] || "📊"}</span>
+                      <div>
+                        <div className="text-xs font-semibold" style={{ color: "#f1f5f9" }}>{p.pick}</div>
+                        <div className="text-xs" style={{ color: "#2d3f5a" }}>{p.market}</div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs" style={{ color: "#64748b" }}>{p.prob}</span>
-                      <span style={{ fontSize: "10px", letterSpacing: "-1px" }}>{"⭐".repeat(p.stars)}</span>
+                    <div className="flex flex-col items-end gap-0.5">
+                      <span className="text-lg font-bold" style={{ color: confidenceColor(p.prob) }}>{p.prob}</span>
+                      <span className="text-xs" style={{ color: confidenceColor(p.prob), opacity: 0.7 }}>{confidenceLabel(p.prob)}</span>
                     </div>
                   </div>
                 ))}
