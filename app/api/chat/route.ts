@@ -50,7 +50,7 @@ function buildContext(messages: { role: string; content: string }[]): string {
     let content = readFile(full);
     if (!content) return;
     if (strip) content = stripCalculations(content);
-    if (content.length > 800) content = content.slice(0, 800) + "\n...[truncated]";
+    if (content.length > 400) content = content.slice(0, 400) + "\n...[truncated]";
     sections.push(`\n\n=== ${relPath} ===\n${content}`);
   };
 
@@ -69,12 +69,15 @@ function buildContext(messages: { role: string; content: string }[]): string {
     }
   }
 
-  for (const team of teams) {
-    const full = path.join(VAULT_PATH, `Teams/${TEAM_NAME_MAP[team]}.md`);
-    let content = readFile(full);
-    if (content) {
-      content = stripRawTables(content);
-      sections.push(`\n\n=== Teams/${TEAM_NAME_MAP[team]}.md ===\n${content}`);
+  if (!predictionFound) {
+    for (const team of teams) {
+      const full = path.join(VAULT_PATH, `Teams/${TEAM_NAME_MAP[team]}.md`);
+      let content = readFile(full);
+      if (content) {
+        content = stripRawTables(content);
+        if (content.length > 400) content = content.slice(0, 400) + "\n...[truncated]";
+        sections.push(`\n\n=== Teams/${TEAM_NAME_MAP[team]}.md ===\n${content}`);
+      }
     }
   }
 
