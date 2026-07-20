@@ -50,6 +50,7 @@ function buildContext(messages: { role: string; content: string }[]): string {
     let content = readFile(full);
     if (!content) return;
     if (strip) content = stripCalculations(content);
+    if (content.length > 2000) content = content.slice(0, 2000) + "\n...[truncated]";
     sections.push(`\n\n=== ${relPath} ===\n${content}`);
   };
 
@@ -155,10 +156,10 @@ export async function POST(req: NextRequest) {
   let stream;
   try {
     stream = await groq.chat.completions.create({
-      model: "llama-3.1-8b-instant",
+      model: "llama-3.3-70b-versatile",
       messages: groqMessages,
       stream: true,
-      max_tokens: 1024,
+      max_tokens: 800,
     });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
