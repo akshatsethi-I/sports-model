@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import Groq from "groq-sdk";
 import fs from "fs";
 import path from "path";
 
@@ -31,13 +31,10 @@ function readFile(filePath: string): string {
   }
 }
 
-// Strip Model Calculations from prediction files — math workings the LLM doesn't need.
 function stripCalculations(content: string): string {
   return content.replace(/## Model Calculations[\s\S]*?(?=## Tactical Overview|## Match Flow|## Picks|## Confirmed)/m, "");
 }
 
-// Strip raw FBRef/Opta data tables from team pages — keep prose sections only.
-// Tables are 100+ lines of numbers; the Model Inputs summary at the bottom has everything needed.
 function stripRawTables(content: string): string {
   return content.replace(/## FBRef Data[\s\S]*?(?=## ✅ Model Inputs|## Cross-links|$)/m, "")
                 .replace(/## Opta Data[\s\S]*?(?=## ✅ Model Inputs|## Cross-links|$)/m, "");
@@ -56,7 +53,6 @@ function buildContext(messages: { role: string; content: string }[]): string {
     sections.push(`\n\n=== ${relPath} ===\n${content}`);
   };
 
-  // Check if a pre-computed prediction file exists for the mentioned teams
   let predictionFound = false;
   if (teams.length === 2) {
     const [a, b] = teams;
@@ -65,14 +61,13 @@ function buildContext(messages: { role: string; content: string }[]): string {
       for (const f of fs.readdirSync(predDir)) {
         const fl = f.toLowerCase();
         if (fl.includes(a) && fl.includes(b)) {
-          add(`Predictions/${f}`, true); // strip calculations — picks are all we need
+          add(`Predictions/${f}`, true);
           predictionFound = true;
         }
       }
     }
   }
 
-  // Always load team pages (stripped of raw tables) — needed for tactical/player questions
   for (const team of teams) {
     const full = path.join(VAULT_PATH, `Teams/${TEAM_NAME_MAP[team]}.md`);
     let content = readFile(full);
@@ -82,7 +77,6 @@ function buildContext(messages: { role: string; content: string }[]): string {
     }
   }
 
-  // Only load models + lessons if no pre-computed prediction exists
   if (!predictionFound) {
     const modelsDir = path.join(VAULT_PATH, "Models");
     if (fs.existsSync(modelsDir)) {
@@ -98,7 +92,6 @@ function buildContext(messages: { role: string; content: string }[]): string {
     }
   }
 
-  // If no specific teams mentioned, include the index for orientation
   if (teams.length === 0) {
     add("INDEX.md");
   }
@@ -132,11 +125,11 @@ VAULT CONTEXT:
 `;
 
 export async function POST(req: NextRequest) {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY;
 
   if (!apiKey) {
     return new Response(
-      JSON.stringify({ error: "GEMINI_API_KEY not configured in environment variables." }),
+      JSON.stringify({ error: "GROQ_API_KEY not configured in environment variables." }),
       { headers: { "Content-Type": "application/json" } }
     );
   }
@@ -149,25 +142,24 @@ export async function POST(req: NextRequest) {
   }
 
   const context = buildContext(messages);
-  const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash-latest",
-    systemInstruction: SYSTEM_PROMPT + context,
-  });
+  const groq = new Groq({ apiKey });
 
-  // Gemini uses "model" instead of "assistant"; history must start with "user"
-  const allButLast = messages.slice(0, -1).map((m: { role: string; content: string }) => ({
-    role: m.role === "assistant" ? "model" : "user",
-    parts: [{ text: m.content }],
-  }));
-  const firstUserIdx = allButLast.findIndex((m: { role: string }) => m.role === "user");
-  const history = firstUserIdx >= 0 ? allButLast.slice(firstUserIdx) : [];
-  const lastMessage = messages[messages.length - 1].content;
+  const groqMessages = [
+    { role: "system" as const, content: SYSTEM_PROMPT + context },
+    ...messages.map((m: { role: string; content: string }) => ({
+      role: m.role as "user" | "assistant",
+      content: m.content,
+    })),
+  ];
 
-  let result;
+  let stream;
   try {
-    const chat = model.startChat({ history });
-    result = await chat.sendMessageStream(lastMessage);
+    stream = await groq.chat.completions.create({
+      model: "llama-3.1-8b-instant",
+      messages: groqMessages,
+      stream: true,
+      max_tokens: 1024,
+    });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     return new Response(JSON.stringify({ error: msg }), {
@@ -180,8 +172,8 @@ export async function POST(req: NextRequest) {
   const readable = new ReadableStream({
     async start(controller) {
       try {
-        for await (const chunk of result.stream) {
-          const text = chunk.text();
+        for await (const chunk of stream) {
+          const text = chunk.choices[0]?.delta?.content || "";
           if (text) controller.enqueue(encoder.encode(text));
         }
       } catch (err: unknown) {
