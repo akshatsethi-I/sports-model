@@ -280,9 +280,34 @@ const SF_MATCHES: Match[] = [
 const FINAL_MATCHES: Match[] = [
   {
     id: 7, home: "France", away: "England", date: "3rd Place", code1: "fr", code2: "gb-eng",
+    result: {
+      homeScore: 4,
+      awayScore: 6,
+      scorers: [],
+      stats: [
+        { label: "Shots", home: 19, away: 19 },
+        { label: "Shots on Target", home: 9, away: 11 },
+        { label: "Corners", home: 3, away: 4 },
+        { label: "Fouls", home: 14, away: 9 },
+        { label: "Yellow Cards", home: 0, away: 0 },
+      ],
+    },
   },
   {
-    id: 8, home: "Spain", away: "Argentina", date: "Final", code1: "es", code2: "ar",
+    id: 8, home: "Spain", away: "Argentina", date: "Final · AET", code1: "es", code2: "ar",
+    result: {
+      homeScore: 1,
+      awayScore: 0,
+      scorers: [],
+      stats: [
+        { label: "Shots", home: 15, away: 0 },
+        { label: "Shots on Target", home: 10, away: 0 },
+        { label: "Corners", home: 9, away: 1 },
+        { label: "Fouls", home: 13, away: 19 },
+        { label: "Yellow Cards", home: 0, away: 5 },
+        { label: "Red Cards", home: 0, away: 1 },
+      ],
+    },
   },
 ];
 
@@ -328,11 +353,11 @@ function Flag({ code, size = 28 }: { code: string; size?: number }) {
 type Message = { role: "user" | "assistant"; content: string };
 
 export default function Home() {
-  const [activeRound, setActiveRound] = useState<Round>("SF");
+  const [activeRound, setActiveRound] = useState<Round>("Final");
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! I'm your WC2026 prediction assistant. The semi-finals are set — France vs Spain and England vs Argentina. Click a match or ask me anything.",
+      content: "WC2026 is over — Spain are World Champions! Spain beat Argentina 1–0 (AET) in the Final, and England beat France 6–4 in the 3rd place playoff. Click any match to see the full stats, or ask me anything about the tournament.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -755,9 +780,9 @@ export default function Home() {
                 ))}
               </div>
               <div className="flex items-center gap-3 pt-1">
-                <span className="text-4xl font-bold" style={{ color: "#f1f5f9" }}>{resultModal.result.homeScore}</span>
+                <span className="text-4xl font-bold" style={{ color: resultModal.result.homeScore >= resultModal.result.awayScore ? "#f1f5f9" : "#94a3b8" }}>{resultModal.result.homeScore}</span>
                 <span className="text-xl" style={{ color: "#2d3f5a" }}>–</span>
-                <span className="text-4xl font-bold" style={{ color: "#94a3b8" }}>{resultModal.result.awayScore}</span>
+                <span className="text-4xl font-bold" style={{ color: resultModal.result.awayScore > resultModal.result.homeScore ? "#f1f5f9" : "#94a3b8" }}>{resultModal.result.awayScore}</span>
               </div>
               <div className="flex flex-col items-center gap-1 flex-1">
                 <Flag code={resultModal.code2} size={32} />
