@@ -481,31 +481,6 @@ export default function Home() {
 
       <div className="flex-1 max-w-5xl mx-auto w-full px-4 py-5 flex flex-col gap-4">
 
-        {/* Hero stats bar */}
-        <div className="rounded-2xl px-5 py-4 flex flex-wrap gap-6 items-center"
-          style={{ background: "#0d0d18", border: "1px solid #1a1a2e" }}>
-          <div>
-            <div className="text-xl font-bold" style={{ color: "#f1f5f9" }}>8</div>
-            <div className="text-xs mt-0.5" style={{ color: "#2d3f5a" }}>Matches Tracked</div>
-          </div>
-          <div style={{ width: 1, height: 32, background: "#1a1a2e" }} />
-          <div>
-            <div className="text-xl font-bold" style={{ color: "#f1f5f9" }}>4</div>
-            <div className="text-xs mt-0.5" style={{ color: "#2d3f5a" }}>Full Model Predictions</div>
-          </div>
-          <div style={{ width: 1, height: 32, background: "#1a1a2e" }} />
-          <div>
-            <div className="text-xl font-bold" style={{ color: "#4ade80" }}>WC2026</div>
-            <div className="text-xs mt-0.5" style={{ color: "#2d3f5a" }}>Spain — World Champions</div>
-          </div>
-          <div className="ml-auto">
-            <span className="text-xs px-3 py-1.5 rounded-full font-semibold"
-              style={{ background: "#0a1f12", color: "#4ade80", border: "1px solid #14532d" }}>
-              Tournament Complete
-            </span>
-          </div>
-        </div>
-
         {/* Top picks widget */}
         <div className="rounded-2xl p-4" style={{ background: "#0d0d18", border: "1px solid #1a1a2e" }}>
           <p className="text-xs font-bold tracking-widest mb-3" style={{ color: "#2d3f5a" }}>
