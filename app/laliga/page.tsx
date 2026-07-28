@@ -4,31 +4,31 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 
-// ─── Team data (post-transfer, pre-season 2026-27) ───────────────────────────
+// ─── Team data (2026-27 La Liga, xGF/xGA from FootyStats 2025-26) ────────────
 const TEAMS = [
-  { slug: "arsenal",          name: "Arsenal",          abbr: "ARS", xGF: 1.67, xGA: 0.95, xGF_H: 1.83, xGF_A: 1.57, color: "#EF0107" },
-  { slug: "manchester-city",  name: "Man City",         abbr: "MCI", xGF: 1.78, xGA: 1.16, xGF_H: 1.89, xGF_A: 1.66, color: "#6CABDD" },
-  { slug: "manchester-utd",   name: "Man United",       abbr: "MNU", xGF: 1.77, xGA: 1.36, xGF_H: 1.99, xGF_A: 1.49, color: "#DA291C" },
-  { slug: "aston-villa",      name: "Aston Villa",      abbr: "AVL", xGF: 1.49, xGA: 1.46, xGF_H: 1.59, xGF_A: 1.35, color: "#95BFE5" },
-  { slug: "liverpool",        name: "Liverpool",        abbr: "LIV", xGF: 1.73, xGA: 1.33, xGF_H: 1.90, xGF_A: 1.57, color: "#C8102E" },
-  { slug: "bournemouth",      name: "Bournemouth",      abbr: "BOU", xGF: 1.50, xGA: 1.53, xGF_H: 1.55, xGF_A: 1.44, color: "#DA291C" },
-  { slug: "sunderland",       name: "Sunderland",       abbr: "SUN", xGF: 1.23, xGA: 1.58, xGF_H: 1.37, xGF_A: 1.09, color: "#EB172B" },
-  { slug: "brighton",         name: "Brighton",         abbr: "BHA", xGF: 1.54, xGA: 1.33, xGF_H: 1.62, xGF_A: 1.45, color: "#0057B8" },
-  { slug: "brentford",        name: "Brentford",        abbr: "BRE", xGF: 1.31, xGA: 1.54, xGF_H: 1.39, xGF_A: 1.17, color: "#E30613" },
-  { slug: "chelsea",          name: "Chelsea",          abbr: "CHE", xGF: 1.57, xGA: 1.27, xGF_H: 1.73, xGF_A: 1.42, color: "#034694" },
-  { slug: "fulham",           name: "Fulham",           abbr: "FUL", xGF: 1.32, xGA: 1.43, xGF_H: 1.46, xGF_A: 1.19, color: "#FFFFFF" },
-  { slug: "newcastle",        name: "Newcastle",        abbr: "NEW", xGF: 1.49, xGA: 1.44, xGF_H: 1.68, xGF_A: 1.40, color: "#241F20" },
-  { slug: "everton",          name: "Everton",          abbr: "EVE", xGF: 1.31, xGA: 1.55, xGF_H: 1.46, xGF_A: 1.16, color: "#003399" },
-  { slug: "leeds-united",     name: "Leeds United",     abbr: "LEE", xGF: 1.40, xGA: 1.47, xGF_H: 1.54, xGF_A: 1.25, color: "#FFCD00" },
-  { slug: "crystal-palace",   name: "Crystal Palace",   abbr: "CRY", xGF: 1.28, xGA: 1.43, xGF_H: 1.44, xGF_A: 1.12, color: "#1B458F" },
-  { slug: "nottm-forest",     name: "Nottm Forest",     abbr: "NFO", xGF: 1.39, xGA: 1.52, xGF_H: 1.65, xGF_A: 1.23, color: "#E53233" },
-  { slug: "tottenham",        name: "Tottenham",        abbr: "TOT", xGF: 1.40, xGA: 1.35, xGF_H: 1.44, xGF_A: 1.21, color: "#132257" },
-  { slug: "coventry-city",    name: "Coventry City",    abbr: "COV", xGF: 1.40, xGA: 2.21, xGF_H: 1.51, xGF_A: 1.29, color: "#44D4FF", promoted: true },
-  { slug: "ipswich",          name: "Ipswich Town",     abbr: "IPS", xGF: 1.29, xGA: 2.03, xGF_H: 1.39, xGF_A: 1.19, color: "#3A64A3", promoted: true },
-  { slug: "hull-city",        name: "Hull City",        abbr: "HUL", xGF: 0.98, xGA: 2.84, xGF_H: 1.06, xGF_A: 0.90, color: "#F5A12D", promoted: true },
+  { slug: "barcelona",          name: "Barcelona",           abbr: "BAR", xGF: 2.06, xGA: 1.05, xGF_H: 2.10, xGF_A: 2.02, color: "#A50044" },
+  { slug: "real-madrid",        name: "Real Madrid",         abbr: "RMA", xGF: 2.02, xGA: 1.18, xGF_H: 2.23, xGF_A: 1.81, color: "#FEBE10" },
+  { slug: "athletic-bilbao",    name: "Athletic Bilbao",     abbr: "ATH", xGF: 1.58, xGA: 1.13, xGF_H: 1.73, xGF_A: 1.42, color: "#EE2523" },
+  { slug: "atletico-madrid",    name: "Atlético Madrid",     abbr: "ATM", xGF: 1.57, xGA: 1.33, xGF_H: 1.84, xGF_A: 1.29, color: "#CB3524" },
+  { slug: "real-betis",         name: "Real Betis",          abbr: "BET", xGF: 1.55, xGA: 1.45, xGF_H: 1.72, xGF_A: 1.39, color: "#00A650" },
+  { slug: "rayo-vallecano",     name: "Rayo Vallecano",      abbr: "RAY", xGF: 1.55, xGA: 1.40, xGF_H: 1.81, xGF_A: 1.29, color: "#D91A21" },
+  { slug: "real-sociedad",      name: "Real Sociedad",       abbr: "RSO", xGF: 1.43, xGA: 1.53, xGF_H: 1.52, xGF_A: 1.35, color: "#0067B1" },
+  { slug: "espanyol",           name: "Espanyol",            abbr: "ESP", xGF: 1.40, xGA: 1.53, xGF_H: 1.53, xGF_A: 1.26, color: "#005CA9" },
+  { slug: "villarreal",         name: "Villarreal",          abbr: "VIL", xGF: 1.36, xGA: 1.50, xGF_H: 1.66, xGF_A: 1.07, color: "#FFD700" },
+  { slug: "alaves",             name: "Alavés",              abbr: "ALA", xGF: 1.36, xGA: 1.42, xGF_H: 1.47, xGF_A: 1.26, color: "#1B3F8C" },
+  { slug: "osasuna",            name: "Osasuna",             abbr: "OSA", xGF: 1.35, xGA: 1.44, xGF_H: 1.66, xGF_A: 1.04, color: "#D50032" },
+  { slug: "levante",            name: "Levante",             abbr: "LEV", xGF: 1.34, xGA: 1.68, xGF_H: 1.51, xGF_A: 1.17, color: "#4B7BBD" },
+  { slug: "sevilla",            name: "Sevilla",             abbr: "SEV", xGF: 1.30, xGA: 1.23, xGF_H: 1.40, xGF_A: 1.20, color: "#D2122E" },
+  { slug: "elche",              name: "Elche",               abbr: "ELC", xGF: 1.29, xGA: 1.53, xGF_H: 1.57, xGF_A: 1.02, color: "#007A3D" },
+  { slug: "valencia",           name: "Valencia",            abbr: "VAL", xGF: 1.27, xGA: 1.38, xGF_H: 1.44, xGF_A: 1.10, color: "#FF7F00" },
+  { slug: "celta-vigo",         name: "Celta Vigo",          abbr: "CEL", xGF: 1.21, xGA: 1.46, xGF_H: 1.36, xGF_A: 1.05, color: "#6CB4E4" },
+  { slug: "getafe",             name: "Getafe",              abbr: "GET", xGF: 1.07, xGA: 1.30, xGF_H: 1.06, xGF_A: 1.07, color: "#0055A5" },
+  { slug: "racing-santander",   name: "Racing Santander",    abbr: "RAC", xGF: 1.41, xGA: 2.13, xGF_H: 1.65, xGF_A: 1.18, color: "#009930", promoted: true },
+  { slug: "deportivo-coruna",   name: "Deportivo La Coruña", abbr: "DEP", xGF: 1.25, xGA: 2.01, xGF_H: 1.28, xGF_A: 1.22, color: "#99CCFF", promoted: true },
+  { slug: "malaga",             name: "Málaga CF",           abbr: "MAL", xGF: 1.39, xGA: 2.14, xGF_H: 1.56, xGF_A: 1.22, color: "#1E5CA5", promoted: true },
 ];
 
-const LEAGUE_AVG_XGA = 1.39;
+const LEAGUE_AVG_XGA = 1.49;
 
 // ─── Poisson model ────────────────────────────────────────────────────────────
 function poissonPmf(lambda: number, k: number): number {
@@ -41,7 +41,7 @@ type Prediction = {
   homeλ: number; awayλ: number;
   homeWin: number; draw: number; awayWin: number;
   over25: number; over15: number; under25: number; under35: number;
-  btts: number; bttcNo: number;
+  btts: number; bttsNo: number;
   topScorelines: { h: number; a: number; prob: number }[];
 };
 
@@ -75,7 +75,7 @@ function computePrediction(home: typeof TEAMS[0], away: typeof TEAMS[0]): Predic
     awayλ: Math.round(awayλ * 100) / 100,
     homeWin, draw, awayWin,
     over25, over15, under25, under35,
-    btts, bttcNo: 1 - btts,
+    btts, bttsNo: 1 - btts,
     topScorelines: scorelines.slice(0, 6),
   };
 }
@@ -102,13 +102,13 @@ const MARKET_ICON: Record<string, string> = {
 };
 
 // ─── Component ────────────────────────────────────────────────────────────────
-export default function Home() {
+export default function LaLiga() {
   const [homeTeam, setHomeTeam] = useState(TEAMS[0]);
-  const [awayTeam, setAwayTeam] = useState(TEAMS[4]);
-  const [pred, setPred] = useState<Prediction>(() => computePrediction(TEAMS[0], TEAMS[4]));
+  const [awayTeam, setAwayTeam] = useState(TEAMS[3]);
+  const [pred, setPred] = useState<Prediction>(() => computePrediction(TEAMS[0], TEAMS[3]));
   const [messages, setMessages] = useState<Message[]>([{
     role: "assistant",
-    content: "Premier League 2026-27 predictions. Select a home and away team to run the Poisson model, or ask me anything about any fixture.",
+    content: "La Liga 2026-27 predictions. Select a home and away team to run the Poisson model, or ask me anything about any fixture.",
   }]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -148,7 +148,7 @@ export default function Home() {
     abortRef.current = abort;
     const timeout = setTimeout(() => abort.abort(), 120000);
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch("/api/chat-laliga", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: updated, homeTeam: homeTeam.name, awayTeam: awayTeam.name }),
@@ -190,7 +190,7 @@ export default function Home() {
     { market: "Goals", pick: "Under 2.5 Goals", prob: pred.under25 },
     { market: "Goals", pick: "Under 3.5 Goals", prob: pred.under35 },
     { market: "BTTS", pick: "BTTS Yes", prob: pred.btts },
-    { market: "BTTS", pick: "BTTS No ⚠️", prob: pred.bttcNo },
+    { market: "BTTS", pick: "BTTS No ⚠️", prob: pred.bttsNo },
   ].sort((a, b) => b.prob - a.prob);
 
   const topPicks = picks.filter(p => p.prob >= 0.55).slice(0, 5);
@@ -210,16 +210,16 @@ export default function Home() {
           </div>
           {/* League switcher */}
           <div className="flex gap-2">
-            <span
-              className="text-xs px-3 py-1.5 rounded-full font-semibold"
-              style={{ background: "#0a1a2e", border: "1px solid #1a3a6e", color: "#60a5fa" }}>
-              Premier League
-            </span>
-            <Link href="/laliga"
+            <Link href="/"
               className="text-xs px-3 py-1.5 rounded-full"
               style={{ background: "#111120", border: "1px solid #1a1a2e", color: "#64748b" }}>
-              La Liga
+              Premier League
             </Link>
+            <span
+              className="text-xs px-3 py-1.5 rounded-full font-semibold"
+              style={{ background: "#1a0a2e", border: "1px solid #3d1a6e", color: "#a78bfa" }}>
+              La Liga
+            </span>
           </div>
         </div>
       </header>
@@ -228,18 +228,15 @@ export default function Home() {
 
         {/* Team pickers */}
         <div className="rounded-2xl p-4" style={{ background: "#0d0d18", border: "1px solid #1a1a2e" }}>
-          <p className="text-xs font-bold tracking-widest mb-3" style={{ color: "#2d3f5a" }}>SELECT FIXTURE</p>
+          <p className="text-xs font-bold tracking-widest mb-3" style={{ color: "#2d3f5a" }}>SELECT FIXTURE — LA LIGA 2026-27</p>
           <div className="flex items-center gap-3">
-
-            {/* Home */}
             <div className="flex-1">
               <p className="text-xs mb-1.5" style={{ color: "#2d3f5a" }}>Home</p>
               <select
                 value={homeTeam.slug}
                 onChange={e => selectHome(e.target.value)}
                 className="w-full rounded-xl px-3 py-2.5 text-sm font-semibold outline-none"
-                style={{ background: "#111120", border: "1px solid #1a1a2e", color: "#f1f5f9", cursor: "pointer" }}
-              >
+                style={{ background: "#111120", border: "1px solid #1a1a2e", color: "#f1f5f9", cursor: "pointer" }}>
                 {TEAMS.filter(t => t.slug !== awayTeam.slug).map(t => (
                   <option key={t.slug} value={t.slug}>
                     {t.abbr} — {t.name}{t.promoted ? " ↑" : ""}
@@ -247,18 +244,14 @@ export default function Home() {
                 ))}
               </select>
             </div>
-
             <div className="text-lg font-bold mt-5" style={{ color: "#2d3f5a" }}>vs</div>
-
-            {/* Away */}
             <div className="flex-1">
               <p className="text-xs mb-1.5" style={{ color: "#2d3f5a" }}>Away</p>
               <select
                 value={awayTeam.slug}
                 onChange={e => selectAway(e.target.value)}
                 className="w-full rounded-xl px-3 py-2.5 text-sm font-semibold outline-none"
-                style={{ background: "#111120", border: "1px solid #1a1a2e", color: "#f1f5f9", cursor: "pointer" }}
-              >
+                style={{ background: "#111120", border: "1px solid #1a1a2e", color: "#f1f5f9", cursor: "pointer" }}>
                 {TEAMS.filter(t => t.slug !== homeTeam.slug).map(t => (
                   <option key={t.slug} value={t.slug}>
                     {t.abbr} — {t.name}{t.promoted ? " ↑" : ""}
@@ -275,13 +268,11 @@ export default function Home() {
           {/* Left: result + λ */}
           <div className="rounded-2xl p-4 flex flex-col gap-4" style={{ background: "#0d0d18", border: "1px solid #1a1a2e" }}>
             <p className="text-xs font-bold tracking-widest" style={{ color: "#2d3f5a" }}>MODEL OUTPUT</p>
-
-            {/* Teams + λ */}
             <div className="flex items-center justify-between">
               <div className="text-center flex-1">
                 <div className="text-lg font-bold" style={{ color: "#f1f5f9" }}>{homeTeam.abbr}</div>
                 <div className="text-xs" style={{ color: "#3d4f6b" }}>Home</div>
-                <div className="text-2xl font-bold mt-1" style={{ color: "#4f9cf9" }}>λ {pred.homeλ}</div>
+                <div className="text-2xl font-bold mt-1" style={{ color: "#a78bfa" }}>λ {pred.homeλ}</div>
               </div>
               <div className="text-xs px-3" style={{ color: "#2d3f5a" }}>xG/90</div>
               <div className="text-center flex-1">
@@ -291,11 +282,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Result bars */}
             <div className="space-y-2">
               {[
-                { label: `${homeTeam.abbr} Win`, prob: pred.homeWin, color: "#4f9cf9" },
-                { label: "Draw", prob: pred.draw, color: "#94a3b8" },
+                { label: `${homeTeam.abbr} Win`, prob: pred.homeWin, color: "#a78bfa" },
+                { label: "Draw",                 prob: pred.draw,    color: "#94a3b8" },
                 { label: `${awayTeam.abbr} Win`, prob: pred.awayWin, color: "#f97316" },
               ].map(row => (
                 <div key={row.label}>
@@ -311,15 +301,14 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Top scorelines */}
             <div>
               <p className="text-xs font-bold tracking-widest mb-2" style={{ color: "#2d3f5a" }}>TOP SCORELINES</p>
               <div className="grid grid-cols-3 gap-1.5">
                 {pred.topScorelines.map((s, i) => (
                   <div key={i} className="rounded-xl px-2 py-2 text-center"
-                    style={{ background: i === 0 ? "#0c1c38" : "#111120", border: `1px solid ${i === 0 ? "#2a5298" : "#1a1a2e"}` }}>
+                    style={{ background: i === 0 ? "#160c2e" : "#111120", border: `1px solid ${i === 0 ? "#3d1a6e" : "#1a1a2e"}` }}>
                     <div className="text-sm font-bold" style={{ color: "#f1f5f9" }}>{s.h}–{s.a}</div>
-                    <div className="text-xs" style={{ color: i === 0 ? "#4f9cf9" : "#3d4f6b" }}>{pct(s.prob)}</div>
+                    <div className="text-xs" style={{ color: i === 0 ? "#a78bfa" : "#3d4f6b" }}>{pct(s.prob)}</div>
                   </div>
                 ))}
               </div>
@@ -347,7 +336,6 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Goals breakdown */}
             <div className="rounded-xl p-3" style={{ background: "#111120", border: "1px solid #1a1a2e" }}>
               <p className="text-xs font-bold tracking-widest mb-2" style={{ color: "#2d3f5a" }}>GOALS BREAKDOWN</p>
               <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
@@ -356,8 +344,8 @@ export default function Home() {
                   { label: "Under 2.5", prob: pred.under25 },
                   { label: "Over 2.5", prob: pred.over25 },
                   { label: "Under 3.5", prob: pred.under35 },
-                  { label: "BTTS Yes", prob: pred.btts },
-                  { label: "BTTS No", prob: pred.bttcNo },
+                  { label: "BTTS Yes",  prob: pred.btts },
+                  { label: "BTTS No",   prob: pred.bttsNo },
                 ].map(row => (
                   <div key={row.label} className="flex justify-between py-0.5">
                     <span style={{ color: "#64748b" }}>{row.label}</span>
@@ -369,7 +357,7 @@ export default function Home() {
 
             {(homeTeam.promoted || awayTeam.promoted) && (
               <div className="rounded-xl px-3 py-2 text-xs" style={{ background: "#111120", border: "1px solid #1a1a2e", color: "#f59e0b" }}>
-                ⚠️ {[homeTeam.promoted && homeTeam.abbr, awayTeam.promoted && awayTeam.abbr].filter(Boolean).join(", ")} — promoted team. Higher uncertainty on projections.
+                ⚠️ {[homeTeam.promoted && homeTeam.abbr, awayTeam.promoted && awayTeam.abbr].filter(Boolean).join(", ")} — promoted from Segunda. Higher uncertainty on projections.
               </div>
             )}
           </div>
@@ -399,18 +387,18 @@ export default function Home() {
             <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
               {m.role === "assistant" && (
                 <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 mr-2 mt-0.5 text-sm"
-                  style={{ background: "#0c1c38", border: "1px solid #1a3560" }}>⚽</div>
+                  style={{ background: "#160c2e", border: "1px solid #3d1a6e" }}>⚽</div>
               )}
               <div className="rounded-2xl px-4 py-3 text-sm leading-relaxed"
                 style={{
-                  background: m.role === "user" ? "#1a3a7a" : "#111120",
+                  background: m.role === "user" ? "#1a0a2e" : "#111120",
                   color: "#e2e8f0",
                   border: m.role === "assistant" ? "1px solid #1a1a2e" : "none",
                   maxWidth: "82%",
                 }}>
                 {m.role === "assistant" ? (
                   <ReactMarkdown components={{
-                    h2: ({ children }) => <p className="font-bold text-sm mb-2 mt-3" style={{ color: "#4f9cf9" }}>{children}</p>,
+                    h2: ({ children }) => <p className="font-bold text-sm mb-2 mt-3" style={{ color: "#a78bfa" }}>{children}</p>,
                     p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
                     strong: ({ children }) => <strong style={{ color: "#f1f5f9" }}>{children}</strong>,
                     ul: ({ children }) => <ul className="mb-2 pl-4 space-y-1" style={{ listStyleType: "disc" }}>{children}</ul>,
@@ -428,7 +416,7 @@ export default function Home() {
           {loading && (
             <div className="flex justify-start items-center gap-2">
               <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-sm"
-                style={{ background: "#0c1c38", border: "1px solid #1a3560" }}>⚽</div>
+                style={{ background: "#160c2e", border: "1px solid #3d1a6e" }}>⚽</div>
               <div className="rounded-2xl px-4 py-3 text-sm" style={{ background: "#111120", border: "1px solid #1a1a2e", color: "#2d3f5a" }}>
                 Analysing...
               </div>
@@ -441,7 +429,7 @@ export default function Home() {
         <div className="flex gap-2">
           <input value={input} onChange={e => setInput(e.target.value)}
             onKeyDown={e => e.key === "Enter" && !e.shiftKey && sendMessage()}
-            placeholder="Ask about any fixture, team, or market..."
+            placeholder="Ask about any La Liga fixture, team, or market..."
             disabled={loading}
             className="flex-1 rounded-2xl px-4 py-3 text-sm outline-none"
             style={{ background: "#0d0d18", border: "1px solid #1a1a2e", color: "#e2e8f0", opacity: loading ? 0.5 : 1 }} />
@@ -454,9 +442,9 @@ export default function Home() {
             <button onClick={() => sendMessage()} disabled={!input.trim()}
               className="px-5 py-3 rounded-2xl text-sm font-semibold transition-colors"
               style={{
-                background: input.trim() ? "#1a3a7a" : "#0d0d18",
-                color: input.trim() ? "#fff" : "#2d3f5a",
-                border: "1px solid #1a3560",
+                background: input.trim() ? "#1a0a2e" : "#0d0d18",
+                color: input.trim() ? "#a78bfa" : "#2d3f5a",
+                border: "1px solid #3d1a6e",
                 cursor: input.trim() ? "pointer" : "not-allowed",
               }}>
               Send
