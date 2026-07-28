@@ -107,7 +107,7 @@ last_updated: 2026-07-28
 - Home/away split: TBD
 - Key injuries: Update before matchday
 - Referee: Add before matchday
-- Summer transfers 2026: IN: Elliott Anderson (Forest), Gianluigi Donnarumma (GK, #1 starter). OUT: Bernardo Silva → Real Madrid (major creative loss), James Trafford → Leeds.
+- Summer transfers 2026: IN: Elliott Anderson (Forest), Gianluigi Donnarumma (GK, #1 starter). OUT: Bernardo Silva → Real Madrid (major creative loss), James Trafford → Leeds. Note: Kevin De Bruyne also no longer at the club.
 - Notes:
 
 ## Squad (2026-27, as of 11 Jul)
