@@ -6,16 +6,26 @@ import path from "path";
 const VAULT_PATH = process.env.VAULT_PATH || path.join(process.cwd(), "Football");
 
 const TEAM_NAME_MAP: Record<string, string> = {
-  france: "france", morocco: "morocco", spain: "spain", belgium: "belgium",
-  england: "england", norway: "norway", argentina: "argentina", switzerland: "switzerland",
-  colombia: "colombia", brazil: "brazil", usa: "usa", mexico: "mexico",
-  portugal: "portugal", egypt: "egypt", netherlands: "netherlands", germany: "germany",
-  japan: "japan", uruguay: "uruguay", croatia: "croatia", senegal: "senegal",
-  sweden: "sweden", austria: "austria", turkey: "turkey", ghana: "ghana",
-  ecuador: "ecuador", qatar: "qatar", canada: "canada", "saudi arabia": "saudi-arabia",
-  "saudi-arabia": "saudi-arabia", "ivory coast": "ivory-coast", "ivory-coast": "ivory-coast",
-  "korea": "korea-republic", "south korea": "korea-republic", "cape verde": "cape-verde",
-  "congo": "congo-dr", "new zealand": "new-zealand",
+  arsenal: "arsenal",
+  "man city": "manchester-city", "manchester city": "manchester-city", "man-city": "manchester-city",
+  "man utd": "manchester-utd", "manchester utd": "manchester-utd", "man united": "manchester-utd", "manchester united": "manchester-utd",
+  "aston villa": "aston-villa",
+  liverpool: "liverpool",
+  bournemouth: "bournemouth",
+  sunderland: "sunderland",
+  brighton: "brighton",
+  brentford: "brentford",
+  chelsea: "chelsea",
+  fulham: "fulham",
+  newcastle: "newcastle",
+  everton: "everton",
+  "leeds united": "leeds-united", "leeds": "leeds-united",
+  "crystal palace": "crystal-palace",
+  "nottm forest": "nottm-forest", "nottingham forest": "nottm-forest", "forest": "nottm-forest",
+  tottenham: "tottenham", spurs: "tottenham",
+  "coventry city": "coventry-city", coventry: "coventry-city",
+  "ipswich town": "ipswich", ipswich: "ipswich",
+  "hull city": "hull-city", hull: "hull-city",
 };
 
 function extractTeams(text: string): string[] {
@@ -71,12 +81,15 @@ function buildContext(messages: { role: string; content: string }[]): string {
 
   if (!predictionFound) {
     for (const team of teams) {
-      const full = path.join(VAULT_PATH, `Teams/${TEAM_NAME_MAP[team]}.md`);
-      let content = readFile(full);
+      const slug = TEAM_NAME_MAP[team];
+      // Try PL team path first, then legacy Teams/ path
+      const plPath = path.join(VAULT_PATH, `Football/PL/Teams/${slug}.md`);
+      const legacyPath = path.join(VAULT_PATH, `Teams/${slug}.md`);
+      let content = readFile(plPath) || readFile(legacyPath);
       if (content) {
         content = stripRawTables(content);
-        if (content.length > 400) content = content.slice(0, 400) + "\n...[truncated]";
-        sections.push(`\n\n=== Teams/${TEAM_NAME_MAP[team]}.md ===\n${content}`);
+        if (content.length > 1200) content = content.slice(0, 1200) + "\n...[truncated]";
+        sections.push(`\n\n=== PL/Teams/${slug}.md ===\n${content}`);
       }
     }
   }
@@ -103,15 +116,23 @@ function buildContext(messages: { role: string; content: string }[]): string {
   return sections.join("\n");
 }
 
-const SYSTEM_PROMPT = `You are a WC2026 football prediction assistant. Use only the vault context provided. Be direct and concise.
+const SYSTEM_PROMPT = `You are a Premier League 2026-27 prediction assistant. Use vault context and the Poisson model outputs provided by the user interface. Be direct and concise.
+
+Model parameters:
+- Dixon-Coles Poisson model: home_λ = home xGF_home × (away xGA / 1.39), away_λ = away xGF_away × (home xGA / 1.39)
+- League avg xGA = 1.39/90. Home xGF > overall xGF for most teams (home advantage baked in).
+- ⚠️ BTTS No and Under 2.5 are systematically over-predicted by the raw model — flag them as uncertain.
+- Promoted teams (Coventry, Ipswich, Hull) use empirical conversion factors (xGF × 0.767, xGA × 1.741 from Champ→PL history) — treat their projections as wide confidence intervals.
+- Weaker teams: SoT floor of 2.5/90 and +15% knockout uplift not applicable in PL regular season.
 
 Rules:
-- If a Predictions/ file exists for the match, copy its picks exactly with star ratings. No recomputing.
-- Star ratings: ⭐⭐⭐⭐⭐ >70% | ⭐⭐⭐⭐ 55-70% | ⭐⭐⭐ 40-55%
-- Flag Under 2.5 and BTTS No with ⚠️
+- Star ratings: ⭐⭐⭐⭐⭐ ≥75% | ⭐⭐⭐⭐ 60-75% | ⭐⭐⭐ 45-60%
+- Flag ⚠️ on BTTS No and Under 2.5 picks.
 - Never mention files or sources. Never refuse to answer.
+- When asked for picks, give: Match Outlook (2 sentences), 4-5 Best Picks (market, pick, %, stars), Key Risks (2 bullets).
 
-For predictions give: Team Profiles (bullets), Match Outlook (2 sentences), 5 Picks (Result, Goals, BTTS, Corners, Cards), Key Risks (2 bullets).
+Key summer transfers context:
+- Chelsea +Morgan Rogers, -Cucurella; Man Utd +Tielemans, +Andrey Santos; Man City +Elliot Anderson; Spurs +Mateus Fernandes, +Tonali; Brentford +Callum Wilson; Arsenal -Trossard; Sunderland +Meunier; Aston Villa +Garnacho, +Manzambi (Swiss CM, 5 WC GCA, EL Young POY at Freiburg), -Rogers.
 
 VAULT CONTEXT:
 `;
@@ -126,14 +147,18 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { messages } = await req.json();
+  const { messages, homeTeam, awayTeam } = await req.json();
   if (!messages?.length) {
     return new Response(JSON.stringify({ error: "No messages." }), {
       headers: { "Content-Type": "application/json" },
     });
   }
 
-  const context = buildContext(messages);
+  // Prepend selected fixture to every message set so team context is always loaded
+  const contextMessages = homeTeam && awayTeam
+    ? [{ role: "user", content: `Selected fixture: ${homeTeam} vs ${awayTeam}` }, ...messages]
+    : messages;
+  const context = buildContext(contextMessages);
   const groq = new Groq({ apiKey });
 
   const groqMessages = [
