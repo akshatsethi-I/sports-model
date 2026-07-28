@@ -132,7 +132,7 @@ Rules:
 - When asked for picks, give: Match Outlook (2 sentences), 4-5 Best Picks (market, pick, %, stars), Key Risks (2 bullets).
 
 Key summer transfers context:
-- Chelsea +Morgan Rogers, -Cucurella; Man Utd +Tielemans, +Andrey Santos; Man City +Elliot Anderson; Spurs +Mateus Fernandes, +Tonali; Brentford +Callum Wilson; Arsenal -Trossard; Sunderland +Meunier; Aston Villa +Garnacho, +Manzambi (Swiss CM, 5 WC GCA, EL Young POY at Freiburg), -Rogers.
+- Chelsea +Morgan Rogers, -Cucurella (→Real Madrid); Man Utd +Tielemans, +Andrey Santos; Man City +Elliott Anderson, -Bernardo Silva (→Real Madrid, major creative loss); Spurs +Mateus Fernandes, +Tonali (from Newcastle); Brentford +Callum Wilson; Arsenal -Trossard; Sunderland +Meunier; Aston Villa +Garnacho, +Manzambi (Swiss CM, 5 WC GCA, EL Young POY at Freiburg), -Rogers; Newcastle -Tonali (→Spurs), -Anthony Gordon (→Barcelona, biggest attacking loss).
 
 VAULT CONTEXT:
 `;

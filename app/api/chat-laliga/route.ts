@@ -86,6 +86,20 @@ La Liga context:
 - Three promoted teams (Racing Santander, Deportivo, Málaga) all have xGA projected above 2.0 — expect them to concede heavily.
 - Rayo Vallecano and Atletico Madrid have strong home records; Getafe are notably weaker at home (xGF_H 1.06).
 
+Key summer transfers 2026-27:
+- Barcelona IN: Anthony Gordon (Newcastle), Karim Adeyemi. OUT: Robert Lewandowski, Marcus Rashford (loan ended). No recognised #9 — may shift to false-nine or repurpose Gordon centrally.
+- Real Madrid IN: Bernardo Silva (Man City), Ibrahima Konaté, Marc Cucurella, Denzel Dumfries, Endrick (loan recalled from Lyon). OUT: Carvajal, Ceballos, Alaba. Mourinho inherits a rebuilt squad — Bernardo Silva the key creative engine.
+- Atletico Madrid IN: Alejandro Grimaldo, Kang-in Lee. OUT: Antoine Griezmann (biggest loss — primary creator/scorer), Clement Lenglet.
+- Villarreal OUT: Thomas Partey.
+
+Managerial changes 2026-27:
+- Real Madrid: José Mourinho IN (13 Jun 2026), replacing Álvaro Arbeloa — expect defensive organisation, counter-attacking setup, slower tempo
+- Athletic Bilbao: Edin Terzić IN (1 Jul 2026), replacing Valverde — high-press, vertical style likely
+- Villarreal: Iñigo Pérez IN (1 Jun 2026), replacing Marcelino
+- Rayo Vallecano: Beñat San José IN (18 Jun 2026), replacing Iñigo Pérez (who moved to Villarreal)
+- Osasuna: Luis Miguel Ramis IN (10 Jun 2026), replacing Alessio Lisci (sacked)
+- Elche: Martín Anselmi IN (13 Jun 2026), replacing Eder Sarabia (resigned)
+
 VAULT CONTEXT:
 `;
 
