@@ -204,13 +204,9 @@ export default function Home() {
             <span className="text-2xl">⚽</span>
             <div>
               <h1 className="text-base font-bold tracking-tight" style={{ color: "#f1f5f9" }}>Sports Prediction Vault</h1>
-              <p className="text-xs" style={{ color: "#3d4f6b" }}>Premier League 2026-27 · Poisson Model</p>
+              <p className="text-xs" style={{ color: "#3d4f6b" }}>Football · 2026-27</p>
             </div>
           </div>
-          <span className="text-xs px-3 py-1.5 rounded-full font-semibold tracking-wide"
-            style={{ background: "#0c1c38", color: "#4f9cf9", border: "1px solid #1a3560" }}>
-            PRE-SEASON
-          </span>
         </div>
       </header>
 
