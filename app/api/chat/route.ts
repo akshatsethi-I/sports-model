@@ -132,7 +132,7 @@ Rules:
 - When asked for picks, give: Match Outlook (2 sentences), 4-5 Best Picks (market, pick, %, stars), Key Risks (2 bullets).
 
 Key summer transfers context:
-- Arsenal +Illan Meslier (GK, from Leeds), -Trossard; note: Gyökeres/Madueke/Mosquera/Hincapié already at Arsenal in 2025-26; Chelsea +Morgan Rogers, -Cucurella (→Real Madrid); Man Utd +Tielemans, +Andrey Santos; Man City +Elliott Anderson, -Bernardo Silva (→Real Madrid, major loss); Spurs +Mateus Fernandes, +Tonali (from Newcastle); Brentford +Callum Wilson; Sunderland +Meunier; Aston Villa +Garnacho (loan from Chelsea), +Manzambi (Swiss CM, EL Young POY at Freiburg, 5 WC GCAs), -Rogers, -Tielemans; Newcastle -Tonali (→Spurs), -Anthony Gordon (→Barcelona); Bournemouth +Đorđe Petrović (GK from Chelsea).
+- Arsenal +Illan Meslier (GK, from Leeds), -Trossard; note: Gyökeres/Madueke/Mosquera/Hincapié already at Arsenal in 2025-26; Chelsea +Morgan Rogers, -Cucurella (→Real Madrid); Man Utd +Tielemans, +Andrey Santos, +Bryan Mbeumo (striker/wide), +Benjamin Šeško (striker); Man City +Elliott Anderson, +Donnarumma (GK #1), -Bernardo Silva (→Real Madrid, major loss), -Trafford (→Leeds); Spurs +Tonali (from Newcastle), +Mateus Fernandes, +Xavi Simons (AM/wide); Brentford +Callum Wilson; Sunderland +Granit Xhaka (captain, elite CM), +Brian Brobbey (striker), +Meunier; Aston Villa +Garnacho (loan from Chelsea), +Manzambi (Swiss CM, EL Young POY at Freiburg, 5 WC GCAs), -Rogers, -Tielemans; Newcastle -Tonali (→Spurs), -Anthony Gordon (→Barcelona); Bournemouth +Đorđe Petrović (GK from Chelsea).
 
 VAULT CONTEXT:
 `;
