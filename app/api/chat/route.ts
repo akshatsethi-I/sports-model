@@ -3,7 +3,11 @@ import Groq from "groq-sdk";
 import fs from "fs";
 import path from "path";
 
-const VAULT_PATH = process.env.VAULT_PATH || path.join(process.cwd(), "Football");
+// VAULT_PATH should point to the vault root (parent of Football/).
+// Locally: demo/ folder. On Vercel: app root (Football/ is committed to repo).
+const VAULT_PATH = process.env.VAULT_PATH
+  ? path.join(process.env.VAULT_PATH, "..")   // env points to Football/, go up one level to vault root
+  : process.cwd();                              // on Vercel, Football/ is at app root
 
 const TEAM_NAME_MAP: Record<string, string> = {
   arsenal: "arsenal",

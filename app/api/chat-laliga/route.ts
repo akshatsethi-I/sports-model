@@ -3,7 +3,9 @@ import Groq from "groq-sdk";
 import fs from "fs";
 import path from "path";
 
-const VAULT_PATH = process.env.VAULT_PATH || path.join(process.cwd(), "Football");
+const VAULT_PATH = process.env.VAULT_PATH
+  ? path.join(process.env.VAULT_PATH, "..")
+  : process.cwd();
 
 const TEAM_NAME_MAP: Record<string, string> = {
   barcelona: "barcelona",
