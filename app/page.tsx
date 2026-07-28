@@ -353,27 +353,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* xG context */}
-            <div className="rounded-xl px-3 py-2" style={{ background: "#111120", border: "1px solid #1a1a2e" }}>
-              <div className="grid grid-cols-2 gap-2 text-xs">
-                {[
-                  { label: `${homeTeam.abbr} xGF`, val: homeTeam.xGF },
-                  { label: `${awayTeam.abbr} xGF`, val: awayTeam.xGF },
-                  { label: `${homeTeam.abbr} xGA`, val: homeTeam.xGA },
-                  { label: `${awayTeam.abbr} xGA`, val: awayTeam.xGA },
-                ].map(row => (
-                  <div key={row.label} className="flex justify-between">
-                    <span style={{ color: "#3d4f6b" }}>{row.label}</span>
-                    <span style={{ color: "#94a3b8", fontWeight: 600 }}>{row.val.toFixed(2)}</span>
-                  </div>
-                ))}
+            {(homeTeam.promoted || awayTeam.promoted) && (
+              <div className="rounded-xl px-3 py-2 text-xs" style={{ background: "#111120", border: "1px solid #1a1a2e", color: "#f59e0b" }}>
+                ⚠️ {[homeTeam.promoted && homeTeam.abbr, awayTeam.promoted && awayTeam.abbr].filter(Boolean).join(", ")} — promoted team. Higher uncertainty on projections.
               </div>
-              {(homeTeam.promoted || awayTeam.promoted) && (
-                <p className="text-xs mt-2" style={{ color: "#f59e0b" }}>
-                  ⚠️ {[homeTeam.promoted && homeTeam.abbr, awayTeam.promoted && awayTeam.abbr].filter(Boolean).join(", ")} — promoted team. Higher uncertainty on projections.
-                </p>
-              )}
-            </div>
+            )}
           </div>
         </div>
 
