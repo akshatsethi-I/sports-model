@@ -120,14 +120,18 @@ export default function Home() {
 
   function selectHome(slug: string) {
     const t = TEAMS.find(t => t.slug === slug)!;
+    const away = t.slug === awayTeam.slug ? homeTeam : awayTeam;
     setHomeTeam(t);
-    setPred(computePrediction(t, awayTeam));
+    setAwayTeam(away);
+    setPred(computePrediction(t, away));
   }
 
   function selectAway(slug: string) {
     const t = TEAMS.find(t => t.slug === slug)!;
+    const home = t.slug === homeTeam.slug ? awayTeam : homeTeam;
     setAwayTeam(t);
-    setPred(computePrediction(homeTeam, t));
+    setHomeTeam(home);
+    setPred(computePrediction(home, t));
   }
 
   const cancelMessage = () => { abortRef.current?.abort(); setLoading(false); };
@@ -226,7 +230,7 @@ export default function Home() {
                 className="w-full rounded-xl px-3 py-2.5 text-sm font-semibold outline-none"
                 style={{ background: "#111120", border: "1px solid #1a1a2e", color: "#f1f5f9", cursor: "pointer" }}
               >
-                {TEAMS.map(t => (
+                {TEAMS.filter(t => t.slug !== awayTeam.slug).map(t => (
                   <option key={t.slug} value={t.slug}>
                     {t.abbr} — {t.name}{t.promoted ? " ↑" : ""}
                   </option>
@@ -245,7 +249,7 @@ export default function Home() {
                 className="w-full rounded-xl px-3 py-2.5 text-sm font-semibold outline-none"
                 style={{ background: "#111120", border: "1px solid #1a1a2e", color: "#f1f5f9", cursor: "pointer" }}
               >
-                {TEAMS.map(t => (
+                {TEAMS.filter(t => t.slug !== homeTeam.slug).map(t => (
                   <option key={t.slug} value={t.slug}>
                     {t.abbr} — {t.name}{t.promoted ? " ↑" : ""}
                   </option>
