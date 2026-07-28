@@ -107,7 +107,7 @@ last_updated: 2026-07-28
 - Home/away split: TBD
 - Key injuries: Update before matchday
 - Referee: Add before matchday
-- Summer transfers 2026: IN: Tielemans (Villa, creative CM), Santos (Chelsea, CM depth), Bryan Mbeumo (striker/wide), Benjamin Šeško (striker). Major attacking upgrades.
+- Summer transfers 2026: IN: Tielemans (Villa, creative CM), Andrey Santos (Chelsea, CM depth). Note: Mbeumo and Šeško already at club in 2025-26.
 - Notes:
 
 ## Squad (2026-27, as of 24 Jul)
@@ -139,7 +139,7 @@ last_updated: 2026-07-28
 | FW | Matheus Cunha | wide/AM |
 | FW | Joshua Zirkzee | striker |
 | FW | Amad Diallo | wide |
-| FW | Bryan Mbeumo | new signing, striker/wide |
-| FW | Benjamin Šeško | new signing, striker |
+| FW | Bryan Mbeumo | striker/wide |
+| FW | Benjamin Šeško | striker |
 | FW | Marcus Rashford | wide |
 | FW | Shea Lacey | young wide |
