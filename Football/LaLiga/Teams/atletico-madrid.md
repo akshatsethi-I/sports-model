@@ -106,7 +106,7 @@ source: FootyStats 2025-26
 | xGA/90 | 1.33 | FootyStats xG table |
 | xGF_H | 1.84 | home xG table |
 | xGF_A | 1.3 | derived: 2×xGF − xGF_H |
-| Manager | TBD | update pre-season |
+| Manager | Diego Simeone |
 | Key transfers IN | Alejandro Grimaldo, Kang-in Lee | Grimaldo: elite overlapping LB, set piece deliveries; Kang-in Lee: creative AM/winger |
 | Key transfers OUT | Antoine Griezmann, Clement Lenglet | Griezmann huge loss — Atletico's primary creative outlet and goal scorer |
 ## Squad (2026-27)

@@ -55,8 +55,8 @@ last_updated: 2026-07-28
 | xGA/90 | 2.14 | Segunda raw 1.45 × 1.478 |
 | xGF_H | 1.56 | Segunda 1.79 × 0.871 |
 | xGF_A | 1.22 | Segunda 1.40 × 0.871 |
-| Manager | TBD | update pre-season |
-| Key transfers | TBD | update pre-season |
+| Manager | Sergio Pellicer |
+| Key transfers | No major changes confirmed |
 
 ## Squad (2026-27)
 | Pos | Player | Note |

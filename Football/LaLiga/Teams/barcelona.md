@@ -106,7 +106,7 @@ source: FootyStats 2025-26
 | xGA/90 | 1.05 | FootyStats xG table |
 | xGF_H | 2.1 | home xG table |
 | xGF_A | 2.02 | derived: 2×xGF − xGF_H |
-| Manager | TBD | update pre-season |
+| Manager | Hansi Flick |
 | Key transfers IN | Anthony Gordon (Newcastle), Karim Adeyemi | Gordon: elite wide attacker, direct, high press; Adeyemi: pace, goals from wide |
 | Key transfers OUT | Robert Lewandowski, Marcus Rashford (loan ended) | Lewandowski was primary #9 — major loss in box presence |
 ## Squad (2026-27)

@@ -107,7 +107,7 @@ source: FootyStats 2025-26
 | xGF_H | 1.73 | home xG table |
 | xGF_A | 1.43 | derived: 2×xGF − xGF_H |
 | Manager | Edin Terzić | appointed 1 July 2026; replaced Ernesto Valverde (end of contract 24 May) |
-| Key transfers | TBD | update pre-season |
+| Key transfers | No major changes confirmed |
 ## Squad (2026-27)
 | Pos | Player | Note |
 |---|---|---|

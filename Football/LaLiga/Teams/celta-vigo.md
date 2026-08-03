@@ -106,8 +106,8 @@ source: FootyStats 2025-26
 | xGA/90 | 1.46 | FootyStats xG table |
 | xGF_H | 1.36 | home xG table |
 | xGF_A | 1.06 | derived: 2×xGF − xGF_H |
-| Manager | TBD | update pre-season |
-| Key transfers | TBD | update pre-season |
+| Manager | Claudio Giráldez |
+| Key transfers | No major changes confirmed |
 ## Squad (2026-27)
 | Pos | Player | Note |
 |---|---|---|

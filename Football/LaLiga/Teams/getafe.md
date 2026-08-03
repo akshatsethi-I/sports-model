@@ -106,8 +106,8 @@ source: FootyStats 2025-26
 | xGA/90 | 1.3 | FootyStats xG table |
 | xGF_H | 1.06 | home xG table |
 | xGF_A | 1.08 | derived: 2×xGF − xGF_H |
-| Manager | TBD | update pre-season |
-| Key transfers | TBD | update pre-season |
+| Manager | José Bordalás |
+| Key transfers | No major changes confirmed |
 ## Squad (2026-27)
 | Pos | Player | Note |
 |---|---|---|

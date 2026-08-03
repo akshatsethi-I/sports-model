@@ -55,8 +55,8 @@ last_updated: 2026-07-28
 | xGA/90 | 2.13 | Segunda raw 1.44 × 1.478 |
 | xGF_H | 1.65 | estimated home split × 0.871 |
 | xGF_A | 1.18 | estimated away split × 0.871 |
-| Manager | TBD | update pre-season |
-| Key transfers | TBD | update pre-season |
+| Manager | Iñigo Vélez |
+| Key transfers | No major changes confirmed |
 
 ## Squad (2026-27)
 | Pos | Player | Note |

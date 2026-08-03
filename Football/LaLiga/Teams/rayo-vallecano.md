@@ -107,7 +107,7 @@ source: FootyStats 2025-26
 | xGF_H | 1.81 | home xG table |
 | xGF_A | 1.29 | derived: 2×xGF − xGF_H |
 | Manager | Beñat San José | appointed 18 June 2026; replaced Iñigo Pérez (end of contract 29 May, moved to Villarreal) |
-| Key transfers | TBD | update pre-season |
+| Key transfers | No major changes confirmed |
 ## Squad (2026-27)
 | Pos | Player | Note |
 |---|---|---|

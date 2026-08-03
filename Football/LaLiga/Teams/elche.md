@@ -107,7 +107,7 @@ source: FootyStats 2025-26
 | xGF_H | 1.57 | home xG table |
 | xGF_A | 1.01 | derived: 2×xGF − xGF_H |
 | Manager | Martín Anselmi | appointed 13 June 2026; replaced Eder Sarabia (resigned 27 May) |
-| Key transfers | TBD | update pre-season |
+| Key transfers | No major changes confirmed |
 ## Squad (2026-27)
 | Pos | Player | Note |
 |---|---|---|
