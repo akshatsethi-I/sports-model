@@ -108,3 +108,29 @@ source: FootyStats 2025-26
 | xGF_A | 1.38 | derived: 2×xGF − xGF_H |
 | Manager | TBD | update pre-season |
 | Key transfers | TBD | update pre-season |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Álvaro Valles | #1 |
+| GK | Diego Conde | backup, on loan from Villarreal |
+| DF | Héctor Bellerín | RB, 3rd captain |
+| DF | Diego Llorente | CB |
+| DF | Natan | CB |
+| DF | Marc Bartra | CB, vice-captain |
+| DF | Fran García | LB |
+| DF | Valentín Gómez | CB |
+| DF | Junior Firpo | LB |
+| DF | Ángel Ortiz | DF |
+| MF | Pablo Fornals | CM |
+| MF | Álvaro Fidalgo | CM |
+| MF | Rodrigo Riquelme | CM/wide |
+| MF | Nelson Deossa | CM |
+| MF | Giovani Lo Celso | CM |
+| MF | Marc Roca | DM |
+| MF | Isco | captain, AM |
+| MF | Aitor Ruibal | wide, 4th captain |
+| MF | Facundo Bernal | CM |
+| FW | Antony | wide |
+| FW | Abde Ezzalzouli | wide |
+| FW | Cucho Hernández | striker |
+| FW | Pablo García | wide |

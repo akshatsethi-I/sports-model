@@ -108,3 +108,30 @@ source: FootyStats 2025-26
 | xGF_A | 1.29 | derived: 2×xGF − xGF_H |
 | Manager | Beñat San José | appointed 18 June 2026; replaced Iñigo Pérez (end of contract 29 May, moved to Villarreal) |
 | Key transfers | TBD | update pre-season |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Dani Cárdenas | #1 |
+| GK | Augusto Batalla | backup |
+| GK | Miguel Morro | backup |
+| DF | Andrei Rațiu | RB |
+| DF | Pep Chavarría | CB |
+| DF | Luiz Felipe | CB |
+| DF | Iván Balliu | RB |
+| DF | Pelayo Fernández | DF |
+| DF | Florian Lejeune | CB |
+| DF | Nobel Mendy | DF |
+| DF | Jozhua Vertrouwd | DF |
+| MF | Pedro Díaz | CM |
+| MF | Pathé Ciss | DM |
+| MF | Unai López | CM |
+| MF | Óscar Valentín | captain, CM |
+| MF | Diego Méndez | CM |
+| FW | Isi Palazón | vice-captain, wide |
+| FW | Alemão | wide |
+| FW | Sergio Camello | striker |
+| FW | Randy Nteka | wide |
+| FW | Etienne Eto'o | wide |
+| FW | Álvaro García | wide |
+| FW | Jorge de Frutos | wide |
+| FW | Fran Pérez | wide |

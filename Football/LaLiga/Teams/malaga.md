@@ -57,3 +57,34 @@ last_updated: 2026-07-28
 | xGF_A | 1.22 | Segunda 1.40 × 0.871 |
 | Manager | TBD | update pre-season |
 | Key transfers | TBD | update pre-season |
+
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Alfonso Herrero | vice-captain |
+| GK | Carlos López | backup |
+| DF | Carlos Puga | CB |
+| DF | Einar Galilea | CB |
+| DF | Moussa Diarra | CB |
+| DF | Diego Murillo | DF |
+| DF | Dani Sánchez | DF |
+| DF | Fernando Calero | CB |
+| DF | Ángel Recio | DF |
+| DF | Rafita | DF |
+| DF | Álex Pastor | DF |
+| DF | José Salinas | DF, on loan from Espanyol |
+| MF | Ramón | captain, CM |
+| MF | Haitam | CM |
+| MF | Juanpe | CM |
+| MF | David Larrubia | CM |
+| MF | Joaquín Muñoz | CM |
+| MF | Carlos Dotor | CM, on loan from Celta |
+| MF | Rafa | CM |
+| MF | Juan Cruz | CM, on loan from Leganés |
+| MF | Dani Lorenzo | CM |
+| MF | Izan Merino | CM |
+| MF | Julen Lobete | CM |
+| MF | Aarón Ochoa | CM |
+| FW | Chupete | wide |
+| FW | Eneko Jauregi | wide |
+| FW | Adrián Niño | wide |

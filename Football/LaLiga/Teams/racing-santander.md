@@ -57,3 +57,24 @@ last_updated: 2026-07-28
 | xGF_A | 1.18 | estimated away split × 0.871 |
 | Manager | TBD | update pre-season |
 | Key transfers | TBD | update pre-season |
+
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Álvaro Mantilla | #1 |
+| GK | Simon Eriksson | backup |
+| DF | Álvaro Mantilla | CB |
+| DF | Manu Hernando | CB |
+| DF | Íñigo Sainz-Maza | captain, CB |
+| DF | Facundo González | DF |
+| DF | Jorge Salinas | DF |
+| MF | Iñigo Vicente | CM |
+| MF | Maguette Gueye | CM |
+| MF | Gustavo Puerta | CM |
+| MF | Sergio Martínez | CM |
+| MF | Sergio Canales | CM |
+| FW | Giorgi Guliashvili | wide |
+| FW | Juan Carlos Arana | striker |
+| FW | Andrés Martín | striker |
+| FW | Asier Villalibre | striker |
+| FW | Yassir Zabiri | wide, on loan from Rennes |

@@ -108,3 +108,27 @@ source: FootyStats 2025-26
 | xGF_A | 1.04 | derived: 2×xGF − xGF_H |
 | Manager | Luis Miguel Ramis | appointed 10 June 2026; replaced Alessio Lisci (sacked 25 May) |
 | Key transfers | TBD | update pre-season |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Sergio Herrera | 3rd captain |
+| GK | Aitor Fernández | backup |
+| DF | Iker Benito | DF |
+| DF | Jorge Herrando | CB |
+| DF | Valentin Rosier | RB |
+| DF | Enzo Boyomo | CB |
+| DF | Abel Bretones | CB |
+| DF | Alejandro Catena | CB |
+| DF | Iñigo Arguibide | DF |
+| MF | Lucas Torró | DM |
+| MF | Jon Moncayola | CM |
+| MF | Iker Muñoz | CM |
+| MF | Aimar Oroz | AM |
+| MF | Rubén García | vice-captain, wide/CM |
+| MF | Moi Gómez | CM/wide |
+| MF | Asier Osambela | CM |
+| MF | Jonathan Dubasin | CM |
+| FW | Raúl García | striker |
+| FW | Kike Barja | captain, wide |
+| FW | Ante Budimir | striker |
+| FW | Raúl Moro | wide |
