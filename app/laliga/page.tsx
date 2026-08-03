@@ -4,67 +4,6 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 
-// ─── Fixture data ─────────────────────────────────────────────────────────────
-const FIXTURES: { gw: number; date: string; home: string; away: string }[] = [
-  // GW1 — Aug 15–19
-  { gw: 1, date: "Sat 15 Aug", home: "Alavés",              away: "Getafe" },
-  { gw: 1, date: "Sat 15 Aug", home: "Sevilla",             away: "Rayo Vallecano" },
-  { gw: 1, date: "Sun 16 Aug", home: "Racing Santander",    away: "Villarreal" },
-  { gw: 1, date: "Sun 16 Aug", home: "Espanyol",            away: "Levante" },
-  { gw: 1, date: "Sun 16 Aug", home: "Celta Vigo",          away: "Osasuna" },
-  { gw: 1, date: "Mon 17 Aug", home: "Deportivo",           away: "Elche" },
-  { gw: 1, date: "Wed 19 Aug", home: "Atlético Madrid",     away: "Málaga" },
-  // GW2 — Aug 20–24
-  { gw: 2, date: "Thu 20 Aug", home: "Rayo Vallecano",      away: "Alavés" },
-  { gw: 2, date: "Fri 21 Aug", home: "Real Betis",          away: "Real Sociedad" },
-  { gw: 2, date: "Sat 22 Aug", home: "Athletic Bilbao",     away: "Sevilla" },
-  { gw: 2, date: "Sat 22 Aug", home: "Valencia",            away: "Celta Vigo" },
-  { gw: 2, date: "Sat 22 Aug", home: "Espanyol",            away: "Real Madrid" },
-  { gw: 2, date: "Sun 23 Aug", home: "Atlético Madrid",     away: "Villarreal" },
-  { gw: 2, date: "Sun 23 Aug", home: "Getafe",              away: "Racing Santander" },
-  { gw: 2, date: "Sun 23 Aug", home: "Elche",               away: "Barcelona" },
-  { gw: 2, date: "Mon 24 Aug", home: "Osasuna",             away: "Levante" },
-  { gw: 2, date: "Mon 24 Aug", home: "Málaga",              away: "Deportivo" },
-  // GW3 — Aug 25–27
-  { gw: 3, date: "Tue 25 Aug", home: "Valencia",            away: "Real Betis" },
-  { gw: 3, date: "Wed 26 Aug", home: "Real Madrid",         away: "Real Sociedad" },
-  { gw: 3, date: "Thu 27 Aug", home: "Atlético Madrid",     away: "Athletic Bilbao" },
-  // GW4 — Aug 30
-  { gw: 4, date: "Sun 30 Aug", home: "Alavés",              away: "Villarreal" },
-  { gw: 4, date: "Sun 30 Aug", home: "Barcelona",           away: "Rayo Vallecano" },
-  { gw: 4, date: "Sun 30 Aug", home: "Celta Vigo",          away: "Athletic Bilbao" },
-  { gw: 4, date: "Sun 30 Aug", home: "Deportivo",           away: "Valencia" },
-  { gw: 4, date: "Sun 30 Aug", home: "Levante",             away: "Real Betis" },
-  { gw: 4, date: "Sun 30 Aug", home: "Osasuna",             away: "Getafe" },
-  { gw: 4, date: "Sun 30 Aug", home: "Racing Santander",    away: "Elche" },
-  { gw: 4, date: "Sun 30 Aug", home: "Real Madrid",         away: "Málaga" },
-  { gw: 4, date: "Sun 30 Aug", home: "Real Sociedad",       away: "Espanyol" },
-  { gw: 4, date: "Sun 30 Aug", home: "Sevilla",             away: "Atlético Madrid" },
-  // GW5 — Sep 6
-  { gw: 5, date: "Sun 6 Sep",  home: "Athletic Bilbao",     away: "Atlético Madrid" },
-  { gw: 5, date: "Sun 6 Sep",  home: "Alavés",              away: "Osasuna" },
-  { gw: 5, date: "Sun 6 Sep",  home: "Elche",               away: "Real Sociedad" },
-  { gw: 5, date: "Sun 6 Sep",  home: "Espanyol",            away: "Sevilla" },
-  { gw: 5, date: "Sun 6 Sep",  home: "Getafe",              away: "Celta Vigo" },
-  { gw: 5, date: "Sun 6 Sep",  home: "Málaga",              away: "Levante" },
-  { gw: 5, date: "Sun 6 Sep",  home: "Rayo Vallecano",      away: "Racing Santander" },
-  { gw: 5, date: "Sun 6 Sep",  home: "Real Betis",          away: "Real Madrid" },
-  { gw: 5, date: "Sun 6 Sep",  home: "Valencia",            away: "Barcelona" },
-  { gw: 5, date: "Sun 6 Sep",  home: "Villarreal",          away: "Deportivo" },
-];
-
-const GWS = [...new Set(FIXTURES.map(f => f.gw))];
-
-const FIXTURE_NAME_MAP: Record<string, string> = {
-  "Barcelona": "barcelona", "Real Madrid": "real-madrid", "Athletic Bilbao": "athletic-bilbao",
-  "Atlético Madrid": "atletico-madrid", "Real Betis": "real-betis", "Rayo Vallecano": "rayo-vallecano",
-  "Real Sociedad": "real-sociedad", "Villarreal": "villarreal", "Valencia": "valencia",
-  "Celta Vigo": "celta-vigo", "Getafe": "getafe", "Osasuna": "osasuna",
-  "Sevilla": "sevilla", "Alavés": "alaves", "Espanyol": "espanyol",
-  "Elche": "elche", "Levante": "levante", "Racing Santander": "racing-santander",
-  "Deportivo": "deportivo-coruna", "Málaga": "malaga",
-};
-
 // ─── Team data (2026-27 La Liga, xGF/xGA from FootyStats 2025-26) ────────────
 const TEAMS = [
   { slug: "barcelona",          name: "Barcelona",           abbr: "BAR", xGF: 2.06, xGA: 1.05, xGF_H: 2.10, xGF_A: 2.02, color: "#A50044" },
@@ -173,20 +112,12 @@ export default function LaLiga() {
   }]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [selectedGW, setSelectedGW] = useState<number>(1);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
-
-  function selectFixture(home: string, away: string) {
-    const h = TEAMS.find(t => t.slug === FIXTURE_NAME_MAP[home]);
-    const a = TEAMS.find(t => t.slug === FIXTURE_NAME_MAP[away]);
-    if (!h || !a) return;
-    setHomeTeam(h); setAwayTeam(a); setPred(computePrediction(h, a));
-  }
 
   function selectHome(slug: string) {
     const t = TEAMS.find(t => t.slug === slug)!;
@@ -294,39 +225,6 @@ export default function LaLiga() {
       </header>
 
       <div className="flex-1 max-w-5xl mx-auto w-full px-4 py-5 flex flex-col gap-4">
-
-        {/* Fixture browser */}
-        <div className="rounded-2xl p-4" style={{ background: "#0d0d18", border: "1px solid #1a1a2e" }}>
-          <p className="text-xs font-bold tracking-widest mb-3" style={{ color: "#2d3f5a" }}>FIXTURES — LA LIGA 2026-27</p>
-          <div className="flex gap-2 mb-3 flex-wrap">
-            {GWS.map(gw => (
-              <button key={gw} onClick={() => setSelectedGW(gw)}
-                className="text-xs px-3 py-1 rounded-full font-semibold transition-all"
-                style={selectedGW === gw
-                  ? { background: "#3d1a6e", color: "#a78bfa", border: "1px solid #5b21b6" }
-                  : { background: "#111120", color: "#64748b", border: "1px solid #1a1a2e" }}>
-                GW{gw}
-              </button>
-            ))}
-          </div>
-          <div className="space-y-1">
-            {FIXTURES.filter(f => f.gw === selectedGW).map((f, i) => {
-              const isSelected = FIXTURE_NAME_MAP[f.home] === homeTeam.slug && FIXTURE_NAME_MAP[f.away] === awayTeam.slug;
-              return (
-                <div key={i} onClick={() => selectFixture(f.home, f.away)}
-                  className="flex items-center justify-between px-3 py-2 rounded-xl cursor-pointer transition-all"
-                  style={isSelected
-                    ? { background: "#160c2e", border: "1px solid #5b21b6" }
-                    : { background: "#111120", border: "1px solid transparent" }}>
-                  <span className="text-xs w-20" style={{ color: "#3d4f6b" }}>{f.date}</span>
-                  <span className="text-sm font-semibold flex-1 text-right" style={{ color: isSelected ? "#a78bfa" : "#cbd5e1" }}>{f.home}</span>
-                  <span className="text-xs mx-3 font-bold" style={{ color: "#2d3f5a" }}>vs</span>
-                  <span className="text-sm font-semibold flex-1" style={{ color: isSelected ? "#a78bfa" : "#cbd5e1" }}>{f.away}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
 
         {/* Team pickers */}
         <div className="rounded-2xl p-4" style={{ background: "#0d0d18", border: "1px solid #1a1a2e" }}>
