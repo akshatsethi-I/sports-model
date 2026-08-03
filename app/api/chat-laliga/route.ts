@@ -48,6 +48,18 @@ function stripRawTables(content: string): string {
                 .replace(/## Opta Data[\s\S]*?(?=## ✅ Model Inputs|## Cross-links|$)/m, "");
 }
 
+function extractSquadList(content: string, teamName: string): string {
+  const squadMatch = content.match(/## Squad[\s\S]*?(?=##|$)/m);
+  if (!squadMatch) return "";
+  const rows = squadMatch[0].split("\n").filter(l => l.startsWith("|") && !l.includes("Pos") && !l.includes("---"));
+  const players = rows.map(r => {
+    const cols = r.split("|").map(c => c.trim()).filter(Boolean);
+    return cols.length >= 2 ? `${cols[0]} ${cols[1]}` : "";
+  }).filter(Boolean);
+  if (!players.length) return "";
+  return `\nAUTHORITATIVE SQUAD — ${teamName} (2026-27). ONLY these players exist at this club:\n${players.join(", ")}\n`;
+}
+
 function buildContext(messages: { role: string; content: string }[]): string {
   const allText = messages.map((m) => m.content).join(" ");
   const teams = extractTeams(allText);
@@ -58,13 +70,12 @@ function buildContext(messages: { role: string; content: string }[]): string {
     const filePath = path.join(VAULT_PATH, `Football/LaLiga/Teams/${slug}.md`);
     let content = readFile(filePath);
     if (content) {
+      const squadList = extractSquadList(content, slug);
       content = stripRawTables(content);
-      const squadMatch = content.match(/(## Model Inputs[\s\S]*)/);
-      const frontMatter = content.slice(0, 800);
-      const priority = squadMatch ? squadMatch[1] : "";
-      content = frontMatter + "\n\n" + priority;
-      if (content.length > 3000) content = content.slice(0, 3000) + "\n...[truncated]";
-      sections.push(`\n\n=== LaLiga/Teams/${slug}.md ===\n${content}`);
+      const modelInputs = content.match(/(## Model Inputs[\s\S]*?)(?=## Squad|$)/m);
+      const context = (modelInputs ? modelInputs[1] : content.slice(0, 800));
+      const final = squadList + "\n" + context;
+      sections.push(`\n\n=== LaLiga/Teams/${slug}.md ===\n${final.slice(0, 3000)}`);
     }
   }
 
@@ -85,6 +96,7 @@ Rules:
 - Flag ⚠️ on BTTS No and Under 2.5 picks.
 - Never mention files or sources. Never refuse to answer.
 - When asked for picks, give: Match Outlook (2 sentences), 4-5 Best Picks (market, pick, %, stars), Key Risks (2 bullets).
+- CRITICAL: When discussing players at a specific club, ONLY name players from the AUTHORITATIVE SQUAD list provided in the context. Never use pre-training knowledge to add players. If a player is not in the squad list, they are NOT at that club — do not mention them.
 
 La Liga context:
 - Barcelona and Real Madrid are the dominant sides with xGF above 2.0.
