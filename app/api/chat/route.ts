@@ -92,7 +92,12 @@ function buildContext(messages: { role: string; content: string }[]): string {
       let content = readFile(plPath) || readFile(legacyPath);
       if (content) {
         content = stripRawTables(content);
-        if (content.length > 1200) content = content.slice(0, 1200) + "\n...[truncated]";
+        // Extract Model Inputs + Squad sections preferentially, then pad with front matter
+        const squadMatch = content.match(/(## Model Inputs[\s\S]*)/);
+        const frontMatter = content.slice(0, 800);
+        const priority = squadMatch ? squadMatch[1] : "";
+        content = frontMatter + "\n\n" + priority;
+        if (content.length > 3000) content = content.slice(0, 3000) + "\n...[truncated]";
         sections.push(`\n\n=== PL/Teams/${slug}.md ===\n${content}`);
       }
     }
