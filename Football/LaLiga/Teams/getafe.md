@@ -108,3 +108,26 @@ source: FootyStats 2025-26
 | xGF_A | 1.08 | derived: 2×xGF − xGF_H |
 | Manager | TBD | update pre-season |
 | Key transfers | TBD | update pre-season |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Jiří Letáček | #1 |
+| GK | David Soria | vice-captain |
+| DF | Dakonam Djené | captain, CB |
+| DF | Abdel Abqar | CB |
+| DF | Kiko Femenía | RB |
+| DF | Davinchi | DF |
+| DF | Sebastián Boselli | CB |
+| DF | Zaid Romero | CB |
+| DF | Jean Ives Valou | DF, on loan from Villarreal |
+| DF | Andrés García | DF, on loan from Aston Villa |
+| DF | Juan Berrocal | DF |
+| MF | Mario Martín | CM |
+| MF | Ramon Terrats | CM |
+| MF | Christantus Uche | CM |
+| MF | Javi Muñoz | CM |
+| MF | Yvan Neyou | DM |
+| FW | Juanmi | striker |
+| FW | Borja Mayoral | striker |
+| FW | Martín Satriano | striker |
+| FW | Álex Sancris | wide |

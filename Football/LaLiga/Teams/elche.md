@@ -108,3 +108,28 @@ source: FootyStats 2025-26
 | xGF_A | 1.01 | derived: 2×xGF − xGF_H |
 | Manager | Martín Anselmi | appointed 13 June 2026; replaced Eder Sarabia (resigned 27 May) |
 | Key transfers | TBD | update pre-season |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Matías Dituro | #1 |
+| GK | Alejandro Iturbe | backup |
+| DF | Bambo Diaby | CB |
+| DF | Pedro Bigas | captain, CB |
+| DF | John Donald | DF |
+| DF | David Affengruber | DF, 4th captain |
+| DF | Víctor Chust | CB |
+| DF | Matía Barzic | DF |
+| DF | Buba Sangaré | DF |
+| MF | Federico Redondo | CM |
+| MF | Yago Santiago | CM |
+| MF | Marc Aguado | CM |
+| MF | Germán Valera | CM |
+| MF | Gonzalo Villar | CM |
+| MF | Martim Neto | CM |
+| MF | Josan | CM, 3rd captain |
+| MF | Grady Diangana | wide/CM |
+| MF | Ali Houary | CM |
+| MF | Adam Boayar | CM |
+| FW | Tete Morente | wide |
+| FW | Lucas Cepeda | wide |
+| FW | Fer Niño | striker |

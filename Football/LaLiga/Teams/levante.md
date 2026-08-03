@@ -108,3 +108,34 @@ source: FootyStats 2025-26
 | xGF_A | 1.17 | derived: 2×xGF − xGF_H |
 | Manager | TBD | update pre-season |
 | Key transfers | TBD | update pre-season |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Pablo Campos | #1 |
+| GK | Mathew Ryan | backup |
+| GK | Álex Primo | backup |
+| GK | Dani Martín | backup |
+| DF | Adrián de la Fuente | DF, 3rd captain |
+| DF | Unai Elgezabal | CB, vice-captain |
+| DF | Jorge Cabello | CB |
+| DF | Víctor García | DF |
+| DF | Jeremy Toljan | RB |
+| DF | Manu Sánchez | LB, on loan from Celta |
+| DF | Nacho Pérez | DF |
+| DF | Aïssa Mandi | CB |
+| DF | Xavi Grande | DF |
+| MF | Jon Ander Olasagasti | CM |
+| MF | Kervin Arriaga | CM |
+| MF | Enzo Bardeli | CM |
+| MF | Oriol Rey | CM |
+| MF | Carlos Álvarez | CM |
+| MF | Kareem Tunde | CM |
+| MF | Paco Cortés | CM |
+| MF | Tay Abed | CM |
+| MF | Dani Requena | CM, on loan from Villarreal |
+| MF | Edgar Alcañiz | CM |
+| MF | Hugo Sotelo | CM, on loan from Celta |
+| FW | Roger Brugué | wide, 4th captain |
+| FW | Iván Romero | striker |
+| FW | Karl Etta Eyong | wide |
+| FW | Yanis Musuayi | wide |

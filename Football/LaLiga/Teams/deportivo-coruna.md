@@ -57,3 +57,33 @@ last_updated: 2026-07-28
 | xGF_A | 1.22 | Segunda 1.40 × 0.871 |
 | Manager | TBD | update pre-season |
 | Key transfers | TBD | update pre-season |
+
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Germán Parreño | #1 |
+| GK | Eric Puerto | backup |
+| GK | Leo Román | backup |
+| GK | Álvaro Fernández | backup |
+| DF | Adrià Altimira | RB |
+| DF | Arnau Comas | CB |
+| DF | Lucas Noubi | CB |
+| DF | Dani Barcia | CB |
+| DF | Giacomo Quagliata | LB |
+| DF | Miguel Loureiro | DF |
+| DF | Ximo Navarro | CB |
+| DF | Bright Ede | DF |
+| MF | Charlie Patino | CM |
+| MF | Diego Villares | captain, CM |
+| MF | Riki Rodríguez | CM |
+| MF | Lorenzo Amatucci | CM |
+| MF | Teun Gijselhart | CM |
+| MF | Jonathan Asp Jensen | CM |
+| MF | José Ángel | CM |
+| MF | Mario Soriano | CM |
+| FW | Pierre-Emerick Aubameyang | striker |
+| FW | Zakaria Eddahchouri | wide |
+| FW | Yeremay Hernández | wide |
+| FW | David Mella | wide |
+| FW | Luismi Cruz | wide |
+| FW | Bil Nsongo | wide |

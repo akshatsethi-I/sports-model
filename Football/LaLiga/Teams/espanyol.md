@@ -108,3 +108,31 @@ source: FootyStats 2025-26
 | xGF_A | 1.27 | derived: 2×xGF − xGF_H |
 | Manager | TBD | update pre-season |
 | Key transfers | TBD | update pre-season |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Ángel Fortuño | #1 |
+| GK | Marko Dmitrović | backup |
+| GK | Pol Tristán | backup |
+| DF | Rubén Sánchez | RB |
+| DF | Leandro Cabrera | CB, captain |
+| DF | Miguel Rubio | CB |
+| DF | Omar El Hilali | CB |
+| DF | Clemens Riedel | DF |
+| DF | Quilindschy Hartman | LB, on loan from Burnley |
+| DF | Roger Hinojo | DF |
+| MF | Urko González de Zárate | CM |
+| MF | Edu Expósito | CM |
+| MF | Pol Lozano | CM, 3rd captain |
+| MF | Charles Pickel | DM |
+| MF | Javi Puado | vice-captain, wide |
+| MF | Álex Calatrava | CM |
+| MF | Gabriel Moscardo | CM, on loan from PSG |
+| MF | Rafel Bauzà | CM |
+| FW | Roberto Fernández | striker |
+| FW | Pere Milla | wide |
+| FW | Kike García | striker |
+| FW | Tyrhys Dolan | wide |
+| FW | Jofre Carreras | wide |
+| FW | Javi Hernández | wide |
+| FW | Marcos Fernández | wide |
