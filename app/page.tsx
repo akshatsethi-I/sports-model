@@ -4,6 +4,56 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 
+// ─── Fixture data ─────────────────────────────────────────────────────────────
+const FIXTURES: { gw: number; date: string; home: string; away: string }[] = [
+  // GW1 — 21–24 Aug
+  { gw: 1, date: "Fri 21 Aug", home: "Arsenal",        away: "Coventry City" },
+  { gw: 1, date: "Sat 22 Aug", home: "Hull City",       away: "Man United" },
+  { gw: 1, date: "Sat 22 Aug", home: "Everton",         away: "Crystal Palace" },
+  { gw: 1, date: "Sat 22 Aug", home: "Ipswich Town",    away: "Sunderland" },
+  { gw: 1, date: "Sat 22 Aug", home: "Nottm Forest",    away: "Leeds United" },
+  { gw: 1, date: "Sat 22 Aug", home: "Brentford",       away: "Tottenham" },
+  { gw: 1, date: "Sun 23 Aug", home: "Brighton",        away: "Aston Villa" },
+  { gw: 1, date: "Sun 23 Aug", home: "Man City",        away: "Bournemouth" },
+  { gw: 1, date: "Sun 23 Aug", home: "Newcastle",       away: "Liverpool" },
+  { gw: 1, date: "Mon 24 Aug", home: "Fulham",          away: "Chelsea" },
+  // GW2 — 28–31 Aug
+  { gw: 2, date: "Fri 28 Aug", home: "Crystal Palace",  away: "Man City" },
+  { gw: 2, date: "Sat 29 Aug", home: "Liverpool",       away: "Nottm Forest" },
+  { gw: 2, date: "Sat 29 Aug", home: "Bournemouth",     away: "Everton" },
+  { gw: 2, date: "Sat 29 Aug", home: "Coventry City",   away: "Hull City" },
+  { gw: 2, date: "Sat 29 Aug", home: "Tottenham",       away: "Newcastle" },
+  { gw: 2, date: "Sun 30 Aug", home: "Chelsea",         away: "Brighton" },
+  { gw: 2, date: "Sun 30 Aug", home: "Leeds United",    away: "Brentford" },
+  { gw: 2, date: "Sun 30 Aug", home: "Sunderland",      away: "Fulham" },
+  { gw: 2, date: "Sun 30 Aug", home: "Man United",      away: "Ipswich Town" },
+  { gw: 2, date: "Mon 31 Aug", home: "Aston Villa",     away: "Arsenal" },
+  // GW3 — 4–7 Sep
+  { gw: 3, date: "Fri 4 Sep",  home: "Ipswich Town",   away: "Liverpool" },
+  { gw: 3, date: "Sat 5 Sep",  home: "Newcastle",       away: "Bournemouth" },
+  { gw: 3, date: "Sat 5 Sep",  home: "Brentford",       away: "Sunderland" },
+  { gw: 3, date: "Sat 5 Sep",  home: "Brighton",        away: "Leeds United" },
+  { gw: 3, date: "Sat 5 Sep",  home: "Fulham",          away: "Crystal Palace" },
+  { gw: 3, date: "Sat 5 Sep",  home: "Man City",        away: "Coventry City" },
+  { gw: 3, date: "Sat 5 Sep",  home: "Nottm Forest",    away: "Tottenham" },
+  { gw: 3, date: "Sun 6 Sep",  home: "Everton",         away: "Man United" },
+  { gw: 3, date: "Sun 6 Sep",  home: "Arsenal",         away: "Chelsea" },
+  { gw: 3, date: "Mon 7 Sep",  home: "Hull City",       away: "Aston Villa" },
+];
+
+const GWS = [...new Set(FIXTURES.map(f => f.gw))];
+
+// Map display names in fixture list → team slugs
+const FIXTURE_NAME_MAP: Record<string, string> = {
+  "Arsenal": "arsenal", "Man City": "manchester-city", "Man United": "manchester-utd",
+  "Aston Villa": "aston-villa", "Liverpool": "liverpool", "Bournemouth": "bournemouth",
+  "Sunderland": "sunderland", "Brighton": "brighton", "Brentford": "brentford",
+  "Chelsea": "chelsea", "Fulham": "fulham", "Newcastle": "newcastle",
+  "Everton": "everton", "Leeds United": "leeds-united", "Crystal Palace": "crystal-palace",
+  "Nottm Forest": "nottm-forest", "Tottenham": "tottenham", "Coventry City": "coventry-city",
+  "Ipswich Town": "ipswich", "Hull City": "hull-city",
+};
+
 // ─── Team data (post-transfer, pre-season 2026-27) ───────────────────────────
 const TEAMS = [
   { slug: "arsenal",          name: "Arsenal",          abbr: "ARS", xGF: 1.67, xGA: 0.95, xGF_H: 1.83, xGF_A: 1.57, color: "#EF0107" },
@@ -106,6 +156,7 @@ export default function Home() {
   const [homeTeam, setHomeTeam] = useState(TEAMS[0]);
   const [awayTeam, setAwayTeam] = useState(TEAMS[4]);
   const [pred, setPred] = useState<Prediction>(() => computePrediction(TEAMS[0], TEAMS[4]));
+  const [selectedGW, setSelectedGW] = useState<number>(1);
   const [messages, setMessages] = useState<Message[]>([{
     role: "assistant",
     content: "Premier League 2026-27 predictions. Select a home and away team to run the Poisson model, or ask me anything about any fixture.",
@@ -136,6 +187,15 @@ export default function Home() {
   }
 
   const cancelMessage = () => { abortRef.current?.abort(); setLoading(false); };
+
+  function selectFixture(home: string, away: string) {
+    const h = TEAMS.find(t => t.slug === FIXTURE_NAME_MAP[home]);
+    const a = TEAMS.find(t => t.slug === FIXTURE_NAME_MAP[away]);
+    if (!h || !a) return;
+    setHomeTeam(h);
+    setAwayTeam(a);
+    setPred(computePrediction(h, a));
+  }
 
   const sendMessage = async (text?: string) => {
     const content = (text || input).trim();
@@ -225,6 +285,47 @@ export default function Home() {
       </header>
 
       <div className="flex-1 max-w-5xl mx-auto w-full px-4 py-5 flex flex-col gap-4">
+
+        {/* Fixture browser */}
+        <div className="rounded-2xl p-4" style={{ background: "#0d0d18", border: "1px solid #1a1a2e" }}>
+          <div className="flex items-center justify-between mb-3">
+            <p className="text-xs font-bold tracking-widest" style={{ color: "#2d3f5a" }}>FIXTURES</p>
+            <div className="flex gap-1">
+              {GWS.map(gw => (
+                <button key={gw} onClick={() => setSelectedGW(gw)}
+                  className="text-xs px-2.5 py-1 rounded-lg font-semibold transition-all"
+                  style={{
+                    background: selectedGW === gw ? "#1a3a6e" : "#111120",
+                    color: selectedGW === gw ? "#60a5fa" : "#3d4f6b",
+                    border: `1px solid ${selectedGW === gw ? "#2a5298" : "#1a1a2e"}`,
+                  }}>
+                  GW{gw}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-1">
+            {FIXTURES.filter(f => f.gw === selectedGW).map((f, i) => {
+              const isSelected = homeTeam.slug === FIXTURE_NAME_MAP[f.home] && awayTeam.slug === FIXTURE_NAME_MAP[f.away];
+              return (
+                <button key={i} onClick={() => selectFixture(f.home, f.away)}
+                  className="w-full flex items-center justify-between rounded-xl px-3 py-2 text-left transition-all"
+                  style={{
+                    background: isSelected ? "#0c1c38" : "#111120",
+                    border: `1px solid ${isSelected ? "#2a5298" : "#1a1a2e"}`,
+                  }}>
+                  <span className="text-xs" style={{ color: "#3d4f6b", minWidth: 72 }}>{f.date}</span>
+                  <div className="flex-1 flex items-center justify-center gap-2">
+                    <span className="text-sm font-semibold" style={{ color: isSelected ? "#f1f5f9" : "#94a3b8" }}>{f.home}</span>
+                    <span className="text-xs" style={{ color: "#2d3f5a" }}>vs</span>
+                    <span className="text-sm font-semibold" style={{ color: isSelected ? "#f1f5f9" : "#94a3b8" }}>{f.away}</span>
+                  </div>
+                  {isSelected && <span className="text-xs" style={{ color: "#60a5fa" }}>●</span>}
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
         {/* Team pickers */}
         <div className="rounded-2xl p-4" style={{ background: "#0d0d18", border: "1px solid #1a1a2e" }}>
