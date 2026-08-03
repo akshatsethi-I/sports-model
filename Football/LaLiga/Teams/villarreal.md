@@ -108,3 +108,29 @@ source: FootyStats 2025-26
 | xGF_A | 1.06 | derived: 2×xGF − xGF_H |
 | Manager | Iñigo Pérez | appointed 1 June 2026; replaced Marcelino (end of contract) |
 | Key transfers OUT | Thomas Partey | Midfield engine gone — press resistance and ball recovery will drop |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Luiz Júnior | #1 |
+| GK | Péter Gulácsi | backup |
+| DF | Logan Costa | CB |
+| DF | Alex Freeman | CB |
+| DF | Willy Kambwala | CB |
+| DF | Pau Navarro | CB |
+| DF | Juan Foyth | RB, 4th captain |
+| DF | Renato Veiga | CB |
+| DF | Santiago Mouriño | DF |
+| DF | Sergi Cardona | DF, 5th captain |
+| DF | Carlos Romero | DF |
+| MF | Santi Comesaña | CM, 3rd captain |
+| MF | Tajon Buchanan | wide/CM |
+| MF | Pape Gueye | DM |
+| MF | Alberto Moleiro | AM |
+| MF | Thiago Fernández | CM |
+| MF | Ilias Akhomach | wide |
+| FW | Gerard Moreno | captain, striker |
+| FW | Georges Mikautadze | striker |
+| FW | Nicolas Pépé | wide |
+| FW | Tani Oluwaseyi | wide |
+| FW | Ayoze Pérez | wide |
+| FW | Pau Cabanes | wide |

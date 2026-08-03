@@ -109,3 +109,32 @@ source: FootyStats 2025-26
 | Manager | José Mourinho | appointed 13 June 2026; replaced Álvaro Arbeloa (mutual consent 9 Jun) |
 | Key transfers IN | Marc Cucurella, Denzel Dumfries, Bernardo Silva (Man City), Ibrahima Konaté, Endrick (loan at Lyon ended) | Massive rebuild — Bernardo Silva elite CM, Konaté top-tier CB, Dumfries/Cucurella full-backs |
 | Key transfers OUT | Dani Carvajal, Dani Ceballos, David Alaba | Three experienced squad members gone — defensive depth reduced |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Thibaut Courtois | #1 |
+| GK | Andriy Lunin | backup |
+| DF | Éder Militão | CB |
+| DF | Raúl Asencio | CB |
+| DF | Álvaro Carreras | LB |
+| DF | Antonio Rüdiger | CB |
+| DF | Ferland Mendy | LB |
+| DF | Dean Huijsen | CB |
+| DF | Trent Alexander-Arnold | RB |
+| DF | Denzel Dumfries | RB, new signing |
+| DF | Ibrahima Konaté | CB, new signing |
+| DF | Marc Cucurella | LB, new signing |
+| MF | Jude Bellingham | AM |
+| MF | Eduardo Camavinga | CM |
+| MF | Federico Valverde | CM |
+| MF | Aurélien Tchouaméni | DM |
+| MF | Arda Güler | AM |
+| MF | Bernardo Silva | CM, new signing |
+| FW | Vinícius Júnior | wide |
+| FW | Kylian Mbappé | striker |
+| FW | Rodrygo | wide |
+| FW | Brahim Díaz | wide |
+| FW | Gonzalo García | wide |
+| FW | Franco Mastantuono | wide |
+| FW | Endrick | striker, loan recalled |
+| FW | Carlos Espí | wide |

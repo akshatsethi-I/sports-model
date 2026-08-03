@@ -108,3 +108,28 @@ source: FootyStats 2025-26
 | xGF_A | 1.1 | derived: 2×xGF − xGF_H |
 | Manager | TBD | update pre-season |
 | Key transfers | TBD | update pre-season |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Stole Dimitrievski | #1 |
+| GK | Cristian Rivero | backup |
+| DF | José Copete | CB |
+| DF | Mouctar Diakhaby | CB |
+| DF | César Tárrega | CB, 3rd captain |
+| DF | Justin de Haas | DF |
+| DF | José Gayà | captain, LB |
+| DF | Dimitri Foulquier | RB |
+| DF | Jesús Vázquez | LB |
+| MF | Guido Rodríguez | DM |
+| MF | Javi Guerra | CM |
+| MF | André Almeida | CM |
+| MF | Aliou Dieng | CM |
+| MF | Pepelu | vice-captain, CM |
+| MF | Filip Ugrinić | CM |
+| MF | Ryūnosuke Satō | CM |
+| FW | Umar Sadiq | striker |
+| FW | Arnaut Danjuma | wide |
+| FW | Hugo Duro | striker |
+| FW | Luis Rioja | wide |
+| FW | Diego López | wide |
+| FW | Dani Raba | wide |

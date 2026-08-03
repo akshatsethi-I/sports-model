@@ -108,3 +108,29 @@ source: FootyStats 2025-26
 | xGF_A | 1.2 | derived: 2×xGF − xGF_H |
 | Manager | TBD | update pre-season |
 | Key transfers | TBD | update pre-season |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Odysseas Vlachodimos | #1, on loan from Newcastle |
+| GK | Alberto Flores | backup |
+| GK | Fran González | backup |
+| DF | José Ángel Carmona | RB |
+| DF | Adrià Pedrosa | LB |
+| DF | Kike Salas | CB |
+| DF | Arouna Sangante | CB |
+| DF | Juan Iglesias | CB |
+| DF | Gabriel Suazo | LB, vice-captain |
+| DF | Marcão | CB, captain |
+| DF | Julio Díaz | CB |
+| DF | Andrés Castrín | DF |
+| DF | Oso | DF |
+| MF | Lucien Agoumé | CM |
+| MF | Peque Fernández | CM |
+| MF | Juanlu Sánchez | CM/RB |
+| MF | Jon Guridi | CM |
+| MF | Djibril Sow | DM |
+| MF | Manu Bueno | CM |
+| FW | Isaac Romero | striker |
+| FW | Rubén Vargas | wide |
+| FW | Alfon González | wide |
+| FW | Chidera Ejuke | wide |
