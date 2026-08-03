@@ -106,7 +106,7 @@ source: FootyStats 2025-26
 | xGA/90 | 1.53 | FootyStats xG table |
 | xGF_H | 1.52 | home xG table |
 | xGF_A | 1.34 | derived: 2×xGF − xGF_H |
-| Manager | Imanol Alguacil |
+| Manager | Pellegrino Matarazzo |
 | Key transfers | No major changes confirmed |
 ## Squad (2026-27)
 | Pos | Player | Note |

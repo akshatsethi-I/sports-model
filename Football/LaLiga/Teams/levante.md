@@ -106,7 +106,7 @@ source: FootyStats 2025-26
 | xGA/90 | 1.68 | FootyStats xG table |
 | xGF_H | 1.51 | home xG table |
 | xGF_A | 1.17 | derived: 2×xGF − xGF_H |
-| Manager | Felipe Miñambres |
+| Manager | Luís Castro |
 | Key transfers | No major changes confirmed |
 ## Squad (2026-27)
 | Pos | Player | Note |

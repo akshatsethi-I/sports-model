@@ -55,7 +55,7 @@ last_updated: 2026-07-28
 | xGA/90 | 2.01 | Segunda raw 1.36 × 1.478 |
 | xGF_H | 1.28 | Segunda 1.46 × 0.871 |
 | xGF_A | 1.22 | Segunda 1.40 × 0.871 |
-| Manager | Imanol Idiakez |
+| Manager | Antonio Hidalgo |
 | Key transfers | No major changes confirmed |
 
 ## Squad (2026-27)
