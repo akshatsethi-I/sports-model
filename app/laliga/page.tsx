@@ -205,9 +205,7 @@ export default function LaLiga() {
             {/* Brand */}
             <div className="flex items-center gap-4">
               <div className="relative">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{ background: "linear-gradient(135deg, #3b0764, #581c87)", boxShadow: "0 0 18px rgba(139,92,246,0.35)" }}>
-                  ⚽
-                </div>
+                <img src="/pitchiq-logo.png" alt="PitchIQ" className="w-12 h-12 object-contain" />
               </div>
               <div>
                 <div className="flex items-center gap-2">

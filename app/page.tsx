@@ -205,9 +205,7 @@ export default function Home() {
             {/* Brand */}
             <div className="flex items-center gap-4">
               <div className="relative">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{ background: "linear-gradient(135deg, #1e3a8a, #1e40af)", boxShadow: "0 0 18px rgba(59,130,246,0.35)" }}>
-                  ⚽
-                </div>
+                <img src="/pitchiq-logo.png" alt="PitchIQ" className="w-12 h-12 object-contain" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
