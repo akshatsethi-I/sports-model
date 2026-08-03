@@ -109,3 +109,31 @@ source: FootyStats 2025-26
 | Manager | TBD | update pre-season |
 | Key transfers IN | Alejandro Grimaldo, Kang-in Lee | Grimaldo: elite overlapping LB, set piece deliveries; Kang-in Lee: creative AM/winger |
 | Key transfers OUT | Antoine Griezmann, Clement Lenglet | Griezmann huge loss — Atletico's primary creative outlet and goal scorer |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Juan Musso | #1 |
+| GK | Jan Oblak | vice-captain |
+| DF | José María Giménez | CB, 3rd captain |
+| DF | Matteo Ruggeri | LB |
+| DF | Nahuel Molina | RB |
+| DF | Dávid Hancko | CB |
+| DF | Marc Pubill | RB |
+| DF | Robin Le Normand | CB |
+| DF | Alejandro Grimaldo | LB, new signing |
+| MF | Rodrigo Mendoza | CM |
+| MF | Johnny Cardoso | CM |
+| MF | Koke | captain, CM |
+| MF | Lee Kang-in | AM/wide, new signing |
+| MF | Pablo Barrios | DM |
+| MF | Álex Baena | AM/wide |
+| MF | Thiago Almada | CM |
+| MF | Marcos Llorente | CM/wide |
+| MF | Giuliano Simeone | wide |
+| MF | Obed Vargas | CM |
+| MF | Ademola Lookman | wide/AM |
+| MF | Morten Hjulmand | DM |
+| MF | Thomas Lemar | CM/wide |
+| FW | Alexander Sørloth | striker |
+| FW | Carlos Martín | wide |
+| FW | Julián Alvarez | striker |

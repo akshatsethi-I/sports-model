@@ -108,3 +108,31 @@ source: FootyStats 2025-26
 | xGF_A | 1.06 | derived: 2×xGF − xGF_H |
 | Manager | TBD | update pre-season |
 | Key transfers | TBD | update pre-season |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Iván Villar | #1 |
+| GK | Ionuț Radu | backup |
+| DF | Carl Starfelt | CB |
+| DF | Marcos Alonso | LB |
+| DF | Sergio Carreira | RB |
+| DF | Manu Fernández | CB |
+| DF | Álvaro Núñez | CB |
+| DF | Javi Rueda | CB |
+| DF | Javi Rodríguez | DF |
+| DF | Carlos Domínguez | DF |
+| DF | Yoel Lago | DF |
+| DF | Javi Galán | LB |
+| DF | Unai Núñez | CB |
+| MF | Ilaix Moriba | CM |
+| MF | Miguel Román | CM |
+| MF | Aleix Febas | CM |
+| MF | Matías Vecino | DM |
+| FW | Borja Iglesias | striker |
+| FW | Ferran Jutglà | striker/wide |
+| FW | Iago Aspas | captain, striker |
+| FW | Williot Swedberg | wide |
+| FW | Pablo Durán | wide |
+| FW | Hugo Álvarez | wide |
+| FW | Jones El-Abdellaoui | wide |
+| FW | Carles Pérez | wide |

@@ -108,3 +108,39 @@ source: FootyStats 2025-26
 | xGF_A | 1.43 | derived: 2×xGF − xGF_H |
 | Manager | Edin Terzić | appointed 1 July 2026; replaced Ernesto Valverde (end of contract 24 May) |
 | Key transfers | TBD | update pre-season |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Unai Simón | #1 |
+| GK | Mikel Santos | backup |
+| GK | Álex Padilla | backup |
+| GK | Julen Agirrezabala | backup |
+| DF | Andoni Gorosabel | RB |
+| DF | Dani Vivian | CB |
+| DF | Aitor Paredes | CB |
+| DF | Yeray Álvarez | CB |
+| DF | Jesús Areso | RB |
+| DF | Unai Egiluz | CB |
+| DF | Aymeric Laporte | CB |
+| DF | Yuri Berchiche | LB, vice-captain |
+| DF | Adama Boiro | CB |
+| DF | Johaneko Louis-Jean | DF |
+| DF | Hugo Rincón | DF |
+| DF | Iker Monreal | DF |
+| MF | Oihan Sancet | CM |
+| MF | Iñigo Ruiz de Galarreta | DM |
+| MF | Mikel Jauregizar | CM |
+| MF | Beñat Prados | CM |
+| MF | Peio Canales | CM |
+| MF | Beñat Gerenabarrena | CM |
+| MF | Alejandro Rego | CM |
+| MF | Selton Sánchez | CM |
+| FW | Álex Berenguer | wide |
+| FW | Iñaki Williams | captain, striker/wide |
+| FW | Nico Williams | wide |
+| FW | Gorka Guruzeta | striker |
+| FW | Maroan Sannadi | wide |
+| FW | Nico Serrano | wide |
+| FW | Robert Navarro | wide |
+| FW | Elijah Gift | wide |
+| FW | Álvaro Djaló | wide |

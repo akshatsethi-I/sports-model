@@ -108,3 +108,31 @@ source: FootyStats 2025-26
 | xGF_A | 1.25 | derived: 2×xGF − xGF_H |
 | Manager | TBD | update pre-season |
 | Key transfers | TBD | update pre-season |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Antonio Sivera | captain |
+| GK | Jesús Owono | backup |
+| GK | Adrián Rodríguez | backup |
+| DF | Hugo Novoa | RB |
+| DF | Youssef Enríquez | CB |
+| DF | Nahuel Tenaglia | RB, 3rd captain |
+| DF | Ville Koski | CB |
+| DF | Jonny Otto | RB/wide |
+| DF | Facundo Garcés | CB |
+| DF | Moussa Diarra | CB |
+| MF | Denis Suárez | CM |
+| MF | Ander Guevara | DM, vice-captain |
+| MF | Ángel Pérez | CM |
+| MF | Antonio Blanco | CM |
+| MF | Carles Aleñá | CM |
+| MF | Pablo Ibáñez | CM |
+| MF | Abde Rebbach | CM/wide |
+| MF | Carlos Protesoni | CM |
+| MF | Miguel Rodríguez | CM |
+| MF | Mikel Rodríguez | CM |
+| MF | Selu Diallo | CM |
+| FW | Mariano Díaz | striker |
+| FW | Toni Martínez | striker |
+| FW | Aitor Mañas | wide |
+| FW | Lucas Boyé | wide/striker |

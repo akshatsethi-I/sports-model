@@ -109,3 +109,31 @@ source: FootyStats 2025-26
 | Manager | TBD | update pre-season |
 | Key transfers IN | Anthony Gordon (Newcastle), Karim Adeyemi | Gordon: elite wide attacker, direct, high press; Adeyemi: pace, goals from wide |
 | Key transfers OUT | Robert Lewandowski, Marcus Rashford (loan ended) | Lewandowski was primary #9 — major loss in box presence |
+## Squad (2026-27)
+| Pos | Player | Note |
+|---|---|---|
+| GK | Marc-André ter Stegen | #1 |
+| GK | Joan Garcia | backup |
+| GK | Wojciech Szczęsny | backup |
+| DF | Alejandro Balde | LB |
+| DF | Ronald Araújo | CB, captain |
+| DF | Pau Cubarsí | CB |
+| DF | Andreas Christensen | CB |
+| DF | Gerard Martín | LB |
+| DF | Jules Koundé | RB |
+| DF | Eric García | CB |
+| DF | Héctor Fort | RB |
+| MF | Gavi | CM |
+| MF | Pedri | CM, 4th captain |
+| MF | Fermín López | CM/AM |
+| MF | Marc Casadó | DM |
+| MF | Dani Olmo | AM |
+| MF | Frenkie de Jong | CM, vice-captain |
+| MF | Marc Bernal | CM |
+| FW | Ferran Torres | wide |
+| FW | Lamine Yamal | wide |
+| FW | Raphinha | wide, 3rd captain |
+| FW | Roony Bardghji | wide |
+| FW | Anthony Gordon | wide, new signing |
+| FW | Karim Adeyemi | wide, new signing |
+| FW | Jesse Bisiwu | striker |
