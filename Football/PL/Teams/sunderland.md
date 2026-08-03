@@ -107,6 +107,7 @@ last_updated: 2026-07-28
 - Home/away split: TBD
 - Key injuries: Update before matchday
 - Referee: Add before matchday
+- Manager: Régis Le Bris
 - Summer transfers 2026: IN: Meunier (RB), Granit Xhaka (captain, elite CM from Leverkusen), Brian Brobbey (striker). Major upgrades across the squad.
 - Notes:
 

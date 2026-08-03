@@ -107,6 +107,7 @@ last_updated: 2026-07-28
 - Home/away split: TBD
 - Key injuries: Update before matchday
 - Referee: Add before matchday
+- Manager: Roberto De Zerbi
 - Summer transfers 2026: IN: Tonali (from Newcastle, elite CM), Mateus Fernandes (creative CM), Xavi Simons (AM/wide). Major midfield overhaul.
 - Notes:
 

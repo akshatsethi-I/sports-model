@@ -107,6 +107,7 @@ last_updated: 2026-07-28
 - Home/away split: TBD
 - Key injuries: Update before matchday
 - Referee: Add before matchday
+- Manager: Keith Andrews
 - Summer transfers 2026: IN: Callum Wilson (experienced PL striker, depth behind Igor Thiago).
 - Notes:
 

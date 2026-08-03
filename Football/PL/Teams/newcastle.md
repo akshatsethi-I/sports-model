@@ -107,6 +107,7 @@ last_updated: 2026-07-28
 - Home/away split: TBD
 - Key injuries: Update before matchday
 - Referee: Add before matchday
+- Manager: Eddie Howe
 - Summer transfers 2026: OUT: Tonali → Spurs, Anthony Gordon → Barcelona. Two of the best players gone — significant xGF/xGA regression expected.
 - Notes:
 

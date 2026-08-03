@@ -107,6 +107,7 @@ last_updated: 2026-07-28
 - Home/away split: TBD
 - Key injuries: Update before matchday
 - Referee: Add before matchday
+- Manager: Mikel Arteta
 - Summer transfers 2026: OUT: Trossard. IN: Illan Meslier (GK, from Leeds). Note: Gyökeres, Madueke, Mosquera, Hincapié were already at the club in 2025-26.
 - Notes:
 

@@ -107,6 +107,7 @@ last_updated: 2026-07-28
 - Home/away split: TBD
 - Key injuries: Update before matchday
 - Referee: Add before matchday
+- Manager: Unai Emery
 - Summer transfers 2026: OUT: Rogers → Chelsea, Tielemans → Utd. IN: Garnacho (on loan from Chelsea), Manzambi (Swiss CM, EL Young POY at Freiburg, 5 WC GCAs).
 - Notes:
 

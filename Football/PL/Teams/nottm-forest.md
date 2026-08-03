@@ -107,6 +107,7 @@ last_updated: 2026-07-28
 - Home/away split: TBD
 - Key injuries: Update before matchday
 - Referee: Add before matchday
+- Manager: Oliver Glasner
 - Summer transfers 2026: OUT: Elliott Anderson → Man City.
 - Notes:
 

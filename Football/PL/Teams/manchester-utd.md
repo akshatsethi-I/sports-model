@@ -107,6 +107,7 @@ last_updated: 2026-07-28
 - Home/away split: TBD
 - Key injuries: Update before matchday
 - Referee: Add before matchday
+- Manager: Michael Carrick
 - Summer transfers 2026: IN: Tielemans (Villa, creative CM), Andrey Santos (Chelsea, CM depth). Note: Mbeumo and Šeško already at club in 2025-26.
 - Notes:
 

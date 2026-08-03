@@ -107,6 +107,7 @@ last_updated: 2026-07-28
 - Home/away split: TBD
 - Key injuries: Update before matchday
 - Referee: Add before matchday
+- Manager: Xabi Alonso
 - Summer transfers 2026: IN: Rogers (from Aston Villa), Garnacho on loan to Aston Villa. OUT: Cucurella (→Real Madrid), Madueke (already at Arsenal). Note: Garnacho still technically Chelsea's player but on loan.
 - Notes:
 
