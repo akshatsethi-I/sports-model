@@ -199,27 +199,37 @@ export default function LaLiga() {
     <div className="min-h-screen flex flex-col" style={{ background: "#07070e", color: "#e2e8f0" }}>
 
       {/* Header */}
-      <header style={{ background: "#0d0d18", borderBottom: "1px solid #1a1a2e" }} className="px-6 py-4 shrink-0">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">⚽</span>
-            <div>
-              <h1 className="text-base font-bold tracking-tight" style={{ color: "#f1f5f9" }}>Sports Prediction Vault</h1>
-              <p className="text-xs" style={{ color: "#3d4f6b" }}>Football · 2026-27</p>
+      <header className="shrink-0" style={{ background: "linear-gradient(135deg, #080814 0%, #0d1128 60%, #0a0f20 100%)", borderBottom: "1px solid #1a1a2e" }}>
+        <div className="max-w-5xl mx-auto px-6 py-5">
+          <div className="flex items-center justify-between">
+            {/* Brand */}
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{ background: "linear-gradient(135deg, #3b0764, #581c87)", boxShadow: "0 0 18px rgba(139,92,246,0.35)" }}>
+                  ⚽
+                </div>
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h1 className="text-lg font-bold tracking-tight" style={{ color: "#f1f5f9" }}>Prediction Vault</h1>
+                  <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: "#0a2010", border: "1px solid #14532d", color: "#4ade80" }}>● LIVE</span>
+                </div>
+                <p className="text-xs mt-0.5" style={{ color: "#3d4f6b" }}>Poisson model · 2026-27 season</p>
+              </div>
             </div>
-          </div>
-          {/* League switcher */}
-          <div className="flex gap-2">
-            <Link href="/"
-              className="text-xs px-3 py-1.5 rounded-full"
-              style={{ background: "#111120", border: "1px solid #1a1a2e", color: "#64748b" }}>
-              Premier League
-            </Link>
-            <span
-              className="text-xs px-3 py-1.5 rounded-full font-semibold"
-              style={{ background: "#1a0a2e", border: "1px solid #3d1a6e", color: "#a78bfa" }}>
-              La Liga
-            </span>
+
+            {/* League switcher */}
+            <div className="flex gap-1 p-1 rounded-xl" style={{ background: "#0a0a16", border: "1px solid #1a1a2e" }}>
+              <Link href="/"
+                className="text-sm px-4 py-2 rounded-lg font-medium transition-all hover:text-slate-300"
+                style={{ color: "#475569" }}>
+                Premier League
+              </Link>
+              <span className="text-sm px-4 py-2 rounded-lg font-semibold cursor-default"
+                style={{ background: "linear-gradient(135deg, #3b0764, #581c87)", color: "#fff", boxShadow: "0 2px 8px rgba(139,92,246,0.3)" }}>
+                La Liga
+              </span>
+            </div>
           </div>
         </div>
       </header>
