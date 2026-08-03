@@ -211,10 +211,10 @@ export default function Home() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="text-lg font-bold tracking-tight" style={{ color: "#f1f5f9" }}>Prediction Vault</h1>
+                  <h1 className="text-lg font-bold tracking-tight" style={{ color: "#f1f5f9" }}>PitchIQ</h1>
                   <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: "#0a2010", border: "1px solid #14532d", color: "#4ade80" }}>● LIVE</span>
                 </div>
-                <p className="text-xs mt-0.5" style={{ color: "#3d4f6b" }}>Poisson model · 2026-27 season</p>
+                <p className="text-xs mt-0.5" style={{ color: "#3d4f6b" }}>AI match analysis · 2026-27</p>
               </div>
             </div>
 
